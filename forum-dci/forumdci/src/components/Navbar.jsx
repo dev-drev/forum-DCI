@@ -4,7 +4,10 @@ const Navbar = () => {
   return (
     <div class="navbar bg-primary mb-2 shadow-lg  text-neutral-content rounded-box">
       <div class="px-2 mx-2 navbar-start">
-        <a class="text-lg btn font-bold ml-5 border-none hover:bg-transparent bg-transparent text-4xl">
+        <a
+          to="/"
+          class="text-lg btn font-bold ml-5 border-none hover:bg-transparent bg-transparent text-4xl"
+        >
           AVAZ
         </a>
       </div>
@@ -16,7 +19,7 @@ const Navbar = () => {
           <a class="btn btn-ghost btn-sm rounded-btn">Community</a>
           <a class="btn btn-ghost btn-sm rounded-btn">About</a>
 
-          <button class="btn bg-tertiary glass text-primary hover:bg-gray-500  hover:text-white btn-sm ">
+          <button class="btn bg-tertiary glass text-primary hover:bg-gray-500 hover:text-white btn-sm ">
             ASK SOMETHING
           </button>
         </div>
