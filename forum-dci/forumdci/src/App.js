@@ -1,13 +1,12 @@
 import React from "react";
+import Navbar from "./components/Navbar.jsx";
 
 function App() {
+  const name = (params) => {};
+
   return (
     <div className="App">
-      <header className="App-header">
-        <div>
-          <h1 className="p-8">Hello World</h1>
-        </div>
-      </header>
+      <Navbar />
     </div>
   );
 }
