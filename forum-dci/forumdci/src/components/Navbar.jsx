@@ -10,12 +10,12 @@ const Navbar = () => {
 
         <div class="px-2 mx-2 navbar-start">
           <button
-            onMouseEnter={(e) => {
-              setIsShown(true);
+            onClick={() => {
+              setIsShown(!isShown);
             }}
-            onClick={(e) => {
-              setIsShown(false);
-            }}
+            // onClick={(e) => {
+            //   setIsShown(false);
+            // }}
             className="lg:hidden"
           >
             <svg
@@ -78,11 +78,11 @@ const Navbar = () => {
       </div>
 
       {isShown && (
-        <div className="bg-primary px-6 mb-2 sm:hidden shadow-lg">
+        <div className="bg-primary h-60 px-6 mb-2 sm:hidden shadow-lg">
           <ul className="flex-col">
             <a href="">
               {" "}
-              <li class="mx-2 p-4 flex content-center items-center hover:glass rounded-btn">
+              <li class="mx-2 pl-1  p-4 flex content-center items-center hover:glass rounded-btn">
                 {" "}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -101,17 +101,71 @@ const Navbar = () => {
                 Questions{" "}
               </li>
             </a>
+
             <a href="">
               {" "}
-              <li class="mx-2 p-4 hover:glass pointer rounded-btn"> Tags </li>
+              <li class="mx-2  pl-1  p-4 flex content-center items-center hover:glass rounded-btn">
+                {" "}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6 mr-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"
+                  />
+                </svg>
+                Tags{" "}
+              </li>
             </a>
+
             <a href="">
               {" "}
-              <li class="mx-2 p-4  hover:glass rounded-btn"> Community </li>
+              <li class="mx-2 pl-1 p-4 flex content-center items-center hover:glass rounded-btn">
+                {" "}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6 mr-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                  />
+                </svg>
+                Community{" "}
+              </li>
             </a>
+
             <a href="">
               {" "}
-              <li class="mx-2 p-4 hover:glass rounded-btn"> About </li>
+              <li class="mx-2 pl-1 p-4 flex content-center items-center hover:glass rounded-btn">
+                {" "}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6 mr-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13 10V3L4 14h7v7l9-11h-7z"
+                  />
+                </svg>
+                About{" "}
+              </li>
             </a>
           </ul>
         </div>
