@@ -2,24 +2,58 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <nav className="w-full justify-around p-6 flex bg-primary">
-      <div className="w-2/12">
-        <h2>AVAZ</h2>
+    <div class="navbar bg-primary mb-2 shadow-lg  text-neutral-content rounded-box">
+      <div class="px-2 mx-2 navbar-start">
+        <a class="text-lg btn font-bold ml-5 border-none hover:bg-transparent bg-transparent text-4xl">
+          AVAZ
+        </a>
       </div>
+      <div class="hidden px-2 mx-2 navbar-center lg:flex">
+        <div class="flex items-stretch">
+          <a class="btn btn-ghost btn-sm rounded-btn">Home</a>
+          <a class="btn btn-ghost btn-sm rounded-btn">Questions</a>
+          <a class="btn btn-ghost btn-sm rounded-btn">Tags</a>
+          <a class="btn btn-ghost btn-sm rounded-btn">Community</a>
+          <a class="btn btn-ghost btn-sm rounded-btn">About</a>
 
-      <div className="w-8/12">
-        <ul className="flex">
-          <li>questions</li>
-          <li>tags</li>
-          <li>about</li>
-          <button>ask something</button>
-        </ul>
+          <button class="btn bg-tertiary glass text-primary hover:bg-gray-500  hover:text-white btn-sm ">
+            ASK SOMETHING
+          </button>
+        </div>
       </div>
-
-      <div>
-        <span>log in</span>
+      <div class="navbar-end">
+        <button class="btn btn-square btn-ghost">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            class="inline-block w-6 h-6 stroke-current"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+            ></path>
+          </svg>
+        </button>
+        <button class="btn btn-square btn-ghost">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            class="inline-block w-6 h-6 stroke-current"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            ></path>
+          </svg>
+        </button>
       </div>
-    </nav>
+    </div>
   );
 };
 
