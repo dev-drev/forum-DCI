@@ -1,6 +1,7 @@
 import React from "react";
 import PopularPosts from "./PopularPosts";
 import RecentPosts from "./RecentPosts";
+import messagesPic from "../../assets/messages.png";
 
 function BodyPosts() {
   return (
@@ -10,7 +11,7 @@ function BodyPosts() {
         {/* Sidebar starts */}
         {/* Remove class [ hidden ] and replace [ sm:flex ] with [ flex ] */}
         <div className=" bg-gray-800 shadow h-screen flex-col hidden sm:flex">
-          <div className="px-8 ">
+          <div className="px-6 ">
             <ul className="mt-12">
               <li className="flex w-full justify-between text-gray-300 hover:text-gray-500 cursor-pointer items-center mb-6">
                 <div className="flex items-center">
