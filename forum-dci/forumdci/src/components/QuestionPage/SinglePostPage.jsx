@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 import TextEditor from "./TextEditor.jsx"
- import ComponentButton from "./ComponentButton";
+import ComponentButton from "./ComponentButton";
+import SinglePostPage2 from './SinglePostPage2';
 
 
-function QuestionPage() {
+function SinglePostPage() {
 
     const [showAnswerArea, setShowAnswerArea] = useState(false);
 
@@ -12,11 +13,11 @@ function QuestionPage() {
     }
 
     return (
-        <>
+        <div className="bg-gray-500">
 
-            <div className="container mx-auto min-h-screen">
+            <div className="container mx-auto min-h-screen bg-gray-200">
                 <div className="bg-indigo-50 ">
-                    <h4 className="font-bold px-6 py-6">How to get random number in solana on-chain program?</h4>
+                    <h4 className="font-bold px-6 py-6 ">How to get random number in solana on-chain program?</h4>
 
                     <ul className=" flex  px-6 py-4 ">
                         <li className="mr-4">asked today</li>
@@ -31,21 +32,33 @@ function QuestionPage() {
                 </div>
 
                 <ul className=" flex  px-6 py-4 ">
-                    <li className="mr-4 px-2  bg-gray-50 rounded">javascript</li>
-                    <li className="mr-4 px-2 bg-gray-50 rounded">promise</li>
-                    <li className="mr-4 px-2 bg-gray-50 rounded">program</li>
+                    <li className="mr-4 px-2  bg-gray-500 rounded text-white">javascript</li>
+                    <li className="mr-4 px-2 bg-gray-500 rounded text-white">promise</li>
+                    <li className="mr-4 px-2 bg-gray-500 rounded text-white">program</li>
                 </ul>
                 <div className="text-center">
-                    <ComponentButton onClick={switchMode} value={showAnswerArea ? "Hide Answer Form" : "Show Answer Form"}>
+                    <ComponentButton onClick={switchMode}
+                                     value={showAnswerArea ? "Hide Answer Form" : "Show Answer Form"}>
                     </ComponentButton>
                 </div>
 
                 <div className="">
                     {showAnswerArea ? <TextEditor/> : ''}
                 </div>
+                <div className="ml-10 mr-10 mt-6 text-lg font-bold flex justify-between">
+                    <p>15 replies</p>
+                    <p>Follow replies</p>
+
+                </div>
+                <div>
+                    <SinglePostPage2/>
+                    <SinglePostPage2/>
+                    <SinglePostPage2/>
+                    <SinglePostPage2/>
+                </div>
             </div>
-        </>
+        </div>
     );
 }
 
-export default QuestionPage;
+export default SinglePostPage;
