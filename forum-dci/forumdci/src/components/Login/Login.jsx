@@ -20,7 +20,7 @@ export default function Login() {
         });
       };
   return (
-    <div className="lg:flex">
+    <div className="lg:flex -mt-16">
 
       {/* login form */}
 
