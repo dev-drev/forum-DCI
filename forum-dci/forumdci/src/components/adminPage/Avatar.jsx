@@ -1,7 +1,10 @@
 import React from "react";
 import Navbar from "../Navbar";
+import SubNavbar from "../Questions Page/SubNavbar";
 
 <Navbar />;
+
+<SubNavbar />;
 const Avatar = () => {
   return (
     <div class="min-h-screen bg-cyan-100 p-16">
