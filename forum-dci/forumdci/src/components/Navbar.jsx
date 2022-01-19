@@ -4,8 +4,8 @@ const Navbar = () => {
   const [isShown, setIsShown] = useState(false);
 
   return (
-    <div>
-      <div class="navbar bg-primary  shadow-lg  text-neutral-content md:rounded-box">
+    <div className="relative">
+      <div class="navbar bg-primary  shadow-lg  text-neutral-content md:rounded-box absolute top-0 w-full left-0">
         {/* LOGO AREA */}
 
         <div class="px-2 mx-2 navbar-start">
