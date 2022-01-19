@@ -4,7 +4,7 @@ function CardPopular({ width, glass }) {
   return (
     <div>
       <section
-        className={`${width} w-full ${glass}  rounded-2xl px-6 py-2 my-2 sm:py-6 shadow-lg`}
+        className={`${width} w-full ${glass} z-0  rounded-2xl px-6 py-2 my-2 sm:py-6 shadow-lg`}
       >
         {/* FIRST BAR - DATE+ICON */}
         <div className="flex items-center pb-4  justify-between">
