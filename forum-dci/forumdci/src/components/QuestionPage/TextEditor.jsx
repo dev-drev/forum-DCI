@@ -1,6 +1,7 @@
 import React, {useRef} from 'react';
 import {Editor} from '@tinymce/tinymce-react';
 
+
 export default function TextEditor() {
     const editorRef = useRef(null);
     const log = () => {
@@ -43,6 +44,7 @@ export default function TextEditor() {
                         </div>
                     </div>
             </form>
+
         </>
     );
 }

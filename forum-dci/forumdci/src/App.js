@@ -1,9 +1,8 @@
 import React from "react";
 import Login from "./components/Login/Login.jsx";
 import Navbar from "./components/Navbar.jsx";
-
-
-import {BrowserRouter as Router, Routes, Route, Link} from "react-router-dom";
+import Avatar from "./components/adminPage/Admin";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import QuestionsPage from "./components/Questions Page/QuestionsPage.jsx";
 import SinglePostPage from "./components/QuestionPage/SinglePostPage.jsx";
 
@@ -13,9 +12,10 @@ function App() {
             <Navbar/>
             <Routes>
                 <Route path="/questions" element={<QuestionsPage/>}/>
-                <Route path="/question" element={<SinglePostPage/>}/>
+                <Route path="/answer" element={<SinglePostPage/>}/>
             </Routes>
         </Router>
     );
+
 }
 export default App;

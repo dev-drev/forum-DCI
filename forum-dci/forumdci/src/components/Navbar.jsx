@@ -4,10 +4,9 @@ const Navbar = () => {
   const [isShown, setIsShown] = useState(false);
 
   return (
-    <div className="relative">
-      <div class="navbar bg-primary  shadow-lg  text-neutral-content md:rounded-box absolute top-0 w-full left-0">
+    <div className="relative  sm:mb-16 ">
+      <div class="navbar bg-primary  shadow-lg  text-neutral-content md:rounded-box sm:fixed z-10  top-0 w-full left-0">
         {/* LOGO AREA */}
-
         <div class="px-2 mx-2 navbar-start">
           <button
             onClick={() => {
@@ -40,7 +39,6 @@ const Navbar = () => {
             AVAZ
           </Link>
         </div>
-
         {/* MENU AREA */}
         <div class="hidden px-2 mx-2 lg:flex">
           <ul class="flex">
@@ -56,7 +54,6 @@ const Navbar = () => {
             </button>
           </ul>
         </div>
-
         {/* LOG IN AREA */}
         <div class="navbar-end flex items-center content-center">
           <svg
@@ -80,7 +77,7 @@ const Navbar = () => {
       </div>
 
       {isShown && (
-        <div className="bg-primary h-60 px-6 mb-2 sm:hidden shadow-lg">
+        <div className="bg-primary h-60 px-6 sm:hidden shadow-lg">
           <ul className="flex-col">
             <Link to="/questions">
               {" "}
