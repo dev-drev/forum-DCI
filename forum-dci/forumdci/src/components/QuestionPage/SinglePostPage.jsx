@@ -3,7 +3,7 @@ import TextEditor from "./TextEditor.jsx"
  import ComponentButton from "./ComponentButton";
 
 
-function QuestionPage() {
+function SinglePostPage() {
 
     const [showAnswerArea, setShowAnswerArea] = useState(false);
 
@@ -48,4 +48,4 @@ function QuestionPage() {
     );
 }
 
-export default QuestionPage;
+export default SinglePostPage;

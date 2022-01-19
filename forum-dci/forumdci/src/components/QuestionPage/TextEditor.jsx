@@ -19,7 +19,7 @@ export default function TextEditor() {
                                     onInit={(evt, editor) => editorRef.current = editor}
                                     initialValue="<p>This is the initial content of the editor.</p>"
                                     init={{
-                                        height: 500,
+                                        height: 300,
                                         menubar: false,
                                         plugins: [
                                             'advlist autolink lists link image charmap print preview anchor',
