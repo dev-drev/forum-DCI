@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { Link, BrowserRouter as Router } from "react-router-dom";
 const Navbar = () => {
   const [isShown, setIsShown] = useState(false);
 
@@ -33,18 +33,20 @@ const Navbar = () => {
               />
             </svg>
           </button>
-          <a
+          <Link
             to="/"
             class="text-lg btn font-bold lg:ml-5 border-none hover:bg-transparent bg-transparent text-4xl"
           >
             AVAZ
-          </a>
+          </Link>
         </div>
 
         {/* MENU AREA */}
         <div class="hidden px-2 mx-2 lg:flex">
           <ul class="flex">
-            <a class="btn btn-ghost btn-sm mx-4 rounded-btn">Questions</a>
+            <Link to="/questions" class="btn btn-ghost btn-sm mx-4 rounded-btn">
+              Questions
+            </Link>
             <a class="btn btn-ghost btn-sm mx-4 rounded-btn">Tags</a>
             <a class="btn btn-ghost btn-sm mx-4 rounded-btn">Community</a>
             <a class="btn btn-ghost btn-sm mx-4 rounded-btn">About</a>
@@ -80,9 +82,12 @@ const Navbar = () => {
       {isShown && (
         <div className="bg-primary h-60 px-6 mb-2 sm:hidden shadow-lg">
           <ul className="flex-col">
-            <a href="">
+            <Link to="/questions">
               {" "}
-              <li class="mx-2 pl-1  p-4 flex content-center items-center hover:glass rounded-btn">
+              <li
+                to="/questions"
+                class="mx-2 pl-1  p-4 flex content-center items-center hover:glass rounded-btn"
+              >
                 {" "}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -100,7 +105,7 @@ const Navbar = () => {
                 </svg>{" "}
                 Questions{" "}
               </li>
-            </a>
+            </Link>
 
             <a href="">
               {" "}
