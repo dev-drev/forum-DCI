@@ -16,7 +16,7 @@ function SinglePostPage() {
 
             <div className="container mx-auto min-h-screen">
                 <div className="bg-indigo-50 ">
-                    <h4 className="font-bold px-6 py-6">How to get random number in solana on-chain program?</h4>
+                    <h4 className="font-bold px-6 py-6 ">How to get random number in solana on-chain program?</h4>
 
                     <ul className=" flex  px-6 py-4 ">
                         <li className="mr-4">asked today</li>
