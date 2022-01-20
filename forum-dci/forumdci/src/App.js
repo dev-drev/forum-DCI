@@ -11,9 +11,13 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <AdminPage />
-      <AboutPage />
-      <Route path="/questions" element={<QuestionsPage />} />
+
+      <Routes>
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/admin" element={<AdminPage />} />
+        <Route path="/questions" element={<QuestionsPage />} />
+        <Route path="/answer" element={<SinglePostPage />} />
+      </Routes>
     </Router>
   );
 }

@@ -1,12 +1,13 @@
 import React from "react";
-import About from "./About";
 import SubNavbar from "../Questions Page/SubNavbar";
+import About from "./About";
 
-export default function AboutPage() {
+const AboutPage = () => {
   return (
-    <div className="bg-gray-500">
+    <div>
       <SubNavbar />
       <About />
     </div>
   );
-}
+};
+export default AboutPage;
