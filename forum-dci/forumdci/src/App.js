@@ -12,7 +12,7 @@ import PopularPosts from "./components/QuestionsPage/PopularPosts.jsx";
 
 function App() {
     return (
-       
+
     );
 
 }
