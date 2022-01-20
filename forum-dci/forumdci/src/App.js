@@ -5,6 +5,7 @@ import AdminPage from "./components/adminPage/AdminPage";
 
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import QuestionsPage from "./components/Questions Page/QuestionsPage.jsx";
+import SinglePostPage from "./components/QuestionPage/SinglePostPage.jsx";
 
 function App() {
   return (
