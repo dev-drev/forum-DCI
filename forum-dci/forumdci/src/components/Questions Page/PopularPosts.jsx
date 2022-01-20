@@ -7,10 +7,10 @@ function PopularPosts() {
   return (
     <div>
       <div className="flex justify-between">
-        <div className="flex-col mb-10 content-center items-center">
-          <div className="flex content-center items-center ">
+        <div className="flex-col mb-4 content-center pt-4 items-center">
+          <div className="flex content-center pb-3 items-center ">
             <h3 className="text-3xl text-shadow font-semibold">
-              POPULAR POSTS
+              POPULAR QUESTIONS
             </h3>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -27,20 +27,32 @@ function PopularPosts() {
               />
             </svg>
           </div>
-          <p className="text-emerald-300">
+          <p className="text-secondary">
             This is a collection of the most rated posts
           </p>
         </div>
+
         <img src={messagesPic} className="w-20 h-20" alt="" />
       </div>
-
+      <div class="pb-6">
+        <div class="relative">
+          <input
+            type="text"
+            placeholder="Search Tags..."
+            class=" pr-24 input rounded-r-none mt-4 text-white input-info input-bordered"
+          />
+          <button class="absolute mt-4  text-white rounded-l-none btn btn-info">
+            go
+          </button>
+        </div>
+      </div>
       <div className=" flex flex-wrap justify-between  w-12/12 sm:w-11/12">
         <CardPopular width={width} glass="glass" />
         <CardPopular width={width} glass="glass" />
         <CardPopular width={width} glass="glass" />
         <CardPopular width={width} glass="glass" />
       </div>
-      <div className="w-full justify-end pt-4  flex w-12/12 sm:w-11/12 pr-4">
+      <div className="w-full justify-end pt-1 flex w-12/12 sm:w-11/12 pr-4">
         <button class="btn pr-0 text-white btn-link">See More</button>
       </div>
       <div class="divider"></div>

@@ -1,10 +1,10 @@
 import React from "react";
 
-function CardPopular({ width, glass }) {
+function TagsCard() {
   return (
     <div>
       <section
-        className={`${width} w-full ${glass} z-0 rounded-2xl px-6 py-2 my-2 sm:py-6 shadow-lg`}
+        className={`sm:w-56 w-full glass z-0 rounded-2xl px-6 py-2 my-2 sm:py-6 shadow-lg`}
       >
         {/* FIRST BAR - DATE+ICON */}
         <div className="flex items-center pb-4  justify-between">
@@ -69,4 +69,4 @@ function CardPopular({ width, glass }) {
   );
 }
 
-export default CardPopular;
+export default TagsCard;

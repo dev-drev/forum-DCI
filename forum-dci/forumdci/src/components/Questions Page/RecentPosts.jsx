@@ -4,8 +4,8 @@ import CardPopular from "./CardPopular";
 const RecentPosts = () => {
   return (
     <div>
-      <div className="flex-col mb-10 content-center items-center">
-        <div className="flex content-center items-center ">
+      <div className="flex-col mb-6 content-center items-center">
+        <div className="flex content-center pb-3 items-center ">
           <h3 className="text-3xl text-shadow font-semibold">RECENT POSTS</h3>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -22,7 +22,7 @@ const RecentPosts = () => {
             />
           </svg>
         </div>
-        <p className="text-emerald-300">
+        <p className="text-secondary">
           This is a collection of the most rated posts
         </p>
       </div>
