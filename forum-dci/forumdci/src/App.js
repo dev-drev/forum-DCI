@@ -11,6 +11,7 @@ function App() {
     <Router>
       <Navbar />
       <AdminPage />
+
       <Route path="/questions" element={<QuestionsPage />} />
     </Router>
   );
