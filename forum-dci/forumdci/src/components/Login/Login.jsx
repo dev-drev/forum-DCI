@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import LoginBtn from './LoginBtn';
 
-
 export default function Login() {
 
     const [formData, setFormData] = useState({ 
