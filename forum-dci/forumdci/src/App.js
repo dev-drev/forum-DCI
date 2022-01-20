@@ -12,16 +12,7 @@ import PopularPosts from "./components/QuestionsPage/PopularPosts.jsx";
 
 function App() {
     return (
-        <Router>
-            <Navbar/>
-            <SubNavbar/>
-            <Routes>
-                {/*<Route path="/questions" element={<QuestionsPage/>}/>*/}
-                {/*<Route path="/answer" element={<SinglePostPage/>}/>*/}
-                <Route path="/ask" element={<AskSomethingPage/>}/>
-                <Route path="/popular" element={<PopularPosts/>}/>
-            </Routes>
-        </Router>
+       
     );
 
 }
