@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import { Link, BrowserRouter as Router } from "react-router-dom";
+import Fade from "react-reveal/Fade";
+
+import LightSpeed from "react-reveal/LightSpeed";
+
 const Navbar = () => {
   const [isShown, setIsShown] = useState(false);
 
   return (
     <div className="relative  sm:mb-16 ">
-      <div class="navbar bg-primary  shadow-lg  text-neutral-content md:rounded-box sm:fixed z-10  top-0 w-full left-0">
+      <div class="navbar bg-primary  shadow-lg text-neutral-content sm:fixed z-10  top-0 w-full left-0">
         {/* LOGO AREA */}
         <div class="px-2 mx-2 navbar-start">
           <button
@@ -32,12 +36,16 @@ const Navbar = () => {
               />
             </svg>
           </button>
-          <Link
-            to="/"
-            class="text-lg btn font-bold lg:ml-5 border-none hover:bg-transparent bg-transparent text-4xl"
-          >
-            AVAZ
-          </Link>
+
+          <LightSpeed left>
+            {" "}
+            <Link
+              to="/"
+              class="text-lg btn font-bold lg:ml-5 border-none hover:bg-transparent bg-transparent text-4xl"
+            >
+              AVAZ
+            </Link>
+          </LightSpeed>
         </div>
         {/* MENU AREA */}
         <div class="hidden px-2 mx-2 lg:flex">
@@ -45,7 +53,9 @@ const Navbar = () => {
             <Link to="/questions" class="btn btn-ghost btn-sm mx-4 rounded-btn">
               Questions
             </Link>
-            <a class="btn btn-ghost btn-sm mx-4 rounded-btn">Tags</a>
+            <Link to="/tags" class="btn btn-ghost btn-sm mx-4 rounded-btn">
+              Tags
+            </Link>
             <a class="btn btn-ghost btn-sm mx-4 rounded-btn">Community</a>
             <a class="btn btn-ghost btn-sm mx-4 rounded-btn">About</a>
 

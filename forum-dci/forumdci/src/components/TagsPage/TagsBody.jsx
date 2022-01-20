@@ -1,13 +1,14 @@
 import React from "react";
-import PopularPosts from "./PopularPosts";
-import RecentPosts from "./RecentPosts";
+import CardPopular from "../Questions Page/CardPopular";
 import messagesPic from "../../assets/messages.png";
+import TagsPosts from "./TagsPosts";
 
-function BodyPosts() {
+function TagsBody() {
+  const width = "sm:w-56";
   return (
     <div>
       {" "}
-      <div className="flex  flex-no-wrap">
+      <div className="flex flex-no-wrap">
         {/* Sidebar starts */}
         {/* Remove class [ hidden ] and replace [ sm:flex ] with [ flex ] */}
         <div className=" bg-gray-800 shadow h-screen flex-col hidden sm:flex">
@@ -105,8 +106,10 @@ function BodyPosts() {
         <div className="container mx-auto py-10  md:w-4/5 w-11/12 px-6">
           {/* Remove class [ border-dashed border-2 border-gray-300 ] to remove dotted border */}
           <div className="w-full rounded ">
-            <PopularPosts />
-            <RecentPosts />
+            {/* <PopularPosts />
+        
+            <RecentPosts /> */}
+            <TagsPosts />
           </div>
         </div>
       </div>
@@ -114,4 +117,4 @@ function BodyPosts() {
   );
 }
 
-export default BodyPosts;
+export default TagsBody;

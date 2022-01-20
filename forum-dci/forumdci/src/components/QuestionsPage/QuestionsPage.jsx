@@ -6,7 +6,6 @@ import BodyPosts from "./BodyPosts";
 export default function QuestionsPage() {
   return (
     <div>
-      <SubNavbar />
       <BodyPosts />
     </div>
   );
