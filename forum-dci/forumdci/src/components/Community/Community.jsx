@@ -1,6 +1,31 @@
-// test II
+import React, {useState, useEffect} from "react";
+const randomUserUrl = "https://randomuser.me/api/?results=16";
 
 export default function Community() {
+
+const [data, setData] = useState([]);
+const [error, setError] = useState(null);
+const [isLoaded, setIsLoaded] = useState(false);
+
+useEffect(() => {
+  async function fetchData() {
+      fetch(randomUserUrl)
+      .then((response) => {
+          return response.json();
+      })
+      .then((data) => {
+          setData(data);
+          setIsLoaded(true);
+          console.log(data);
+      })
+  }
+
+  fetchData();
+}, []);
+
+if (error) return <div>Error: {error.message}</div>
+if (!isLoaded) return <div>loading...</div>
+else {
   return (
     <div className="bg-gray-100">
       <div className="w-full h-16 bg-gradient-to-r from-gray-800 to-primary  border-gray-200 shadow-xl"></div>
@@ -28,166 +53,23 @@ export default function Community() {
         </div>
 
         <div className="grid lg:grid-cols-4 md:grid-cols-2 justify-items-center gap-y-5 mt-16 pb-10 mr-12 ml-10">
-          <div className="flex items-center lg:mb-10">
+         {data.results.map( result => <div className="flex items-center lg:mb-10">
             <img
               className="rounded-full w-26"
-              src="https://randomuser.me/api/portraits/med/men/75.jpg"
+              src = {result.picture.medium}
               alt="user avatar"
             />
             <div className="ml-5">
-              <h2 className="font-bold">username</h2>
+              <h2 className="font-bold">{result.name.first}</h2>
               <h3>12 questions</h3>
               <h3>9 reactions</h3>
             </div>
-          </div>
+          </div>)}
 
-          <div className="flex items-center lg:mb-10">
-            <img
-              className="rounded-full w-26"
-              src="https://randomuser.me/api/portraits/med/men/75.jpg"
-              alt="user avatar"
-            />
-            <div className="ml-5">
-              <h2 className="font-bold">username</h2>
-              <h3>12 questions</h3>
-              <h3>9 reactions</h3>
-            </div>
           </div>
-
-          <div className="flex items-center lg:mb-10">
-            <img
-              className="rounded-full w-26"
-              src="https://randomuser.me/api/portraits/med/men/75.jpg"
-              alt="user avatar"
-            />
-            <div className="ml-5">
-              <h2 className="font-bold">username</h2>
-              <h3>12 questions</h3>
-              <h3>9 reactions</h3>
-            </div>
-          </div>
-
-          <div className="flex items-center lg:mb-10">
-            <img
-              className="rounded-full w-26"
-              src="https://randomuser.me/api/portraits/med/men/75.jpg"
-              alt="user avatar"
-            />
-            <div className="ml-5">
-              <h2 className="font-bold">username</h2>
-              <h3>12 questions</h3>
-              <h3>9 reactions</h3>
-            </div>
-          </div>
-
-          <div className="flex items-center lg:mb-10">
-            <img
-              className="rounded-full w-26"
-              src="https://randomuser.me/api/portraits/med/men/75.jpg"
-              alt="user avatar"
-            />
-            <div className="ml-5">
-              <h2 className="font-bold">username</h2>
-              <h3>12 questions</h3>
-              <h3>9 reactions</h3>
-            </div>
-          </div>
-
-          <div className="flex items-center lg:mb-10">
-            <img
-              className="rounded-full w-26"
-              src="https://randomuser.me/api/portraits/med/men/75.jpg"
-              alt="user avatar"
-            />
-            <div className="ml-5">
-              <h2 className="font-bold">username</h2>
-              <h3>12 questions</h3>
-              <h3>9 reactions</h3>
-            </div>
-          </div>
-
-          <div className="flex items-center lg:mb-10">
-            <img
-              className="rounded-full w-26"
-              src="https://randomuser.me/api/portraits/med/men/75.jpg"
-              alt="user avatar"
-            />
-            <div className="ml-5">
-              <h2 className="font-bold">username</h2>
-              <h3>12 questions</h3>
-              <h3>9 reactions</h3>
-            </div>
-          </div>
-
-          <div className="flex items-center lg:mb-10">
-            <img
-              className="rounded-full w-26"
-              src="https://randomuser.me/api/portraits/med/men/75.jpg"
-              alt="user avatar"
-            />
-            <div className="ml-5">
-              <h2 className="font-bold">username</h2>
-              <h3>12 questions</h3>
-              <h3>9 reactions</h3>
-            </div>
-          </div>
-
-          <div className="flex items-center lg:mb-10">
-            <img
-              className="rounded-full w-26"
-              src="https://randomuser.me/api/portraits/med/men/75.jpg"
-              alt="user avatar"
-            />
-            <div className="ml-5">
-              <h2 className="font-bold">username</h2>
-              <h3>12 questions</h3>
-              <h3>9 reactions</h3>
-            </div>
-          </div>
-
-          <div className="flex items-center lg:mb-10">
-            <img
-              className="rounded-full w-26"
-              src="https://randomuser.me/api/portraits/med/men/75.jpg"
-              alt="user avatar"
-            />
-            <div className="ml-5">
-              <h2 className="font-bold">username</h2>
-              <h3>12 questions</h3>
-              <h3>9 reactions</h3>
-            </div>
-          </div>
-
-          <div className="flex items-center lg:mb-10">
-            <img
-              className="rounded-full w-26"
-              src="https://randomuser.me/api/portraits/med/men/75.jpg"
-              alt="user avatar"
-            />
-            <div className="ml-5">
-              <h2 className="font-bold">username</h2>
-              <h3>12 questions</h3>
-              <h3>9 reactions</h3>
-            </div>
-          </div>
-
-          <div className="flex items-center lg:mb-10">
-            <img
-              className="rounded-full w-26"
-              src="https://randomuser.me/api/portraits/med/men/75.jpg"
-              alt="user avatar"
-            />
-            <div className="ml-5">
-              <h2 className="font-bold text-secondary">username</h2>
-              <h3>12 questions</h3>
-              <h3>9 reactions</h3>
-            </div>
-          </div>
-        </div>
       </div>
-      {/* <div>
-      <img src="https://randomuser.me/api/portraits/men/23.jpg" alt="user avatar" />
-  </div> */}
     </div>
   );
+}
+  
 }
