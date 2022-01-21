@@ -1,6 +1,6 @@
 import React from "react";
 
-import SubNavbar from "../Questions Page/SubNavbar";
+import SubNavbar from "../QuestionsPage/SubNavbar";
 import Avatar from "./Avatar";
 
 export default function AdminPage() {

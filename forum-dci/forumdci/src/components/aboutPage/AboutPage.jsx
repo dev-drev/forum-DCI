@@ -1,5 +1,5 @@
 import React from "react";
-import SubNavbar from "../Questions Page/SubNavbar";
+import SubNavbar from "../QuestionsPage/SubNavbar";
 import About from "./About";
 
 const AboutPage = () => {
