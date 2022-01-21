@@ -1,6 +1,7 @@
 import React from "react";
 import Login from "./components/Login/Login.jsx";
 import Navbar from "./components/Navbar.jsx";
+import Community from "./components/Community/Community.jsx"
 
 import Avatar from "./components/adminPage/Admin";
 
@@ -11,7 +12,6 @@ function App() {
   return (
     <Router>
       <Navbar />
-     <Login/>
     </Router>
   );
 }
