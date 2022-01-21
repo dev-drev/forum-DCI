@@ -15,7 +15,11 @@ function App() {
        <SubNavbar />
       <div>
         <Routes>
-          
+          {/*<Route path="/questions" element={<QuestionsPage />} />*/}
+          {/*<Route path="/answer" element={<SinglePostPage />} />*/}
+          <Route path="/ask" element={<AskSomethingPage />} />
+          <Route path="/answer" element={<TextEditor />} />
+          <Route path="/post" element={<SinglePostPage />} />
         </Routes>
       </div>
     </Router>
