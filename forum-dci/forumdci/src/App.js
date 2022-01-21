@@ -17,6 +17,7 @@ import Login from "./components/Login/Login.jsx";
 function App() {
   console.log("hello");
   return (
+
     <div>
       <Router>
         <Navbar />
@@ -41,6 +42,7 @@ function App() {
 
       <Footer />
     </div>
+
   );
 }
 

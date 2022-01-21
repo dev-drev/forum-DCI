@@ -18,6 +18,7 @@ export default function TextEditor() {
                     <div className="space-y-4">
                         <CKEditor className=""
                                   editor={ClassicEditor}
+                                  data={description}
                                   onReady={editor => {
                                       editor.setStyle('height', '100%', editor.editing.view.document.getRoot());
                                   }}
