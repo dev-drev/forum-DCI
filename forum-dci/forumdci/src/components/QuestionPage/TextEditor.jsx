@@ -39,7 +39,7 @@ export default function TextEditor() {
                                 e.stopPropagation()
                                 alert('hello')
                                 // Only for no here I add an alert t check if the event propagation was disabled
-                            }} className=" bg-primary text-neutral-content py-2 px-4 rounded-full inline-flex items-center">Answer</button>
+                            }} className=" text-center w-full md:w-20  bg-primary text-neutral-content py-2 px-4 rounded-full  ">Answer</button>
                             </div>
                         </div>
                     </div>

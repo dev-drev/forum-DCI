@@ -1,9 +1,10 @@
 import React from "react";
-import PopularPosts from "./PopularPosts";
-import RecentPosts from "./RecentPosts";
+import CardPopular from "../Questions Page/CardPopular";
 import messagesPic from "../../assets/messages.png";
+import TagsPosts from "./TagsPosts";
 
-function BodyPosts() {
+function TagsBody() {
+  const width = "sm:w-56";
   return (
     <div>
       {" "}
@@ -102,17 +103,18 @@ function BodyPosts() {
         </div>
         {/* Sidebar ends */}
         {/* Remove class [ h-64 ] when adding a card block */}
-        <div className="container mx-auto py-10 h-64 md:w-4/5 w-11/12 px-6">
+        <div className="container mx-auto py-10  md:w-4/5 w-11/12 px-6">
           {/* Remove class [ border-dashed border-2 border-gray-300 ] to remove dotted border */}
-          <div className="w-full h-full rounded ">
-            <PopularPosts />
-            <RecentPosts />
+          <div className="w-full rounded ">
+            {/* <PopularPosts />
+        
+            <RecentPosts /> */}
+            <TagsPosts />
           </div>
-          <div></div>
         </div>
       </div>
     </div>
   );
 }
 
-export default BodyPosts;
+export default TagsBody;

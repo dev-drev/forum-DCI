@@ -4,12 +4,12 @@ function CardPopular({ width, glass }) {
   return (
     <div>
       <section
-        className={`${width} w-full ${glass} z-0  rounded-2xl px-6 py-2 my-2 sm:py-6 shadow-lg`}
+        className={`${width} w-full ${glass} z-0 rounded-2xl px-6 py-2 my-2 sm:py-6 shadow-lg`}
       >
         {/* FIRST BAR - DATE+ICON */}
         <div className="flex items-center pb-4  justify-between">
           <span className="text-gray-400 text-sm">2d ago</span>
-          <div className=" flex items-center content-center text-emerald-400">
+          <div className=" flex items-center content-center text-secondary">
             <span className="text-sm italic">drevil dev</span>
             <div className="bg-gray-100 w-5 h-5 ml-2 rounded-full"></div>
           </div>
@@ -19,7 +19,7 @@ function CardPopular({ width, glass }) {
           Display an inherited Field in Django 4.0 with ModelAdmin
         </h5>
         {/* ACTIVE */}
-        <p class="text-emerald-400 hidden text-sm sm:block font-semibold mt-2.5">
+        <p class="text-secondary hidden text-sm sm:block font-semibold mt-2.5">
           Active
         </p>
 
