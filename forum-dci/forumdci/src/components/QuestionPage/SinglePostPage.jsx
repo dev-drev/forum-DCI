@@ -42,7 +42,7 @@ function SinglePostPage() {
                     </ComponentButton>
                 </div>
 
-                <div className="">
+                <div className="w-min mx-auto">
                     {showAnswerArea ? <TextEditor/> : ''}
                 </div>
                 <div className="ml-10 mr-10 mt-6 text-lg font-bold flex justify-between">
