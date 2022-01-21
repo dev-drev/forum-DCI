@@ -1,5 +1,5 @@
 import React from "react";
-import CardPopular from "../Questions Page/CardPopular";
+import CardPopular from "../QuestionsPage/CardPopular";
 import messagesPic from "../../assets/messages.png";
 import TagsPosts from "./TagsPosts";
 

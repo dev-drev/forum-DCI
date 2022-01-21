@@ -34,12 +34,12 @@ function PopularPosts() {
 
         <img src={messagesPic} className="w-20 h-20" alt="" />
       </div>
-      <div class="pb-6">
-        <div class="relative">
+      <div class="pb-8">
+        <div class="relative ">
           <input
             type="text"
             placeholder="Search Tags..."
-            class=" pr-24 input rounded-r-none mt-4 text-white input-info input-bordered"
+            class=" pr-32 input rounded-r-none mt-4 text-white input-info input-bordered"
           />
           <button class="absolute mt-4  text-white rounded-l-none btn btn-info">
             go
