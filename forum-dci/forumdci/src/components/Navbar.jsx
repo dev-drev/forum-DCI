@@ -56,11 +56,14 @@ const Navbar = () => {
             <Link to="/tags" class="btn btn-ghost btn-sm mx-4 rounded-btn">
               Tags
             </Link>
-            <a class="btn btn-ghost btn-sm mx-4 rounded-btn">Community</a>
-            <a class="btn btn-ghost btn-sm mx-4 rounded-btn">About</a>
-
+            <Link to="/community" class="btn btn-ghost btn-sm mx-4 rounded-btn">
+              Community
+            </Link>
+            <Link to="/about" class="btn btn-ghost btn-sm mx-4 rounded-btn">
+              About
+            </Link>{" "}
             <button class="btn bg-secondary glass mx-8 text-primary hover:bg-gray-600 hover:text-white btn-sm ">
-              ASK SOMETHING
+              <Link to="/ask">Ask Something</Link>
             </button>
           </ul>
         </div>
@@ -80,9 +83,12 @@ const Navbar = () => {
               d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
             />
           </svg>
-          <a class="btn btn-ghost btn-sm mr-2 pt-1 text-lg md:text-sm rounded-btn">
+          <Link
+            to="/login"
+            class="btn btn-ghost btn-sm mr-2 pt-1 text-lg md:text-sm rounded-btn"
+          >
             Log In
-          </a>
+          </Link>
         </div>
       </div>
 

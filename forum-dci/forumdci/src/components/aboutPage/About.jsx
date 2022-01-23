@@ -3,9 +3,9 @@ import React from "react";
 const About = () => {
   return (
     <div>
-      <div className="bg-gray-500 min-h-screen p-10">
+      <div className=" min-h-screen p-10">
         <div className="grid md:grid-cols-3  gap-x-20 gap-y-6">
-          <div className="bg-white md:col-span-2">
+          <div className=" md:col-span-2">
             <h2 className="text-2xl font-bold">what is AVAZ?</h2>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -24,7 +24,7 @@ const About = () => {
             </p>
           </div>
 
-          <div className="bg-white md:col-span-1 md:row-span-3">
+          <div className="bg-white md:col-span-1 md:row-span-2">
             <h2 className="text-2xl font-bold">features</h2>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi
@@ -40,45 +40,50 @@ const About = () => {
             </p>
           </div>
 
-          <div className="bg-white md:col-span-1 md:col-start-3">
+          <div className="bg-white md:col-span-1 md:col-start-3  md:row-start-3 ">
             <div className="flex flex-row justify-center">
               <img
-                className="m-5"
+                className="m-5 w-20 h-16"
                 src="/assets/icons/javaScript.png"
                 alt="logo-javaScript"
               />
               <img
-                className="m-5"
+                className="m-5 w-20 h-16"
                 src="/assets/icons/html5.png"
                 alt="logo-html5"
               />
               <img
-                className="m-5"
+                className="m-5 w-20 h-16"
                 src="/assets/icons/node.png"
                 alt="logo-node"
               />
               <img
-                className="m-5"
+                className="m-5 w-16 h-16"
                 src="/assets/icons/react.png"
                 alt="logo-react"
               />
-              <img className="m-5" src="/assets/icons/css.png" alt="logo-css" />
+              <img
+                className="m-5 w-20 h-16"
+                src="/assets/icons/css.png"
+                alt="logo-css"
+              />
             </div>
           </div>
 
-          <div className="bg-white md:col-span-2">
+          <div className="bg-white md:col-span-2 md:row-start-4">
             <h2 className="text-2xl font-bold">our team</h2>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint eos
-              deleniti accusantium atque deserunt quos quaerat magni veritatis
-              iure rerum.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse
+              excepturi, similique dolorem dignissimos ea non eius iure, vitae
+              iusto ad facere amet soluta accusantium illum eum, deleniti hic
+              deserunt quos.
             </p>
           </div>
 
-          <div className="bg-white md:col-span-2">
+          <div className="bg-white md:col-span-2 md:row-start-5">
             <div className="flex flex-col md:flex-row justify-around">
               <img
-                className="w-40 h-46"
+                className="w-40 h-46 "
                 src="/assets/images/alcione.jpeg"
                 alt="profile Alcione"
               />
