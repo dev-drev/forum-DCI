@@ -4,9 +4,9 @@ const About = () => {
   return (
     <div>
       <div className=" min-h-screen p-10">
-        <div className="grid md:grid-cols-3  gap-x-20 gap-y-6">
-          <div className=" md:col-span-2">
-            <h2 className="text-2xl font-bold">what is AVAZ?</h2>
+        <div className="grid md:grid-cols-3 gap-y-6 justify-center items-center">
+          <div className=" md:col-span-3 md:row-start-1 lg:col-span-2">
+            <h2 className="text-2xl font-bold">What is AVAZ?</h2>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Voluptatibus obcaecati dolorum accusamus, similique eum
@@ -24,8 +24,8 @@ const About = () => {
             </p>
           </div>
 
-          <div className="bg-white md:col-span-1 md:row-span-2">
-            <h2 className="text-2xl font-bold">features</h2>
+          <div className="bg-white md:col-span-3 lg:col-span-1">
+            <h2 className="text-2xl font-bold">Features</h2>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi
               voluptate repellendus minima repellat quis, aliquid at nam magnam
@@ -40,68 +40,107 @@ const About = () => {
             </p>
           </div>
 
-          <div className="bg-white md:col-span-1 md:col-start-3  md:row-start-3 ">
-            <div className="flex flex-row justify-center">
+          <div className="bg-white md:col-span-3 md:col-start-1 lg:col-span-1 lg:col-start-3">
+            <div className="flex flex-row flex-wrap justify-center">
               <img
-                className="m-5 w-20 h-16"
+                className="m-5 w-16 h-12"
                 src="/assets/icons/javaScript.png"
                 alt="logo-javaScript"
               />
               <img
-                className="m-5 w-20 h-16"
+                className="m-5 w-16 h-12"
                 src="/assets/icons/html5.png"
                 alt="logo-html5"
               />
               <img
-                className="m-5 w-20 h-16"
+                className="m-5 w-16 h-12"
                 src="/assets/icons/node.png"
                 alt="logo-node"
               />
               <img
-                className="m-5 w-16 h-16"
+                className="m-5 w-16 h-12"
                 src="/assets/icons/react.png"
                 alt="logo-react"
               />
               <img
-                className="m-5 w-20 h-16"
+                className="m-5 w-16 h-12"
                 src="/assets/icons/css.png"
                 alt="logo-css"
+              />
+              <img
+                className="m-5 w-16 h-12"
+                src="/assets/icons/bootstrap.png"
+                alt="logo-bootstrap"
+              />
+              <img
+                className="m-5 w-16 h-12"
+                src="/assets/icons/mongoDB.png"
+                alt="logo-mongoDB"
+              />
+              <img
+                className="m-5 w-16 h-12"
+                src="/assets/icons/tailwindcss.png"
+                alt="logo-tailwindcss"
+              />
+              <img
+                className="m-5 w-10 h-8"
+                src="/assets/icons/expressjs.png"
+                alt="logo-expressjs"
               />
             </div>
           </div>
 
-          <div className="bg-white md:col-span-2 md:row-start-4">
-            <h2 className="text-2xl font-bold">our team</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse
-              excepturi, similique dolorem dignissimos ea non eius iure, vitae
-              iusto ad facere amet soluta accusantium illum eum, deleniti hic
-              deserunt quos.
-            </p>
-          </div>
+          <div className="flex flex-col w-90 md:col-span-3 md:row-start-4 lg:col-span-2 lg:row-start-3">
+            <div className="bg-white">
+              <h2 className="text-2xl font-bold">Our Team</h2>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse
+                excepturi, similique dolorem dignissimos ea non eius iure, vitae
+                iusto ad facere amet soluta accusantium illum eum, deleniti hic
+                deserunt quos.
+              </p>
+            </div>
 
-          <div className="bg-white md:col-span-2 md:row-start-5">
-            <div className="flex flex-col md:flex-row justify-around">
-              <img
-                className="w-40 h-46 "
-                src="/assets/images/alcione.jpeg"
-                alt="profile Alcione"
-              />
-              <img
-                className="w-40 h-46"
-                src="/assets/images/andrea.jpeg"
-                alt="profile Andrea"
-              />
-              <img
-                className="w-40 h-46"
-                src="/assets/images/zhino.jpeg"
-                alt="profile Zhino"
-              />
-              <img
-                className="w-40 h-46"
-                src="/assets/images/viviana.jpeg"
-                alt="profile Viviana"
-              />
+            <div className="flex flex-wrap grow sm:col-span-2 sm:row-start-5 justify-center gap-4 w-fit mt-5">
+              <div className="flex flex-wrap flex-col gap-2">
+                <img
+                  className="w-40 h-46 "
+                  src="/assets/images/alcione.jpeg"
+                  alt="profile Alcione"
+                />
+                <h2 className="w-40 text-center font-bold">
+                  ALCIONE DE FRANCA RIBEIRO
+                </h2>
+              </div>
+
+              <div className="flex flex-col flex-wrap gap-5">
+                <img
+                  className="w-40 h-46"
+                  src="/assets/images/andrea.jpeg"
+                  alt="profile Andrea"
+                />
+                <h2 className="w-40 text-center font-bold">ANDREA DAVIDE</h2>
+              </div>
+
+              <div className="flex flex-col flex-wrap gap-5">
+                <img
+                  className="w-40 h-46"
+                  src="/assets/images/zhino.jpeg"
+                  alt="profile Zhino"
+                />
+                <h2 className="w-40 text-center font-bold">
+                  ZHINO MAHMOUDPOUR
+                </h2>
+              </div>
+
+              <div className="flex flex-col flex-wrap gap-5">
+                <img
+                  className="w-40 h-46"
+                  src="/assets/images/viviana.jpeg"
+                  alt="profile Viviana"
+                />
+                <h2 className="w-40 text-center font-bold">VIVIANA CASTALDO</h2>
+              </div>
             </div>
           </div>
         </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import Footer from "../Footer";
 import SubNavbar from "../QuestionsPage/SubNavbar";
 import About from "./About";
 
@@ -7,6 +8,7 @@ const AboutPage = () => {
     <div>
       <SubNavbar />
       <About />
+      <Footer />
     </div>
   );
 };
