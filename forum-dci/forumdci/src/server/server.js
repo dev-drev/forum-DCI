@@ -18,10 +18,10 @@ app.use(express.urlencoded({ extended: true }));
 //
 
 // ROUTES
-//
-//
-//
-//
+// app.use("/", indexRouter);
+app.use("/users", userRouter);
+app.use("/questions", questionsRouter);
+app.use("/admin", adminRouter);
 
 const PORT = process.env.PORT || 5000;
 
