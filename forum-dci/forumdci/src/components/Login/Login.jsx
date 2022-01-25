@@ -4,21 +4,76 @@ import LoginBtn from './LoginBtn';
 
 export default function Login() {
 
-    const [formData, setFormData] = useState({ 
-        user: {
-          username: "", 
-          password: "" 
-        },
-      });
+    const [enteredLoginUsername, setEnteredLoginUsername] = useState("");
+    const [enteredLoginPassword, setEnteredLoginPassword] = useState("");
+    const [enteredFullName, setEnteredFullName] = useState("");
+    const [enteredEmail, setEnteredEmail] = useState("");
+    const [enteredSignupUsername, setEnteredSignupUsername] = useState("");
+    const [enteredSignupPassword, setEnteredSignupPassword] = useState("");
+    const [enteredRePassword, setEnteredRePassword] = useState("");
     
-      const handleChange = (e) => {
-        setFormData({
-          user: {
-            ...formData.user,
-            [e.target.name]: e.target.value,
-          },
-        });
-      };
+    const usernameLoginChangeHandler = (e) => {
+      setEnteredLoginUsername(e.target.value);
+    }
+
+    const passwordLoginChangeHandler = (e) => {
+      setEnteredLoginPassword(e.target.value);
+      }
+
+    const fullNameChangeHandler = (e) => {
+      setEnteredFullName(e.target.value)
+    }
+
+    const usernameSignupChangeHandler = (e) => {
+      setEnteredSignupUsername(e.target.value)
+    }
+
+    const passwordSignupChangeHandler = (e) => {
+      setEnteredSignupPassword(e.target.value)
+    }
+
+    const rePasswordSignupChangeHandler = (e) => {
+      setEnteredRePassword(e.target.value)
+    }
+
+    const emailChangeHandler = (e) => {
+      setEnteredEmail(e.target.value)
+    }
+
+    
+      const loginSubmitHandler = (e) => {
+      e.preventDefault();
+
+      const loginData = {
+        username: enteredLoginUsername,
+        password: enteredLoginPassword
+      }
+
+      console.log(loginData);
+      setEnteredLoginUsername("");
+      setEnteredLoginPassword("");
+      }
+     
+      const signupSubmitHandler = (e) => {
+        e.preventDefault();
+  
+        const registeredData = {
+          fullName: enteredFullName,
+          email: enteredEmail,
+          username: enteredSignupUsername,
+          password: enteredSignupPassword,
+          rePassword: enteredRePassword,
+           }
+  
+        console.log(registeredData);
+        setEnteredSignupUsername("");
+        setEnteredSignupPassword("");
+        setEnteredFullName("");
+        setEnteredFullName("");
+        setEnteredRePassword("");
+        setEnteredEmail("");
+        }
+
   return (
     <div className="lg:flex">
 
@@ -26,7 +81,7 @@ export default function Login() {
 
       <div class="h-screen bg-tertiary flex justify-center items-center lg:w-1/2">
         <div class="lg:w-4/5 md:w-3/5 w-2/3">
-          <form class="-mb-20 p-10 rounded-lg shadow-lg lg:-mt-48 w-10/12 mx-auto">
+          <form onSubmit={loginSubmitHandler} class="-mb-20 p-10 rounded-lg shadow-lg lg:-mt-48 w-10/12 mx-auto">
             <h1 class="text-center text-3xl text-gray-800 mb-12 text-gray-600 font-bold font-sans">
               log in
             </h1>
@@ -39,8 +94,8 @@ export default function Login() {
                     name="username"
                     id="username"
                     placeholder="username"
-                    value={formData.user.username}
-                    onChange={handleChange}
+                    onChange={usernameLoginChangeHandler}
+                    value={enteredLoginUsername}
                   />
                 </div>
                 <div>
@@ -50,8 +105,8 @@ export default function Login() {
                     name="password"
                     id="password"
                     placeholder="password"
-                    value={formData.user.password}
-                    onChange={handleChange}
+                    onChange={passwordLoginChangeHandler}
+                    value={enteredLoginPassword}
                   />
                 </div>
             </div>
@@ -88,7 +143,7 @@ export default function Login() {
 
       <div class="h-screen bg-secondary flex justify-center items-center lg:w-1/2">
         <div class="lg:w-4/5 md:w-3/5 w-2/3">
-          <form class="-mt-28 p-10 rounded-lg shadow-lg lg:-mt-14 w-10/12 mx-auto">
+          <form onSubmit={signupSubmitHandler} class="-mt-28 p-10 rounded-lg shadow-lg lg:-mt-14 w-10/12 mx-auto">
             <h1 class="text-center text-3xl text-gray-800 mb-12 text-gray-600 font-bold font-sans">
               sign up
             </h1>
@@ -101,8 +156,8 @@ export default function Login() {
                     name="full name"
                     id="full name"
                     placeholder="full name"
-                    value={formData.user.fullname}
-                    onChange={handleChange}
+                    onChange={fullNameChangeHandler}
+                    value = {enteredFullName}
                   />
                 </div>
                 <div>
@@ -112,8 +167,8 @@ export default function Login() {
                     name="username"
                     id="username"
                     placeholder="username"
-                    value={formData.user.username}
-                    onChange={handleChange}
+                    onChange={usernameSignupChangeHandler}
+                    value={enteredSignupUsername}
                   />
                 </div>
                 <div>
@@ -123,8 +178,8 @@ export default function Login() {
                     name="e-mail"
                     id="e-mail"
                     placeholder="e-mail"
-                    value={formData.user.email}
-                    onChange={handleChange}
+                    onChange={emailChangeHandler}
+                    value={enteredEmail}
                   />
                 </div>
                 <div>
@@ -134,8 +189,8 @@ export default function Login() {
                     name="password"
                     id="password"
                     placeholder="password"
-                    value={formData.user.password}
-                    onChange={handleChange}
+                    onChange={passwordSignupChangeHandler}
+                    value={enteredSignupPassword}
                   />
                 </div>
                 <div>
@@ -145,8 +200,8 @@ export default function Login() {
                     name="re-password"
                     id="re-password"
                     placeholder="repeat password"
-                    value={formData.user.repassword}
-                    onChange={handleChange}
+                    onChange={rePasswordSignupChangeHandler}
+                    value={enteredRePassword}
                   />
                 </div>
             </div>
