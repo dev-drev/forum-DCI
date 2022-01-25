@@ -4,7 +4,7 @@ function SinglePostPage2(props) {
     return (
         <div>
             <div className="mt-6 ">
-                <div className=" bg-gray-200 px-6">
+                <div className=" bg-gray-200 px-6" glass="glass">
                     <div
                         className="border-2 border-gray-300 p-6 rounded-md tracking-wide shadow-lg mb-4 md:flex">
 
@@ -20,7 +20,7 @@ function SinglePostPage2(props) {
                                 <h5 id="job" className="font-semibold text-blue-600 mb-2">Designer</h5>
 
                                 <div id="quote">
-                                    <q className="italic text-gray-600">Lorem ipsum dolor sit amet, consectetur
+                                    <q className="italic text-gray-600"  glass="glass">Lorem ipsum dolor sit amet, consectetur
                                         adipiscing
                                         elit,
                                         sed

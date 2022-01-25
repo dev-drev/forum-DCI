@@ -36,13 +36,13 @@ function SinglePostPage() {
                     <li className="mr-4 px-2 bg-gray-500 rounded text-white">promise</li>
                     <li className="mr-4 px-2 bg-gray-500 rounded text-white">program</li>
                 </ul>
-                <div className="text-center">
+                <div className="text-center ">
                     <ComponentButton onClick={switchMode}
                                      value={showAnswerArea ? "Hide Answer Form" : "Show Answer Form"}>
                     </ComponentButton>
                 </div>
 
-                <div className="w-min mx-auto">
+                <div className="w-min mx-auto ">
                     {showAnswerArea ? <TextEditor/> : ''}
                 </div>
                 <div className="ml-10 mr-10 mt-6 text-lg font-bold flex justify-between">
