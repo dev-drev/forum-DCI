@@ -11,205 +11,222 @@ export default function Login() {
     const [enteredSignupUsername, setEnteredSignupUsername] = useState("");
     const [enteredSignupPassword, setEnteredSignupPassword] = useState("");
     const [enteredRePassword, setEnteredRePassword] = useState("");
-    
+
     const usernameLoginChangeHandler = (e) => {
-      setEnteredLoginUsername(e.target.value);
+        setEnteredLoginUsername(e.target.value);
     }
 
     const passwordLoginChangeHandler = (e) => {
-      setEnteredLoginPassword(e.target.value);
-      }
+        setEnteredLoginPassword(e.target.value);
+    }
 
     const fullNameChangeHandler = (e) => {
-      setEnteredFullName(e.target.value)
+        setEnteredFullName(e.target.value)
     }
 
     const usernameSignupChangeHandler = (e) => {
-      setEnteredSignupUsername(e.target.value)
+        setEnteredSignupUsername(e.target.value)
     }
 
     const passwordSignupChangeHandler = (e) => {
-      setEnteredSignupPassword(e.target.value)
+        setEnteredSignupPassword(e.target.value)
     }
 
     const rePasswordSignupChangeHandler = (e) => {
-      setEnteredRePassword(e.target.value)
+        setEnteredRePassword(e.target.value)
     }
 
     const emailChangeHandler = (e) => {
-      setEnteredEmail(e.target.value)
+        setEnteredEmail(e.target.value)
     }
 
-    
-      const loginSubmitHandler = (e) => {
-      e.preventDefault();
 
-      const loginData = {
-        username: enteredLoginUsername,
-        password: enteredLoginPassword
-      }
-
-      console.log(loginData);
-      setEnteredLoginUsername("");
-      setEnteredLoginPassword("");
-      }
-     
-      const signupSubmitHandler = (e) => {
+    const loginSubmitHandler = (e) => {
         e.preventDefault();
-  
-        const registeredData = {
-          fullName: enteredFullName,
-          email: enteredEmail,
-          username: enteredSignupUsername,
-          password: enteredSignupPassword,
-          rePassword: enteredRePassword,
-           }
-  
-        console.log(registeredData);
-        setEnteredSignupUsername("");
-        setEnteredSignupPassword("");
-        setEnteredFullName("");
-        setEnteredFullName("");
-        setEnteredRePassword("");
-        setEnteredEmail("");
+
+        const loginData = {
+            username: enteredLoginUsername,
+            password: enteredLoginPassword
         }
 
-  return (
-    <div className="lg:flex">
+        console.log(loginData);
+        setEnteredLoginUsername("");
+        setEnteredLoginPassword("");
+    }
 
-      {/* login form */}
+    const signupSubmitHandler = async (e) => {
+        e.preventDefault();
 
-      <div class="h-screen bg-tertiary flex justify-center items-center lg:w-1/2">
-        <div class="lg:w-4/5 md:w-3/5 w-2/3">
-          <form onSubmit={loginSubmitHandler} class="-mb-20 p-10 rounded-lg shadow-lg lg:-mt-48 w-10/12 mx-auto">
-            <h1 class="text-center text-3xl text-gray-800 mb-12 text-gray-600 font-bold font-sans">
-              log in
-            </h1>
+        const registeredData = {
+            fullName: enteredFullName,
+            email: enteredEmail,
+            username: enteredSignupUsername,
+            password: enteredSignupPassword,
+            rePassword: enteredRePassword,
+        }
 
-            <div className="">
-                <div>
-                  <input
-                    class="login-input"
-                    type="text"
-                    name="username"
-                    id="username"
-                    placeholder="username"
-                    onChange={usernameLoginChangeHandler}
-                    value={enteredLoginUsername}
-                  />
-                </div>
-                <div>
-                  <input
-                    className="login-input"
-                    type="password"
-                    name="password"
-                    id="password"
-                    placeholder="password"
-                    onChange={passwordLoginChangeHandler}
-                    value={enteredLoginPassword}
-                  />
+        console.log(registeredData);
+
+        try {
+            await fetch("http://localhost:5000/users/signup", {
+                method: "POST",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(registeredData)
+            });
+
+            alert('You have been successfully added to the database!');
+
+            setEnteredSignupUsername("");
+            setEnteredSignupPassword("");
+            setEnteredFullName("");
+            setEnteredFullName("");
+            setEnteredRePassword("");
+            setEnteredEmail("");
+        } catch (e) {
+            alert('Try again!');
+        }
+    }
+    return (
+        <div className="lg:flex">
+
+            {/* login form */}
+
+            <div className="h-screen bg-tertiary flex justify-center items-center lg:w-1/2">
+                <div className="lg:w-4/5 md:w-3/5 w-2/3">
+                    <form onSubmit={loginSubmitHandler}
+                          className="-mb-20 p-10 rounded-lg shadow-lg lg:-mt-48 w-10/12 mx-auto">
+                        <h1 className="text-center text-3xl text-gray-800 mb-12 text-gray-600 font-bold font-sans">
+                            log in
+                        </h1>
+
+                        <div className="">
+                            <div>
+                                <input
+                                    className="login-input"
+                                    type="text"
+                                    name="username"
+                                    id="username"
+                                    placeholder="username"
+                                    onChange={usernameLoginChangeHandler}
+                                    value={enteredLoginUsername}
+                                />
+                            </div>
+                            <div>
+                                <input
+                                    className="login-input"
+                                    type="password"
+                                    name="password"
+                                    id="password"
+                                    placeholder="password"
+                                    onChange={passwordLoginChangeHandler}
+                                    value={enteredLoginPassword}
+                                />
+                            </div>
+                        </div>
+
+                        <LoginBtn>log in</LoginBtn>
+
+                        <div className="flex justify-center my-10 ml-2">
+                            <img
+                                className="soc-med-icon-login"
+                                src="assets/icons/linkedin.png"
+                                alt="LinkedIn logo"
+                            />
+                            <img
+                                className="soc-med-icon-login"
+                                src="assets/icons/github.png"
+                                alt="Github logo"
+                            />
+                            <img
+                                className="soc-med-icon-login"
+                                src="assets/icons/facebook.png"
+                                alt="Facebook logo"
+                            />
+                            <img
+                                className="soc-med-icon-login"
+                                src="assets/icons/google.png"
+                                alt="Google logo"
+                            />
+                        </div>
+                    </form>
                 </div>
             </div>
 
-            <LoginBtn>log in</LoginBtn>
+            {/* sign up form */}
 
-            <div className="flex justify-center my-10 ml-2">
-              <img
-                className="soc-med-icon-login"
-                src="assets/icons/linkedin.png"
-                alt="LinkedIn logo"
-              />
-              <img
-                className="soc-med-icon-login"
-                src="assets/icons/github.png"
-                alt="Github logo"
-              />
-              <img
-                className="soc-med-icon-login"
-                src="assets/icons/facebook.png"
-                alt="Facebook logo"
-              />
-              <img
-                className="soc-med-icon-login"
-                src="assets/icons/google.png"
-                alt="Google logo"
-              />
+            <div className="h-screen bg-secondary flex justify-center items-center lg:w-1/2">
+                <div className="lg:w-4/5 md:w-3/5 w-2/3">
+                    <form onSubmit={signupSubmitHandler}
+                          className="-mt-28 p-10 rounded-lg shadow-lg lg:-mt-14 w-10/12 mx-auto">
+                        <h1 className="text-center text-3xl text-gray-800 mb-12 text-gray-600 font-bold font-sans">
+                            sign up
+                        </h1>
+
+                        <div className="w-full m-auto">
+                            <div>
+                                <input
+                                    className="login-input"
+                                    type="text"
+                                    name="full name"
+                                    id="full name"
+                                    placeholder="full name"
+                                    onChange={fullNameChangeHandler}
+                                    value={enteredFullName}
+                                />
+                            </div>
+                            <div>
+                                <input
+                                    className="login-input"
+                                    type="text"
+                                    name="username"
+                                    id="username"
+                                    placeholder="username"
+                                    onChange={usernameSignupChangeHandler}
+                                    value={enteredSignupUsername}
+                                />
+                            </div>
+                            <div>
+                                <input
+                                    className="login-input"
+                                    type="email"
+                                    name="e-mail"
+                                    id="e-mail"
+                                    placeholder="e-mail"
+                                    onChange={emailChangeHandler}
+                                    value={enteredEmail}
+                                />
+                            </div>
+                            <div>
+                                <input
+                                    className="login-input"
+                                    type="password"
+                                    name="password"
+                                    id="password"
+                                    placeholder="password"
+                                    onChange={passwordSignupChangeHandler}
+                                    value={enteredSignupPassword}
+                                />
+                            </div>
+                            <div>
+                                <input
+                                    className="login-input"
+                                    type="password"
+                                    name="re-password"
+                                    id="re-password"
+                                    placeholder="repeat password"
+                                    onChange={rePasswordSignupChangeHandler}
+                                    value={enteredRePassword}
+                                />
+                            </div>
+                        </div>
+
+                        <LoginBtn>sign up</LoginBtn>
+                    </form>
+                </div>
             </div>
-          </form>
         </div>
-      </div>
-
-      {/* sign up form */}
-
-      <div class="h-screen bg-secondary flex justify-center items-center lg:w-1/2">
-        <div class="lg:w-4/5 md:w-3/5 w-2/3">
-          <form onSubmit={signupSubmitHandler} class="-mt-28 p-10 rounded-lg shadow-lg lg:-mt-14 w-10/12 mx-auto">
-            <h1 class="text-center text-3xl text-gray-800 mb-12 text-gray-600 font-bold font-sans">
-              sign up
-            </h1>
-
-            <div className="w-full m-auto">
-                <div>
-                  <input
-                    class="login-input"
-                    type="text"
-                    name="full name"
-                    id="full name"
-                    placeholder="full name"
-                    onChange={fullNameChangeHandler}
-                    value = {enteredFullName}
-                  />
-                </div>
-                <div>
-                  <input
-                    class="login-input"
-                    type="text"
-                    name="username"
-                    id="username"
-                    placeholder="username"
-                    onChange={usernameSignupChangeHandler}
-                    value={enteredSignupUsername}
-                  />
-                </div>
-                <div>
-                  <input
-                    class="login-input"
-                    type="email"
-                    name="e-mail"
-                    id="e-mail"
-                    placeholder="e-mail"
-                    onChange={emailChangeHandler}
-                    value={enteredEmail}
-                  />
-                </div>
-                <div>
-                  <input
-                    class="login-input"
-                    type="password"
-                    name="password"
-                    id="password"
-                    placeholder="password"
-                    onChange={passwordSignupChangeHandler}
-                    value={enteredSignupPassword}
-                  />
-                </div>
-                <div>
-                  <input
-                    class="login-input"
-                    type="password"
-                    name="re-password"
-                    id="re-password"
-                    placeholder="repeat password"
-                    onChange={rePasswordSignupChangeHandler}
-                    value={enteredRePassword}
-                  />
-                </div>
-            </div>
-
-          <LoginBtn>sign up</LoginBtn>
-          </form>
-        </div>
-      </div>
-    </div>
-  );
+    );
 }
