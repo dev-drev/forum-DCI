@@ -1,10 +1,10 @@
 import React from "react";
 import Navbar from "./components/Navbar.jsx";
-import AdminPage from "./components/AdminPage/AdminPage.jsx";
+import AdminPage from "./components/adminPage/AdminPage.jsx";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import QuestionsPage from "./components/QuestionsPage/QuestionsPage.jsx";
 import SinglePostPage from "./components/QuestionPage/SinglePostPage.jsx";
-import AboutPage from "./components/AboutPage/AboutPage.jsx";
+import AboutPage from "./components/aboutPage/AboutPage.jsx";
 import TagsBody from "./components/TagsPage/TagsBody.jsx";
 import Community from "./components/Community/Community.jsx";
 import Ask from "./components/QuestionPage/AskSomethingPage";
