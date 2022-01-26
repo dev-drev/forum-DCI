@@ -10,7 +10,7 @@ dotenv.config();
 const app = express();
 
 
-mongoose.connect("mongodb+srv://avaz:techgang22@cluster0.dp1on.mongodb.net/avazforum?retryWrites=true&w=majority", {
+mongoose.connect(process.env.CONNECT_DB, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
     // useCreateIndex: true,

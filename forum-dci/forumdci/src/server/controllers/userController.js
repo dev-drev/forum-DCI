@@ -13,11 +13,11 @@ const bcrypt = require("bcrypt");
             return res.status(400).send(err)
         }
 
-        const {fullName, username, email, password} = req.body;
-        console.log(fullName, username, email, password)
+        const {fullName, userName, email, password} = req.body;
+        console.log(fullName, userName, email, password)
         const response = await User.create({
             fullName,
-            username,
+            userName,
             email,
             password: await encryptingPassword(password)
         })

@@ -49,7 +49,7 @@ export default function Login() {
             password: enteredLoginPassword
         }
 
-        console.log(loginData);
+        // console.log(loginData);
         setEnteredLoginUsername("");
         setEnteredLoginPassword("");
     }
@@ -60,15 +60,15 @@ export default function Login() {
         const registeredData = {
             fullName: enteredFullName,
             email: enteredEmail,
-            username: enteredSignupUsername,
+            userName: enteredSignupUsername,
             password: enteredSignupPassword,
             rePassword: enteredRePassword,
         }
 
-        console.log(registeredData);
+        // console.log(registeredData);
 
         try {
-            await fetch("http://localhost:5000/users/signup", {
+            const res = await fetch("http://localhost:5000/users/signup", {
                 method: "POST",
                 headers: {
                     'Accept': 'application/json',
@@ -77,14 +77,16 @@ export default function Login() {
                 body: JSON.stringify(registeredData)
             });
 
-            alert('You have been successfully added to the database!');
+            if (res.status === 200) {
+                alert('You have been successfully added to the database!');
 
-            setEnteredSignupUsername("");
-            setEnteredSignupPassword("");
-            setEnteredFullName("");
-            setEnteredFullName("");
-            setEnteredRePassword("");
-            setEnteredEmail("");
+                setEnteredSignupUsername("");
+                setEnteredSignupPassword("");
+                setEnteredFullName("");
+                setEnteredFullName("");
+                setEnteredRePassword("");
+                setEnteredEmail("");
+            }
         } catch (e) {
             alert('Try again!');
         }
