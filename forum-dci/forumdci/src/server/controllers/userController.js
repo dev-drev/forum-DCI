@@ -1,8 +1,8 @@
 const User = require("../models/User");
 
-// async function signUpUser(req,res,next) {
+// async function signUpUser(req, res, next) {
 
-//     const user= new
+// const {username, password}
 
 // }
 
@@ -25,3 +25,5 @@ async function loginUser(req, res, next) {
     next(error);
   }
 }
+
+module.exports = { loginUser, signUpUser };
