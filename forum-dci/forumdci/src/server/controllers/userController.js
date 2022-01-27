@@ -53,15 +53,17 @@ const encryptingPassword = (password) => {
 };
 
 async function loginUser(req, res, next) {
-  const { email, password } = req.body;
-  const user = await User.findOne({ email });
-
+  const { userName, password } = req.body;
+  const user = await User.findOne({ userName });
+  console.log("user:", user);
   if (!user) {
     res.status(404).send({ message: "No user found" });
   }
 
   try {
-    if (await bcrypt.compare(req.body.password, user.password)) {
+    const isPasswordMatch = await bcrypt.compare(password, user.password);
+    console.log(isPasswordMatch);
+    if (isPasswordMatch) {
       const accessToken = createToken(user);
       res.cookie("access-token", accessToken, {
         maxAge: 60 * 60 * 24 * 30 * 1000,

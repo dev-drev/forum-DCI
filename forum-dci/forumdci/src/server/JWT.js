@@ -8,8 +8,8 @@ const createToken = (user) => {
   // The first one is the Payload, the data we need
   // The second one is the secret
   const accessToken = sign(
-    { username: user.username, id: user.id },
-    "jwtSecretplschange"
+    { username: user.userName, id: user.id },
+    process.env.JWTSECRET
   );
 
   return accessToken;
@@ -29,6 +29,7 @@ const validateToken = (req, res, next) => {
       req.authenticated = true;
       return next();
     }
+    next();
   } catch (error) {
     return res.status(400).json({ error: error });
   }

@@ -7,7 +7,8 @@ const { createToken, validateToken } = require("../JWT");
 // IMPORT CONTROLLERS
 
 // ROUTES
-router.route("/signup").post(signUpUser);
-router.route("/login").post(validateToken, loginUser);
+router.route("/signup").post(createToken, signUpUser);
+router.route("/login").post(createToken, loginUser);
+// router.route("/update").post(validateToken, updateUser);
 
 module.exports = router;
