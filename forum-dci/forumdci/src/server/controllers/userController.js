@@ -6,6 +6,7 @@ const cookieParser = require("cookie-parser");
 const { createToken, validateToken } = require("../JWT");
 
 /*add a new user*/
+
 async function signUpUser(req, res, next) {
   console.log("Hello New User!");
   // console.log(req.body)
@@ -71,7 +72,7 @@ async function loginUser(req, res, next) {
 
       console.log(accessToken);
 
-      res.status(200).send("Success");
+      res.status(200).json({ msg: "Success", token: accessToken });
     } else {
       res.status(400).send("Not Allowed");
     }
