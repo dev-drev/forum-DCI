@@ -4,14 +4,10 @@ import EditProfForm from "./EditProfForm";
 import AdminBtn from "./AdminBtn"
 
 const Avatar = (props) => {
+  const [isEditing, setIsEditing] = useState(false);
 
-const [isEditing, setIsEditing] = useState(false);
 
-const onSaveUpdatesHandler = (e) => {
-  e.preventDefault();
-  setIsEditing(false);
-  
-}  
+
 
 
 const startEditingHandler = () => {
@@ -42,7 +38,7 @@ const stopEditingHandler = () => {
           
         </div>
         
-          {isEditing && <EditProfForm onSave={onSaveUpdatesHandler} onCancel={stopEditingHandler}/>}
+          {isEditing && <EditProfForm onCancel={stopEditingHandler}/>}
         
         
       </section>

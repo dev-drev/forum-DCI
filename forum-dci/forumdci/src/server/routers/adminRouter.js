@@ -1,6 +1,12 @@
 const express = require("express");
 const router = express.Router();
 
+const {
+ 
+  updateUser,
+  
+} = require('../controllers/adminController')
+
 // IMPORT CONTROLLERS
 
 // ROUTES
@@ -8,7 +14,12 @@ const router = express.Router();
 
 router
   .route("/:id")
-  .get(getUser)
-  .delete(deleteUser)
-  .put(updateUser)
-  .post(logoutUser);
+  // .get(getUser)
+  // .delete(deleteUser)
+  // .post(logoutUser);
+
+  router
+  .route("/edit")
+  .patch(updateUser)
+
+  module.exports = router;

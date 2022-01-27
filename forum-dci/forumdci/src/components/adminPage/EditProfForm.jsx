@@ -1,9 +1,36 @@
-import React from 'react';
+import React, {useState} from 'react';
+
+import axios from 'axios';
+import jwt from 'jwt-decode';
 
 export default function EditProfForm(props) {
+ 
+const [editedUser, setEditedUser] = useState({});
+const tokenn = localStorage.getItem('token') ? jwt(localStorage.getItem('token')).id : "";
+const [userId, setUserId] = useState("");
+setUserId(tokenn)
+
+const onSaveUpdatesHandler = (e) => {
+    e.preventDefault();
+    // setIsEditing(false);
+    
+    axios('http://localhost:5000/admin/edit', {method: 'PATCH', data: {editedUser}})
+    
+    .then((data) => {
+        console.log(data);
+    })
+    .catch((err) => {
+        console.log(err);
+    })
+  }  
+
+const changeHandler = (e) => {
+setEditedUser({...editedUser, [e.target.name]: e.target.value})
+}
+
   return (
   <div  className="w-72 flex justify-center">
-   <form onSubmit={props.onSave}>
+   <form onChange={changeHandler} onSubmit={props.onSave}>
        <div className="flex-col justify-between mb-4 mt-6">
            <label htmlFor="fullName" className="text-gray-700 font-bold">full name</label>
            <input type="text" name="fullName" id="fullName" placeholder="update full name"className="login-input" />
@@ -25,7 +52,7 @@ export default function EditProfForm(props) {
        </div>
 
        <div className="flex-row p-10">
-           <button onClick={props.onSave} className="bg-green text-white h-10 px-5 m-2 rounded-lg" type="submit">Save</button>
+           <button onClick={onSaveUpdatesHandler} className="bg-green text-white h-10 px-5 m-2 rounded-lg" type="submit">Save</button>
            <button onClick={props.onCancel} className="bg-gray-200 text-gray-700 h-10 px-5 m-2 rounded-lg" type="button">Cancel</button>
        </div>
    </form>
