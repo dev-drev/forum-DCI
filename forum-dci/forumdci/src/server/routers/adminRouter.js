@@ -1,4 +1,10 @@
 const express = require("express");
+const {
+  deleteUser,
+  // getUser,
+  // updateUser,
+  // logoutUser,
+} = require("../controllers/adminController");
 const router = express.Router();
 
 // IMPORT CONTROLLERS
@@ -8,9 +14,9 @@ const router = express.Router();
 
 router
   .route("/:id")
-  .get(getUser)
-  .delete("/delete/:uid", deleteUser)
-  .put(updateUser)
-  .post(logoutUser);
+  // .get(getUser)
+  .delete(deleteUser);
+// .put(updateUser)
+// .post(logoutUser);
 
 module.exports = router;
