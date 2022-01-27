@@ -9,9 +9,9 @@ const Navbar = () => {
 
   return (
     <div className="relative  sm:mb-16 ">
-      <div class="navbar bg-primary  shadow-lg text-neutral-content sm:fixed z-10  top-0 w-full left-0">
+      <div className="navbar bg-primary  shadow-lg text-neutral-content sm:fixed z-10  top-0 w-full left-0">
         {/* LOGO AREA */}
-        <div class="px-2 mx-2 navbar-start">
+        <div className="px-2 mx-2 navbar-start">
           <button
             onClick={() => {
               setIsShown(!isShown);
@@ -23,7 +23,7 @@ const Navbar = () => {
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-8 w-8"
+              className="h-8 w-8"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -48,30 +48,30 @@ const Navbar = () => {
           </LightSpeed>
         </div>
         {/* MENU AREA */}
-        <div class="hidden px-2 mx-2 lg:flex">
-          <ul class="flex">
-            <Link to="/questions" class="btn btn-ghost btn-sm mx-4 rounded-btn">
+        <div className="hidden px-2 mx-2 lg:flex">
+          <ul className="flex">
+            <Link to="/questions" className="btn btn-ghost btn-sm mx-4 rounded-btn">
               Questions
             </Link>
-            <Link to="/tags" class="btn btn-ghost btn-sm mx-4 rounded-btn">
+            <Link to="/tags" className="btn btn-ghost btn-sm mx-4 rounded-btn">
               Tags
             </Link>
-            <Link to="/community" class="btn btn-ghost btn-sm mx-4 rounded-btn">
+            <Link to="/community" className="btn btn-ghost btn-sm mx-4 rounded-btn">
               Community
             </Link>
-            <Link to="/about" class="btn btn-ghost btn-sm mx-4 rounded-btn">
+            <Link to="/about" className="btn btn-ghost btn-sm mx-4 rounded-btn">
               About
             </Link>{" "}
-            <button class="btn bg-secondary glass mx-8 text-primary hover:bg-gray-600 hover:text-white btn-sm ">
+            <button className="btn bg-secondary glass mx-8 text-primary hover:bg-gray-600 hover:text-white btn-sm ">
               <Link to="/ask">Ask Something</Link>
             </button>
           </ul>
         </div>
         {/* LOG IN AREA */}
-        <div class="navbar-end flex items-center content-center">
+        <div className="navbar-end flex items-center content-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6"
+            className="h-6 w-6"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -85,7 +85,7 @@ const Navbar = () => {
           </svg>
           <Link
             to="/login"
-            class="btn btn-ghost btn-sm mr-2 pt-1 text-lg md:text-sm rounded-btn"
+            className="btn btn-ghost btn-sm mr-2 pt-1 text-lg md:text-sm rounded-btn"
           >
             Log In
           </Link>
@@ -99,12 +99,12 @@ const Navbar = () => {
               {" "}
               <li
                 to="/questions"
-                class="mx-2 pl-1  p-4 flex content-center items-center hover:glass rounded-btn"
+                className="mx-2 pl-1  p-4 flex content-center items-center hover:glass rounded-btn"
               >
                 {" "}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6 mr-4"
+                  className="h-6 w-6 mr-4"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -122,11 +122,11 @@ const Navbar = () => {
 
             <a href="">
               {" "}
-              <li class="mx-2  pl-1  p-4 flex content-center items-center hover:glass rounded-btn">
+              <li className="mx-2  pl-1  p-4 flex content-center items-center hover:glass rounded-btn">
                 {" "}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6 mr-4"
+                  className="h-6 w-6 mr-4"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -144,11 +144,11 @@ const Navbar = () => {
 
             <a href="">
               {" "}
-              <li class="mx-2 pl-1 p-4 flex content-center items-center hover:glass rounded-btn">
+              <li className="mx-2 pl-1 p-4 flex content-center items-center hover:glass rounded-btn">
                 {" "}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6 mr-4"
+                  className="h-6 w-6 mr-4"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -166,11 +166,11 @@ const Navbar = () => {
 
             <a href="">
               {" "}
-              <li class="mx-2 pl-1 p-4 flex content-center items-center hover:glass rounded-btn">
+              <li className="mx-2 pl-1 p-4 flex content-center items-center hover:glass rounded-btn">
                 {" "}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6 mr-4"
+                  className="h-6 w-6 mr-4"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"

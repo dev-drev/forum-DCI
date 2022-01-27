@@ -1,11 +1,13 @@
 const User = require("../models/User");
 const {validationResult} = require("express-validator");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+
 
 /*add a new user*/
  async function signUpUser(req, res, next) {
     console.log("Hello New User!");
-     console.log(req.body)
+     // console.log(req.body)
     /*handle the error*/
     try {
         const err = validationResult(req);
