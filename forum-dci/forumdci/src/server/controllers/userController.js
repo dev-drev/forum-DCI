@@ -6,12 +6,12 @@ const cookieParser = require("cookie-parser");
 const { createToken, validateToken } = require("../JWT");
 
 /*add a new user*/
+
 async function signUpUser(req, res, next) {
   console.log("Hello New User!");
   // console.log(req.body)
   /*handle the error*/
   const { fullName, userName, email, password } = req.body;
-
   console.log(fullName, userName, email, password);
 
   const alreadyRegistered = await User.findOne({ email });
@@ -72,7 +72,7 @@ async function loginUser(req, res, next) {
 
       console.log(accessToken);
 
-      res.status(200).send("Success");
+      res.status(200).json({ msg: "Success", token: accessToken });
     } else {
       res.status(400).send("Not Allowed");
     }

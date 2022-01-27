@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, BrowserRouter as Router } from "react-router-dom";
 import Fade from "react-reveal/Fade";
+import jwt from "jwt-decode";
 
 import LightSpeed from "react-reveal/LightSpeed";
 
@@ -83,6 +84,7 @@ const Navbar = () => {
               d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
             />
           </svg>
+
           <Link
             to="/login"
             class="btn btn-ghost btn-sm mr-2 pt-1 text-lg md:text-sm rounded-btn"

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import LoginBtn from "./LoginBtn";
+import jwt from "jwt-decode";
 
 export default function Login() {
   const [enteredLoginUsername, setEnteredLoginUsername] = useState("");
@@ -57,14 +58,19 @@ export default function Login() {
         body: JSON.stringify(loginData),
       });
       if (res.status === 200) {
+        setEnteredLoginUsername("");
+        setEnteredLoginPassword("");
+        const data = await res.json();
+        console.log(data);
+
+        localStorage.setItem("token", data.token);
+        console.log(jwt(data.token));
         alert("hello ");
       }
     } catch (error) {
       console.log(error);
     }
     console.log(loginData);
-    setEnteredLoginUsername("");
-    setEnteredLoginPassword("");
   };
 
   // *****************************
