@@ -71,7 +71,6 @@ export default function Login() {
             const res = await fetch("http://localhost:5000/users/signup", {
                 method: "POST",
                 headers: {
-                    'Accept': 'application/json',
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(registeredData)
@@ -86,8 +85,10 @@ export default function Login() {
                 setEnteredFullName("");
                 setEnteredRePassword("");
                 setEnteredEmail("");
+
             }
-        } catch (e) {
+        } catch (err) {
+            console.log(err)
             alert('Try again!');
         }
     }
