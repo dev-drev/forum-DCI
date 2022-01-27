@@ -70,10 +70,8 @@ export default function Login() {
     } catch (error) {
       console.log(error);
     }
-    console.log(loginData);
-  };
 
-  // *****************************
+
   // SIGN UP HANDLER
 
   const signupSubmitHandler = async (e) => {
@@ -114,7 +112,6 @@ export default function Login() {
     }
   };
 
-  // ********************************
   return (
     <div className="lg:flex">
       {/* login form */}
@@ -258,4 +255,5 @@ export default function Login() {
       </div>
     </div>
   );
+}
 }

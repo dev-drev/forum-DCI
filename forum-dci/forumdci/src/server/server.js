@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 // const {signUpUser} = require("./controllers/userController");
 const userRouter = require("./routers/userRouter");
+const questionsRouter = require("./routers/questionsRouter");
+
 const jwt = require("jsonwebtoken");
 const { body, validationResult } = require("express-validator");
 const cookieParser = require("cookie-parser");
@@ -11,6 +13,7 @@ const cookieParser = require("cookie-parser");
 dotenv.config();
 const app = express();
 
+//MONGOOSE
 mongoose.connect(process.env.CONNECT_DB, {
   useUnifiedTopology: true,
   useNewUrlParser: true,
@@ -31,25 +34,6 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 
-//MONGOOSE
-/*const connectDB = async (next) => {
-    try {
-        const conn = await mongoose.connect(process.env.CONNECT_DB, {
-            useUnifiedTopology: true,
-            useNewUrlParser: true,
-            useCreateIndex: true,
-        })
-
-        console.log(`MongoDB connected: ${conn}`)
-    } catch (err) {
-        console.error(`Error: ${err.message}`);
-        process.exit();
-    } finally {
-        next()
-    }
-}*/
-
-// app.use(connectDB);
 
 // ROUTES
 // app.use("/", indexRouter);
@@ -57,23 +41,24 @@ app.use(express.urlencoded({ extended: true }));
 // app.use("/questions", questionsRouter);
 // app.use("/admin", adminRouter);
 app.use("/users", userRouter);
+app.use("/", questionsRouter);
 
 const PORT = process.env.PORT || 5000;
 
 //ERROR HANDLER
-app.use((req, res, next) => {
-  const error = new Error("looks like something is broken ");
-  error.status = 400;
-  next(error);
-});
-
-app.use((error, req, res, next) => {
-  if (error) {
-    res.status(err.status || 500).json({ error: error });
-  }
-  next();
-});
-
+// app.use((req, res, next) => {
+//     const error = new Error("looks like something is broken ");
+//     error.status = 400;
+//     next(error);
+// });
+//
+// app.use((error, req, res, next) => {
+//     console.log(error);
+//     if (error) {
+//         res.status(error.status || 500).json({error: error});
+//     }
+//     next();
+// });
 // SERVER LISTENING
 app.listen(PORT, () => {
   console.log("Server up and running on port:", PORT);
