@@ -1,7 +1,27 @@
-import React from "react";
+import React, {useState} from "react";
 import Dashboard from "./Dashboard";
+import EditProfForm from "./EditProfForm";
+import AdminBtn from "./AdminBtn"
 
-const Avatar = () => {
+const Avatar = (props) => {
+
+const [isEditing, setIsEditing] = useState(false);
+
+const onSaveUpdatesHandler = (e) => {
+  e.preventDefault();
+  setIsEditing(false);
+  
+}  
+
+
+const startEditingHandler = () => {
+  setIsEditing(true)
+}
+
+const stopEditingHandler = () => {
+  setIsEditing(false)
+}
+
   return (
     <div className="min-h-screen p-10 lg:p-0 lg:grid lg:grid-cols-3 ">
       <section className="flex flex-col items-center lg:justify-center lg:col-span-1 lg:col-start-1 lg:col-end-1 lg:bg-secondary">
@@ -16,14 +36,17 @@ const Avatar = () => {
             <h2 className="m-3 text-black">Berlin, Germany</h2>
           </div>
 
-          <button className="btn w-40 bg-white text-black mt-8 rounded-full shadow-lg shadow-gray-500/50 border-0  hover:bg-white lg:hover:bg-primary  lg:hover:text-white lowercase lg:visible lg:w-full lg:uppercase lg:bg-primary lg:text-white">
-            edit profile
-          </button>
-          <button className="btn w-40 bg-white text-black m-3 rounded-full shadow-lg shadow-gray-500/50 border-0 hover:bg-white lg:hover:bg-primary lg:hover:text-white lowercase lg:visible lg:w-full lg:uppercase lg:bg-primary lg:text-white">
-            delete profile
-          </button>
+          {!isEditing && <AdminBtn onClick={startEditingHandler}>edit profile</AdminBtn>}
+
+          {!isEditing && <AdminBtn >delete profile</AdminBtn>}
+          
         </div>
+        
+          {isEditing && <EditProfForm onSave={onSaveUpdatesHandler} onCancel={stopEditingHandler}/>}
+        
+        
       </section>
+      
       <Dashboard />
     </div>
   );
