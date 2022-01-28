@@ -1,7 +1,19 @@
 import React from "react";
 import Dashboard from "./Dashboard";
+import axios from "axios";
 
 const Avatar = () => {
+  async function deleteUser(uid) {
+    try {
+      await axios
+        .delete(`http://localhost:5000/admin/${uid}`)
+        .then((data) => console.log(data));
+      alert("user has been successfully deleted");
+      console.log("deleted");
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <div className="min-h-screen p-10 lg:p-0 lg:grid lg:grid-cols-3 ">
       <section className="flex flex-col items-center lg:justify-center lg:col-span-1 lg:col-start-1 lg:col-end-1 lg:bg-secondary">
@@ -19,7 +31,10 @@ const Avatar = () => {
           <button className="btn w-40 bg-white text-black mt-8 rounded-full shadow-lg shadow-gray-500/50 border-0  hover:bg-white lg:hover:bg-primary  lg:hover:text-white lowercase lg:visible lg:w-full lg:uppercase lg:bg-primary lg:text-white">
             edit profile
           </button>
-          <button className="btn w-40 bg-white text-black m-3 rounded-full shadow-lg shadow-gray-500/50 border-0 hover:bg-white lg:hover:bg-primary lg:hover:text-white lowercase lg:visible lg:w-full lg:uppercase lg:bg-primary lg:text-white">
+          <button
+            onClick={deleteUser}
+            className="btn w-40 bg-white text-black m-3 rounded-full shadow-lg shadow-gray-500/50 border-0 hover:bg-white lg:hover:bg-primary lg:hover:text-white lowercase lg:visible lg:w-full lg:uppercase lg:bg-primary lg:text-white"
+          >
             delete profile
           </button>
         </div>
