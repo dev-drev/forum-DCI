@@ -29,7 +29,11 @@ mongoose.connection.once("open", () => {
 });
 
 //MIDDLEWARES
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:3000', 'http://localhost:5000'],
+  credentials: true
+}));
+
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));

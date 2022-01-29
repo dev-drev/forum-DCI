@@ -2,6 +2,10 @@ import React from "react";
 import CardPopular from "../QuestionsPage/CardPopular";
 
 const Dashboard = () => {
+
+  // fetch /dashboard
+  // if authorized => ok
+  // else => redirect to /
   return (
     <div className="card shadow-lg mt-16 w-full lg:bg-white lg:invisible lg:col-span-2 lg:col-start-2">
       <div>
