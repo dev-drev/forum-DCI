@@ -12,7 +12,7 @@ const {
 // IMPORT CONTROLLERS
 
 // ROUTES
-// app.use(/admin)
+
 
 router
   .route("/:id")

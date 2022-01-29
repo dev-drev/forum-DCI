@@ -4,6 +4,7 @@ import EditProfForm from "./EditProfForm";
 import AdminBtn from "./AdminBtn";
 
 const Avatar = (props) => {
+  //state
   const [isEditing, setIsEditing] = useState(false);
 
   const startEditingHandler = () => {
