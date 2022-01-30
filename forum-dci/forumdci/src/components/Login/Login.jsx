@@ -11,6 +11,7 @@ export default function Login() {
     const [enteredSignupUsername, setEnteredSignupUsername] = useState("");
     const [enteredSignupPassword, setEnteredSignupPassword] = useState("");
     const [enteredRePassword, setEnteredRePassword] = useState("");
+    const [errorMessages, setErrorMessages] = useState([]);
 
     const usernameLoginChangeHandler = (e) => {
         setEnteredLoginUsername(e.target.value);
@@ -65,7 +66,7 @@ export default function Login() {
                 console.log(data);
 
                 localStorage.setItem("isAuthenticated", "true");
-                console.log(jwt(data.token));
+                // console.log(jwt(data.token));
                 alert("hello ");
             }
         } catch (error) {
@@ -100,21 +101,20 @@ export default function Login() {
 
             console.log(res);
 
-            if (res.status === 200) {
-                // alert("You have been successfully added to the database!");
-                localStorage.setItem("isAuthenticated", "true");
-            } else {
-                console.log(res);
+            if (res.status !== 200) {
+                let errors = (await res.json()).errors.map((e) => e.msg);
+                setErrorMessages(errors);
+                return;
             }
 
-            window.location= "/admin"
+            // alert("You have been successfully added to the database!");
+            localStorage.setItem("isAuthenticated", "true");
+            window.location= "/admin";
         } catch (e) {
             console.log(e);
             alert("Try again!");
         }
     };
-
-
 
 
     return (
@@ -188,13 +188,19 @@ export default function Login() {
 
             <div className="h-screen bg-secondary flex justify-center items-center lg:w-1/2">
                 <div className="lg:w-4/5 md:w-3/5 w-2/3">
+
                     <form
                         onSubmit={signupSubmitHandler}
                         className="-mt-28 p-10 rounded-lg shadow-lg lg:-mt-14 w-10/12 mx-auto"
                     >
-                        <h1 className="text-center text-3xl text-gray-800 mb-12 text-gray-600 font-bold font-sans">
+                        <h1 className="text-center text-3xl text-gray-800 mb-12 md:mt-2 mt-20 text-gray-600 font-bold font-sans">
                             sign up
                         </h1>
+
+                        {errorMessages ?
+                            <ul  className="list-disc mt-2 mb-2">
+                                {errorMessages.map((e, i) => <li key={i}>{e}</li>)}
+                            </ul>: ''}
 
                         <div className="w-full m-auto">
                             <div>
@@ -204,6 +210,7 @@ export default function Login() {
                                     name="full name"
                                     id="full name"
                                     placeholder="full name"
+                                    required
                                     onChange={fullNameChangeHandler}
                                     value={enteredFullName}
                                 />
@@ -214,6 +221,7 @@ export default function Login() {
                                     type="text"
                                     name="username"
                                     id="username"
+                                    required
                                     placeholder="username"
                                     onChange={usernameSignupChangeHandler}
                                     value={enteredSignupUsername}
@@ -225,6 +233,7 @@ export default function Login() {
                                     type="email"
                                     name="e-mail"
                                     id="e-mail"
+                                    required
                                     placeholder="e-mail"
                                     onChange={emailChangeHandler}
                                     value={enteredEmail}
@@ -236,6 +245,7 @@ export default function Login() {
                                     type="password"
                                     name="password"
                                     id="password"
+                                    required
                                     placeholder="password"
                                     onChange={passwordSignupChangeHandler}
                                     value={enteredSignupPassword}
@@ -247,6 +257,7 @@ export default function Login() {
                                     type="password"
                                     name="re-password"
                                     id="re-password"
+                                    required
                                     placeholder="repeat password"
                                     onChange={rePasswordSignupChangeHandler}
                                     value={enteredRePassword}
