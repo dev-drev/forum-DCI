@@ -1,11 +1,11 @@
 const express = require("express");
+const router = express.Router();
 const {
   deleteUser,
   // getUser,
   // updateUser,
   // logoutUser,
 } = require("../controllers/adminController");
-const router = express.Router();
 
 // IMPORT CONTROLLERS
 

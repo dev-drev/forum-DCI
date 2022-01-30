@@ -7,6 +7,7 @@ function AskSomethingPage() {
         title: "",
         language: "",
         tags: "",
+        question: ""
     });
 
     const handleChange = (event) => {
@@ -14,17 +15,43 @@ function AskSomethingPage() {
     };
 
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         // prevents the submit button from refreshing the page
         event.preventDefault();
         console.log(question);
+
+
+        try {
+            const res = await fetch("http://localhost:5000/ask", {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(question)
+            });
+
+            if(res.status === 200) {
+                alert('Your question has been successfully sent to the database!');
+                setQuestion({
+                    title: "",
+                    language: "",
+                    tags: "",
+                    question: ""
+                });
+            }
+
+        } catch (e) {
+            alert('Try again!');
+
+        }
     };
 
 
     return (
         <div className="bg-gray-500">
             <div className="container mx-auto min-h-screen bg-gray-200">
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div className=" ">
                         <div className=" rounded-md px-6 py-10 max-w-2xl mx-auto">
                             <h1 className="text-center text-4xl md:text-2xl font-bold text-gray-800 mb-10">Ask Your
@@ -53,7 +80,11 @@ function AskSomethingPage() {
                                     </div>
                                 </div>
                                 <div>
-                                    <TextEditor/>
+                                    <textarea name="question" onChange={handleChange}></textarea>
+                                    {/*<TextEditor/>*/}
+                                </div>
+                                <div>
+                                    <input type="submit"/>
                                 </div>
                             </div>
                         </div>
