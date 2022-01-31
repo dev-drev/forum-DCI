@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import LoginBtn from "./LoginBtn";
 import jwt from "jwt-decode";
-import Dashboard from "../adminPage/Dashboard";
+import Dashboard from "../AdminPage/Dashboard";
 export default function Login() {
   const [enteredLoginUsername, setEnteredLoginUsername] = useState("");
   const [enteredLoginPassword, setEnteredLoginPassword] = useState("");
@@ -63,49 +63,32 @@ export default function Login() {
         setEnteredLoginPassword("");
         const data = await res.json();
         console.log(data);
-        
 
-                localStorage.setItem("isAuthenticated", "true");
-                localStorage.setItem("user", JSON.stringify(data.user));
-                // console.log(jwt(data.token));
-               
+        localStorage.setItem("isAuthenticated", "true");
+        localStorage.setItem("user", JSON.stringify(data.user));
+        // console.log(jwt(data.token));
 
-                window.location= "/admin";
-                // console.log(jwt(data.token));
-                // alert("hello ");
-
-            }
-        } catch (error) {
-            console.log(error);
-        }
+        window.location = "/admin";
+        // console.log(jwt(data.token));
+        // alert("hello ");
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 
-    // SIGN UP HANDLER
-    const signupSubmitHandler = async (e) => {
-        e.preventDefault();
+  // SIGN UP HANDLER
+  const signupSubmitHandler = async (e) => {
+    e.preventDefault();
 
-        const registeredData = {
-            fullName: enteredFullName,
-            email: enteredEmail,
-            userName: enteredSignupUsername,
-            password: enteredSignupPassword,
-            rePassword: enteredRePassword,
-        };
+    const registeredData = {
+      fullName: enteredFullName,
+      email: enteredEmail,
+      userName: enteredSignupUsername,
+      password: enteredSignupPassword,
+      rePassword: enteredRePassword,
+    };
 
-        try {
-            const res = await fetch("http://localhost:5000/users/signup", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(registeredData),
-                credentials: "include"
-            });
-  
-
-    // console.log(registeredData);
-    //
     try {
       const res = await fetch("http://localhost:5000/users/signup", {
         method: "POST",
@@ -116,34 +99,17 @@ export default function Login() {
         credentials: "include",
       });
 
-      console.log(res);
-
-
-            // alert("You have been successfully added to the database!");
-            const data = await res.json();
-            console.log(data);
-
-            localStorage.setItem("isAuthenticated", "true");
-            localStorage.setItem("user", JSON.stringify(data.user));
-
-
-            // localStorage.setItem("isAuthenticated", "true");
-            window.location= "/admin";
-        } catch (e) {
-            console.log(e);
-            alert("Try again!");
-        }
-    };
-
-      if (res.status !== 200) {
-        let errors = (await res.json()).errors.map((e) => e.msg);
-        setErrorMessages(errors);
-        return;
-      }
-
+      // console.log(registeredData);
+      //
 
       // alert("You have been successfully added to the database!");
+      const data = await res.json();
+      console.log(data);
+
       localStorage.setItem("isAuthenticated", "true");
+      localStorage.setItem("user", JSON.stringify(data.user));
+
+      // localStorage.setItem("isAuthenticated", "true");
       window.location = "/admin";
     } catch (e) {
       console.log(e);
