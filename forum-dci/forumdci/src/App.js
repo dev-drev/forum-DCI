@@ -4,11 +4,13 @@ import AdminPage from "./components/adminPage/AdminPage.jsx";
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import QuestionsPage from "./components/QuestionsPage/QuestionsPage.jsx";
 import SinglePostPage from "./components/QuestionPage/SinglePostPage.jsx";
-import AboutPage from "./components/aboutPage/AboutPage.jsx";
+import AboutPage from "./components/aboutPage/AboutPage";
 import TagsBody from "./components/TagsPage/TagsBody.jsx";
 import Community from "./components/Community/Community.jsx";
 import Ask from "./components/QuestionPage/AskSomethingPage";
 import Login from "./components/Login/Login";
+import Footer from "./components/Footer.jsx";
+
 function App() {
   return (
     <Router>
@@ -23,6 +25,7 @@ function App() {
         <Route path="/ask" element={<Ask />} />
         <Route path="/login" element={<Login />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }

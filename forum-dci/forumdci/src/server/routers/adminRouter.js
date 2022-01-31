@@ -14,13 +14,13 @@ const {
 
 // ROUTES
 
+router.route("/:id");
 
-router
-  .route("/:id")
+// .get(getUser)
+// .delete(deleteUser)
+// .post(logoutUser);
 
-  // .get(getUser)
-  // .delete(deleteUser)
-  // .post(logoutUser);
+router.route("/edit").patch(validateToken, updateUser);
 
   router
   .route("/edit")
