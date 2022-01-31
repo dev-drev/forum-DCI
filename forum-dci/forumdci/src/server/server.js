@@ -5,6 +5,7 @@ const cors = require("cors");
 // const {signUpUser} = require("./controllers/userController");
 const userRouter = require("./routers/userRouter");
 const questionsRouter = require("./routers/questionsRouter");
+const adminRouter = require('./routers/adminRouter');
 
 const jwt = require("jsonwebtoken");
 const { body, validationResult } = require("express-validator");
@@ -43,7 +44,7 @@ app.use(express.urlencoded({ extended: true }));
 // app.use("/", indexRouter);
 // app.use("/users", userRouter);
 // app.use("/questions", questionsRouter);
-// app.use("/admin", adminRouter);
+app.use("/admin", adminRouter);
 app.use("/users", userRouter);
 app.use("/", questionsRouter);
 
@@ -63,6 +64,8 @@ const PORT = process.env.PORT || 5000;
 //     }
 //     next();
 // });
+
+
 // SERVER LISTENING
 app.listen(PORT, () => {
   console.log("Server up and running on port:", PORT);
