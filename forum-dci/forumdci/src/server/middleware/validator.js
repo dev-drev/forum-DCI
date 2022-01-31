@@ -25,6 +25,7 @@ const validateUsersSignup = [
         .notEmpty()
         .custom((value) => value === body('rePassword'))
         .withMessage('Password and confirm password are not matched.')*/
+    /*Solve the issue here*/
 ];
 
 
