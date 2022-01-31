@@ -13,19 +13,7 @@ const userRules = [
     .isLength({ min: 3 })
     .withMessage("userName should be at least 3 chars."),
   body("email").isEmail().withMessage("Invalid email"),
-
-  body("password")
-    .notEmpty()
-    .withMessage("Please enter a value for Password")
-    .isLength({ min: 8 })
-    .withMessage("Password should be at least 8 characters"),
-  // .isStrongPassword().withMessage("Please use a strong Password")
-  /* body("rePassword")
-        .notEmpty()
-        .custom((value) => value === body('rePassword'))
-        .withMessage('Password and confirm password are not matched.')*/
 ];
-
 const validateInputs = (rules) => {
   return [
     ...rules,
@@ -48,4 +36,4 @@ const validateInputs = (rules) => {
   ];
 };
 
-module.exports = { validateInputs, userRules };
+module.exports = { userRules, validateInputs };

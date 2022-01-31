@@ -15,7 +15,7 @@ function CardPopular({ width, glass }) {
           </div>
         </div>
         {/* HEADING */}
-        <h5 className="text-sm font-semibold">
+        <h5 className="text-sm text-zinc-100 font-semibold">
           Display an inherited Field in Django 4.0 with ModelAdmin
         </h5>
         {/* ACTIVE */}

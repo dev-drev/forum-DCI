@@ -32,7 +32,7 @@ mongoose.connection.once("open", () => {
 
 //MIDDLEWARES
 
-app.use(cors());
+// app.use(cors());
 app.use(morgan("tiny"));
 
 app.use(
@@ -52,7 +52,7 @@ app.use(express.urlencoded({ extended: true }));
 // app.use("/questions", questionsRouter);
 app.use("/admin", adminRouter);
 app.use("/users", userRouter);
-app.use("/", questionsRouter);
+app.use("/questions", questionsRouter);
 
 const PORT = process.env.PORT || 5000;
 
