@@ -3,7 +3,14 @@ const router = express.Router();
 
 const { createToken, validateToken } = require("../JWT");
 
-const { updateUser } = require("../controllers/adminController");
+
+const {
+ 
+  updateUser,
+  getUser
+  
+} = require('../controllers/adminController')
+
 
 // IMPORT CONTROLLERS
 
@@ -17,4 +24,14 @@ router.route("/:id");
 
 router.route("/edit").patch(validateToken, updateUser);
 
-module.exports = router;
+
+  router
+  .route("/edit")
+  .patch(updateUser)
+
+  router
+  .route("/getuser/:id")
+  .get(getUser);
+
+  module.exports = router;
+

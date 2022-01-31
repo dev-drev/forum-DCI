@@ -15,7 +15,9 @@ import Footer from "./components/Footer.jsx";
 function App() {
   return (
     <Router>
+
       <Navbar />
+
       <Routes>
         <Route path="/about" element={<AboutPage />} />
         <Route path="/admin" element={<AdminPage />} />

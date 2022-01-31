@@ -63,11 +63,17 @@ export default function Login() {
         setEnteredLoginPassword("");
         const data = await res.json();
         console.log(data);
+        
 
                 localStorage.setItem("isAuthenticated", "true");
+                localStorage.setItem("user", JSON.stringify(data.user));
+                // console.log(jwt(data.token));
+               
+
                 window.location= "/admin";
                 // console.log(jwt(data.token));
                 // alert("hello ");
+
             }
         } catch (error) {
             console.log(error);
@@ -112,11 +118,29 @@ export default function Login() {
 
       console.log(res);
 
+
+            // alert("You have been successfully added to the database!");
+            const data = await res.json();
+            console.log(data);
+
+            localStorage.setItem("isAuthenticated", "true");
+            localStorage.setItem("user", JSON.stringify(data.user));
+
+
+            // localStorage.setItem("isAuthenticated", "true");
+            window.location= "/admin";
+        } catch (e) {
+            console.log(e);
+            alert("Try again!");
+        }
+    };
+
       if (res.status !== 200) {
         let errors = (await res.json()).errors.map((e) => e.msg);
         setErrorMessages(errors);
         return;
       }
+
 
       // alert("You have been successfully added to the database!");
       localStorage.setItem("isAuthenticated", "true");
