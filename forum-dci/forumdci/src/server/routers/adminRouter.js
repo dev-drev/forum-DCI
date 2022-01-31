@@ -6,6 +6,7 @@ const { createToken, validateToken } = require("../JWT");
 const {
  
   updateUser,
+  getUser
   
 } = require('../controllers/adminController')
 
@@ -23,6 +24,10 @@ router
 
   router
   .route("/edit")
-  .patch(validateToken, updateUser)
+  .patch(updateUser)
+
+  router
+  .route("/getuser/:id")
+  .get(getUser);
 
   module.exports = router;

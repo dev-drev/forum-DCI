@@ -45,13 +45,14 @@ async function signUpUser(req, res, next) {
         const accessToken = createToken(user);
         res.cookie("access-token", accessToken, {
             maxAge: 60 * 60 * 24 * 30 * 1000,
-            domain: "localhost", // http://avaaz.com
+            // domain: "localhost", // http://avaaz.com
             httpOnly: true,
         })
 
         /*returning "response" will expose the user, that is not safe*/
         res.status(200).send({
-            "message": `Hello ${user.userName}`
+            message: `Hello ${user.userName}`, 
+            user: {username: user.userName, id: user._id}
         });
     } catch (err) {
         console.log(err);
@@ -93,7 +94,7 @@ async function loginUser(req, res, next) {
 
             console.log(accessToken);
 
-            res.status(200).json({msg: "Success", token: accessToken});
+            res.status(200).json({msg: "Success", token: accessToken, user: {username: user.userName, userId: user._id}});
         } else {
             res.status(400).send("Not Allowed");
         }

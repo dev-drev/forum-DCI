@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Link, NavLink, BrowserRouter as Router, useNavigate} from "react-router-dom";
-import Fade from "react-reveal/Fade";
-import jwt from "jwt-decode";
+// import Fade from "react-reveal/Fade";
+// import jwt from "jwt-decode";
 
 import LightSpeed from "react-reveal/LightSpeed";
 
@@ -12,6 +12,7 @@ const Navbar = () => {
 
     const logoutUser = async ()=>{
         localStorage.clear();
+        setIsAuthenticated(false);
         navigate("/login");
     }
 
@@ -95,17 +96,19 @@ const Navbar = () => {
                     {
                         isAuthenticated ?
                             <>
-                                <a
+                                <Link
                                     onClick={logoutUser}
                                     to="/login"
                                     className="btn btn-ghost btn-sm mr-2 pt-1 text-lg md:text-sm rounded-btn"
+                                
                                 >
                                     LogOut
 
-                                </a>
+                                </Link>
                             </>
                             : <>
                                 <Link
+                                    to="/login"
                                     className="btn btn-ghost btn-sm mr-2 pt-1 text-lg md:text-sm rounded-btn"
                                 >
                                     LogIn

@@ -1,20 +1,19 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 import axios from 'axios';
-import jwt from 'jwt-decode';
+// import jwt from 'jwt-decode';
 
 export default function EditProfForm(props) {
  
 const [editedUser, setEditedUser] = useState({});
-const tokenn = localStorage.getItem('token') ? jwt(localStorage.getItem('token')).id : "";
-const [userId, setUserId] = useState("");
-setUserId(tokenn)
+// const tokenn = localStorage.getItem('token') ? jwt(localStorage.getItem('token')).id : "";
+
 
 const onSaveUpdatesHandler = (e) => {
     e.preventDefault();
     // setIsEditing(false); to implement later
-    
-    axios('http://localhost:5000/admin/edit', {method: 'PATCH', data: {editedUser}})
+    console.log(document.cookie);
+    axios('http://localhost:5000/admin/edit', {method: 'PATCH', data: {editedUser, id: JSON.parse(localStorage.getItem('user')).userId}, })
     
     .then((data) => {
         console.log(data);
@@ -28,27 +27,42 @@ const changeHandler = (e) => {
 setEditedUser({...editedUser, [e.target.name]: e.target.value})
 }
 
+useEffect(() => {
+    // const fetchUserData = () => {
+        console.log('fetch user data');
+        axios(`http://localhost:5000/admin/getuser/${JSON.parse(localStorage.getItem('user')).userId}`)
+        .then((res) => {
+            setEditedUser({...res.data})
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+    // }
+  }, []);
+
+
+
   return (
   <div  className="w-72 flex justify-center">
-   <form onChange={changeHandler} onSubmit={props.onSave}>
+   <form  onChange={changeHandler} onSubmit={props.onSave}>
        <div className="flex-col justify-between mb-4 mt-6">
            <label htmlFor="fullName" className="text-gray-700 font-bold">full name</label>
-           <input type="text" name="fullName" id="fullName" placeholder="update full name"className="login-input" />
+           <input type="text" name="fullName" id="fullName" placeholder="update full name"className="login-input" value={editedUser.fullName} />
        </div>
 
        <div className="flex-col justify-between mb-4">
            <label htmlFor="username" className="text-gray-700 font-bold">username</label>
-           <input type="text" name="username" id="username" placeholder="update username" className="login-input" />
+           <input type="text" name="userName" id="username" placeholder="enter new username" className="login-input" value={editedUser.userName} />
        </div>
 
        <div className="flex-col justify-between mb-4 ">
            <label htmlFor="email" className="text-gray-700 font-bold">email</label>
-           <input type="email" name="email" id="email" placeholder="update email" className="login-input" />
+           <input type="email" name="email" id="email" placeholder="enter new email" className="login-input" value={editedUser.email} />
        </div>
 
        <div className="flex-col justify-between mb-4">
            <label htmlFor="password" className="text-gray-700 font-bold">password</label>
-           <input type="password" name="password" id="password" placeholder="update password" className="login-input"/>
+           <input type="password" name="password" id="password" placeholder="enter new password" className="login-input"/>
        </div>
 
        <div className="flex-row p-10">
