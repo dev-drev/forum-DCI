@@ -2,6 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const morgan = require('morgan');
 // const {signUpUser} = require("./controllers/userController");
 const userRouter = require("./routers/userRouter");
 const jwt = require("jsonwebtoken");
@@ -27,6 +28,7 @@ mongoose.connection.once("open", () => {
 
 //MIDDLEWARES
 app.use(cors());
+app.use(morgan('tiny'));
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
