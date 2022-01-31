@@ -1,14 +1,18 @@
+
 import React, {useState} from "react";
 import {Link, NavLink, BrowserRouter as Router, useNavigate} from "react-router-dom";
-// import Fade from "react-reveal/Fade";
-// import jwt from "jwt-decode";
+import Fade from "react-reveal/Fade";
+import jwt from "jwt-decode";
+
 
 import LightSpeed from "react-reveal/LightSpeed";
 
 const Navbar = () => {
-    const navigate = useNavigate();
-    const [isShown, setIsShown] = useState(false);
-    const [isAuthenticated, setIsAuthenticated] = useState(localStorage.getItem("isAuthenticated") === "true");
+  const navigate = useNavigate();
+  const [isShown, setIsShown] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    localStorage.getItem("isAuthenticated") === "true"
+  );
 
     const logoutUser = async ()=>{
         localStorage.clear();
@@ -16,35 +20,36 @@ const Navbar = () => {
         navigate("/login");
     }
 
-    return (
-        <div className="relative  sm:mb-16 ">
-            <div className="navbar bg-primary  shadow-lg text-neutral-content sm:fixed z-10  top-0 w-full left-0">
-                {/* LOGO AREA */}
-                <div className="px-2 mx-2 navbar-start">
-                    <button
-                        onClick={() => {
-                            setIsShown(!isShown);
-                        }}
-                        // onClick={(e) => {
-                        //   setIsShown(false);
-                        // }}
-                        className="lg:hidden"
-                    >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-8 w-8"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M4 6h16M4 12h16M4 18h16"
-                            />
-                        </svg>
-                    </button>
+
+  return (
+    <div className="relative  sm:mb-16 ">
+      <div className="navbar bg-primary  shadow-lg text-neutral-content sm:fixed z-10  top-0 w-full left-0">
+        {/* LOGO AREA */}
+        <div className="px-2 mx-2 navbar-start">
+          <button
+            onClick={() => {
+              setIsShown(!isShown);
+            }}
+            // onClick={(e) => {
+            //   setIsShown(false);
+            // }}
+            className="lg:hidden"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-8 w-8"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
 
                     <LightSpeed left>
                         {" "}
@@ -120,105 +125,104 @@ const Navbar = () => {
                 </div>
             </div>
 
-            {isShown && (
-                <div className="bg-primary h-60 px-6 sm:hidden shadow-lg">
-                    <ul className="flex-col">
-                        <Link to="/questions">
-                            {" "}
-                            <li
-                                to="/questions"
-                                className="mx-2 pl-1  p-4 flex content-center items-center hover:glass rounded-btn"
-                            >
-                                {" "}
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="h-6 w-6 mr-4"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                                    />
-                                </svg>
-                                {" "}
-                                Questions{" "}
-                            </li>
-                        </Link>
+      {isShown && (
+        <div className="bg-primary h-60 px-6 sm:hidden shadow-lg">
+          <ul className="flex-col text-zinc-100">
+            <Link to="/questions">
+              {" "}
+              <li
+                to="/questions"
+                className="mx-2 pl-1  p-4 flex content-center items-center hover:glass rounded-btn"
+              >
+                {" "}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6 mr-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>{" "}
+                Questions{" "}
+              </li>
+            </Link>
 
-                        <a href="">
-                            {" "}
-                            <li className="mx-2  pl-1  p-4 flex content-center items-center hover:glass rounded-btn">
-                                {" "}
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="h-6 w-6 mr-4"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"
-                                    />
-                                </svg>
-                                Tags{" "}
-                            </li>
-                        </a>
+            <Link to="/tags">
+              {" "}
+              <li className="mx-2  pl-1  p-4 flex content-center items-center hover:glass rounded-btn">
+                {" "}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6 mr-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"
+                  />
+                </svg>
+                Tags{" "}
+              </li>
+            </Link>
 
-                        <a href="">
-                            {" "}
-                            <li className="mx-2 pl-1 p-4 flex content-center items-center hover:glass rounded-btn">
-                                {" "}
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="h-6 w-6 mr-4"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                                    />
-                                </svg>
-                                Community{" "}
-                            </li>
-                        </a>
+            <Link to="/community">
+              {" "}
+              <li className="mx-2 pl-1 p-4 flex content-center items-center hover:glass rounded-btn">
+                {" "}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6 mr-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                  />
+                </svg>
+                Community{" "}
+              </li>
+            </Link>
 
-                        <a href="">
-                            {" "}
-                            <li className="mx-2 pl-1 p-4 flex content-center items-center hover:glass rounded-btn">
-                                {" "}
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="h-6 w-6 mr-4"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M13 10V3L4 14h7v7l9-11h-7z"
-                                    />
-                                </svg>
-                                About{" "}
-                            </li>
-                        </a>
-                    </ul>
-                </div>
-            )}
+            <Link to="/about">
+              {" "}
+              <li className="mx-2 pl-1 p-4 flex content-center items-center hover:glass rounded-btn">
+                {" "}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6 mr-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M13 10V3L4 14h7v7l9-11h-7z"
+                  />
+                </svg>
+                About{" "}
+              </li>
+            </Link>
+          </ul>
         </div>
-    );
+      )}
+    </div>
+  );
 };
 
 export default Navbar;

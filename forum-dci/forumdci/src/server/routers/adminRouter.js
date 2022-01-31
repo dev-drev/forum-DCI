@@ -3,6 +3,7 @@ const router = express.Router();
 
 const { createToken, validateToken } = require("../JWT");
 
+
 const {
  
   updateUser,
@@ -10,17 +11,19 @@ const {
   
 } = require('../controllers/adminController')
 
+
 // IMPORT CONTROLLERS
 
 // ROUTES
 
+router.route("/:id");
 
-router
-  .route("/:id")
+// .get(getUser)
+// .delete(deleteUser)
+// .post(logoutUser);
 
-  // .get(getUser)
-  // .delete(deleteUser)
-  // .post(logoutUser);
+router.route("/edit").patch(validateToken, updateUser);
+
 
   router
   .route("/edit")
@@ -31,3 +34,4 @@ router
   .get(getUser);
 
   module.exports = router;
+
