@@ -27,7 +27,7 @@ mongoose.connection.on("error", (error) => {
 });
 
 mongoose.connection.once("open", () => {
-  console.log(`MongoDB connected`);
+  console.log(`MongoDB connected =^.^=`);
 });
 
 //MIDDLEWARES

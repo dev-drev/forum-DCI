@@ -17,10 +17,12 @@ const Navbar = () => {
     localStorage.getItem("isAuthenticated") === "true"
   );
 
-  const logoutUser = async () => {
-    localStorage.clear();
-    navigate("/login");
-  };
+    const logoutUser = async ()=>{
+        localStorage.clear();
+        setIsAuthenticated(false);
+        navigate("/login");
+    }
+
 
   return (
     <div className="relative  sm:mb-16 ">
@@ -52,80 +54,78 @@ const Navbar = () => {
             </svg>
           </button>
 
-          <LightSpeed left>
-            {" "}
-            <Link
-              to="/"
-              class="text-lg btn font-bold lg:ml-5 border-none hover:bg-transparent bg-transparent text-4xl"
-            >
-              AVAZ
-            </Link>
-          </LightSpeed>
-        </div>
-        {/* MENU AREA */}
-        <div className="hidden px-2 mx-2 lg:flex">
-          <ul className="flex">
-            <Link
-              to="/questions"
-              className="btn btn-ghost btn-sm mx-4 rounded-btn"
-            >
-              Questions
-            </Link>
-            <Link to="/tags" className="btn btn-ghost btn-sm mx-4 rounded-btn">
-              Tags
-            </Link>
-            <Link
-              to="/community"
-              className="btn btn-ghost btn-sm mx-4 rounded-btn"
-            >
-              Community
-            </Link>
-            <Link to="/about" className="btn btn-ghost btn-sm mx-4 rounded-btn">
-              About
-            </Link>{" "}
-            <button className="btn bg-secondary glass mx-8 text-primary hover:bg-gray-600 hover:text-white btn-sm ">
-              <Link to="/ask">Ask Something</Link>
-            </button>
-          </ul>
-        </div>
-        {/* LOG IN AREA */}
-        <div className="navbar-end flex items-center content-center">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-            />
-          </svg>
-          {isAuthenticated ? (
-            <>
-              <Link
-                onClick={logoutUser}
-                to="/logout"
-                className="btn btn-ghost btn-sm mr-2 pt-1 text-lg md:text-sm rounded-btn"
-              >
-                LogOut
-              </Link>
-            </>
-          ) : (
-            <>
-              <Link
-                to="/login"
-                className="btn btn-ghost btn-sm mr-2 pt-1 text-lg md:text-sm rounded-btn"
-              >
-                LogIn
-              </Link>
-            </>
-          )}
-        </div>
-      </div>
+                    <LightSpeed left>
+                        {" "}
+                        <Link
+                            to="/"
+                            class="text-lg btn font-bold lg:ml-5 border-none hover:bg-transparent bg-transparent text-4xl"
+                        >
+                            AVAZ
+                        </Link>
+                    </LightSpeed>
+                </div>
+                {/* MENU AREA */}
+                <div className="hidden px-2 mx-2 lg:flex">
+                    <ul className="flex">
+                        <Link to="/questions" className="btn btn-ghost btn-sm mx-4 rounded-btn">
+                            Questions
+                        </Link>
+                        <Link to="/tags" className="btn btn-ghost btn-sm mx-4 rounded-btn">
+                            Tags
+                        </Link>
+                        <Link to="/community" className="btn btn-ghost btn-sm mx-4 rounded-btn">
+                            Community
+                        </Link>
+                        <Link to="/about" className="btn btn-ghost btn-sm mx-4 rounded-btn">
+                            About
+                        </Link>{" "}
+                        <button
+                            className="btn bg-secondary glass mx-8 text-primary hover:bg-gray-600 hover:text-white btn-sm ">
+                            <Link to="/ask">Ask Something</Link>
+                        </button>
+                    </ul>
+                </div>
+                {/* LOG IN AREA */}
+                <div className="navbar-end flex items-center content-center">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                        />
+                    </svg>
+                    {
+                        isAuthenticated ?
+                            <>
+                                <Link
+                                    onClick={logoutUser}
+                                    to="/login"
+                                    className="btn btn-ghost btn-sm mr-2 pt-1 text-lg md:text-sm rounded-btn"
+                                >
+                                    LogOut
+
+                                </Link>
+                            </>
+                            : <>
+                                <Link
+                                    to="/login"
+                                    className="btn btn-ghost btn-sm mr-2 pt-1 text-lg md:text-sm rounded-btn"
+                                >
+                                    LogIn
+
+                                </Link>
+                            </>
+                    }
+
+                </div>
+            </div>
 
       {isShown && (
         <div className="bg-primary h-60 px-6 sm:hidden shadow-lg">

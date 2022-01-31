@@ -97,9 +97,13 @@ async function loginUser(req, res, next) {
 
       console.log(accessToken);
 
-      res.status(200).json({ msg: "Success", token: accessToken });
-    } else {
-      res.status(400).send("Not Allowed");
+            res.status(200).json({msg: "Success", token: accessToken, user: {username: user.userName, userId: user.id}});
+        } else {
+            res.status(400).send("Not Allowed");
+        }
+    } catch (error) {
+        next(error);
+
     }
   } catch (error) {
     next(error);

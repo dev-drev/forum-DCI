@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import LoginBtn from "./LoginBtn";
 import jwt from "jwt-decode";
-// import Dashboard from "../AdminPage/Dashboard";
-
+import Dashboard from "../adminPage/Dashboard";
 export default function Login() {
   const [enteredLoginUsername, setEnteredLoginUsername] = useState("");
   const [enteredLoginPassword, setEnteredLoginPassword] = useState("");
@@ -65,27 +64,39 @@ export default function Login() {
         const data = await res.json();
         console.log(data);
 
-        localStorage.setItem("isAuthenticated", "true");
-        // console.log(jwt(data.token));
-        alert("hello ");
-      }
-    } catch (error) {
-      console.log(error);
+                localStorage.setItem("isAuthenticated", "true");
+                window.location= "/admin";
+                // console.log(jwt(data.token));
+                // alert("hello ");
+            }
+        } catch (error) {
+            console.log(error);
+        }
     }
   };
 
-  // SIGN UP HANDLER
+    // SIGN UP HANDLER
+    const signupSubmitHandler = async (e) => {
+        e.preventDefault();
 
-  const signupSubmitHandler = async (e) => {
-    e.preventDefault();
+        const registeredData = {
+            fullName: enteredFullName,
+            email: enteredEmail,
+            userName: enteredSignupUsername,
+            password: enteredSignupPassword,
+            rePassword: enteredRePassword,
+        };
 
-    const registeredData = {
-      fullName: enteredFullName,
-      email: enteredEmail,
-      userName: enteredSignupUsername,
-      password: enteredSignupPassword,
-      rePassword: enteredRePassword,
-    };
+        try {
+            const res = await fetch("http://localhost:5000/users/signup", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(registeredData),
+                credentials: "include"
+            });
+  
 
     // console.log(registeredData);
     //
