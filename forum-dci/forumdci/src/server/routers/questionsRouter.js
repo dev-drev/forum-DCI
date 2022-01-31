@@ -7,7 +7,6 @@ const router = express.Router();
 // ROUTES
 //router.route("/ask").post(addQuestion);
 
-// router.route("/").get(getAllQuestions);
 // router.route(":qid").get(getQuestion).post(askQuestion).delete(deleteQuestion);
 
 // router.route(":qid/answers").get(getQAnswers);

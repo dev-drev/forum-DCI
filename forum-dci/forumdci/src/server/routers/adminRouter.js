@@ -3,7 +3,7 @@ const router = express.Router();
 const {
   deleteUser,
   // getUser,
-  updateUser,
+  //updateUser,
   // logoutUser,
 } = require("../controllers/adminController");
 

@@ -9,9 +9,13 @@ import TagsBody from "./components/TagsPage/TagsBody.jsx";
 import Community from "./components/Community/Community.jsx";
 import Ask from "./components/QuestionPage/AskSomethingPage";
 import Login from "./components/Login/Login";
+
+import Footer from "./components/Footer.jsx";
+
 function App() {
   return (
     <Router>
+      <Navbar />
       <Routes>
         <Route path="/about" element={<AboutPage />} />
         <Route path="/admin" element={<AdminPage />} />
@@ -22,6 +26,7 @@ function App() {
         <Route path="/ask" element={<Ask />} />
         <Route path="/login" element={<Login />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }

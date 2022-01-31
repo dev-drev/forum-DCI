@@ -2,6 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const morgan = require("morgan");
 // const {signUpUser} = require("./controllers/userController");
 const adminRouter = require("./routers/adminRouter");
 const userRouter = require("./routers/userRouter");
@@ -22,7 +23,7 @@ mongoose.connection.on("error", (error) => {
 });
 
 mongoose.connection.once("open", () => {
-  console.log(`MongoDB connected`);
+  console.log(`MongoDB connected =^.^=`);
 });
 
 //MIDDLEWARES
@@ -43,7 +44,7 @@ app.use(express.urlencoded({ extended: true }));
 // app.use("/admin", adminRouter);
 app.use("/admin", adminRouter);
 app.use("/users", userRouter);
-app.use("/", questionsRouter);
+app.use("/questions", questionsRouter);
 
 const PORT = process.env.PORT || 5000;
 
