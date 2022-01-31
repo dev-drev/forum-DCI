@@ -21,7 +21,7 @@ const validateUsersSignup = [
         .isLength({min: 8})
         .withMessage("Password should be at least 8 characters"),
     // .isStrongPassword().withMessage("Please use a strong Password")
-   /* body("rePassword")
+    /*body("rePassword")
         .notEmpty()
         .custom((value) => value === body('rePassword'))
         .withMessage('Password and confirm password are not matched.')*/
