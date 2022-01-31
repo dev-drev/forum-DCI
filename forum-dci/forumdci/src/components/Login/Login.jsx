@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import LoginBtn from "./LoginBtn";
 import jwt from "jwt-decode";
 import Dashboard from "../adminPage/Dashboard";
-
 export default function Login() {
     const [enteredLoginUsername, setEnteredLoginUsername] = useState("");
     const [enteredLoginPassword, setEnteredLoginPassword] = useState("");
@@ -66,8 +65,9 @@ export default function Login() {
                 console.log(data);
 
                 localStorage.setItem("isAuthenticated", "true");
+                window.location= "/admin";
                 // console.log(jwt(data.token));
-                alert("hello ");
+                // alert("hello ");
             }
         } catch (error) {
             console.log(error);
@@ -75,7 +75,6 @@ export default function Login() {
     }
 
     // SIGN UP HANDLER
-
     const signupSubmitHandler = async (e) => {
         e.preventDefault();
 
@@ -87,8 +86,6 @@ export default function Login() {
             rePassword: enteredRePassword,
         };
 
-        // console.log(registeredData);
-        //
         try {
             const res = await fetch("http://localhost:5000/users/signup", {
                 method: "POST",
