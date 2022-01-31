@@ -6,7 +6,6 @@ const cookieParser = require("cookie-parser");
 const { createToken, validateToken } = require("../JWT");
 
 /*add a new user*/
-
 async function signUpUser(req, res, next) {
   console.log("Hello New User!");
   // console.log(req.body)
@@ -14,9 +13,20 @@ async function signUpUser(req, res, next) {
   const { fullName, userName, email, password } = req.body;
   console.log(fullName, userName, email, password);
 
-  const alreadyRegistered = await User.findOne({ email });
-  if (alreadyRegistered) {
+  const alreadyRegisteredEmail = await User.findOne({ email });
+  if (alreadyRegisteredEmail) {
     res.status(404).send("This e-mail address is already registered");
+    return;
+  }
+
+  const alreadyRegisteredUser = await User.findOne({ userName });
+  if (alreadyRegisteredUser) {
+    res
+      .status(404)
+      .send(
+        "This userName is already registered, please choose a different userName!"
+      );
+    return;
   }
 
   try {
@@ -24,15 +34,29 @@ async function signUpUser(req, res, next) {
     if (!err.isEmpty()) {
       return res.status(400).send(err);
     }
-    const response = await User.create({
+    const user = await User.create({
       fullName,
       userName,
       email,
       password: await encryptingPassword(password),
     });
 
+    if (!user) {
+      res.status(500).send("Not able to create the user");
+      return;
+    }
+
+    const accessToken = createToken(user);
+    res.cookie("access-token", accessToken, {
+      maxAge: 60 * 60 * 24 * 30 * 1000,
+      domain: "localhost", // http://avaaz.com
+      httpOnly: true,
+    });
+
     /*returning "response" will expose the user, that is not safe*/
-    res.status(200).send(response);
+    res.status(200).send({
+      message: `Hello ${user.userName}`,
+    });
   } catch (err) {
     console.log(err);
     next(err);
@@ -52,6 +76,7 @@ const encryptingPassword = (password) => {
   });
 };
 
+/*Login user*/
 async function loginUser(req, res, next) {
   const { userName, password } = req.body;
   const user = await User.findOne({ userName });
@@ -80,5 +105,7 @@ async function loginUser(req, res, next) {
     next(error);
   }
 }
+
+/*Logout user*/
 
 module.exports = { signUpUser, loginUser };

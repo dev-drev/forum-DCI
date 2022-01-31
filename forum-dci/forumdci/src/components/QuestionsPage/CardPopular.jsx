@@ -19,7 +19,7 @@ function CardPopular({ width, glass }) {
           Display an inherited Field in Django 4.0 with ModelAdmin
         </h5>
         {/* ACTIVE */}
-        <p class="text-secondary hidden text-sm sm:block font-semibold mt-2.5">
+        <p className="text-secondary hidden text-sm sm:block font-semibold mt-2.5">
           Active
         </p>
 
@@ -27,10 +27,10 @@ function CardPopular({ width, glass }) {
 
         <div className="flex w-10 justify-between">
           {" "}
-          <div class="mt-3 flex items-center content-center text-white text-sm">
+          <div className="mt-3 flex items-center content-center text-white text-sm">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-4 w-4"
+              className="h-4 w-4"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -43,12 +43,12 @@ function CardPopular({ width, glass }) {
               />
             </svg>
 
-            <span class="pl-1 text-sm text-white  font-semibold">145</span>
+            <span className="pl-1 text-sm text-white  font-semibold">145</span>
           </div>
-          <div class="px-6 mt-3 flex items-center content-center text-white text-sm">
+          <div className="px-6 mt-3 flex items-center content-center text-white text-sm">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-4 w-4"
+              className="h-4 w-4"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -61,7 +61,7 @@ function CardPopular({ width, glass }) {
               />
             </svg>
 
-            <span class="pl-1 text-white text-sm font-semibold">39</span>
+            <span className="pl-1 text-white text-sm font-semibold">39</span>
           </div>
         </div>
       </section>

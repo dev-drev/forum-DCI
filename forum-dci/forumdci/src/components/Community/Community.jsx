@@ -34,13 +34,13 @@ else {
         <div className="flex items-center justify-center  md:justify-between md:mb-24 pt-2">
           <div className="flex-col md:ml-20">
             <h1 className="text-primary text-3xl md:mb-7 mb-4">users</h1>
-            <div class="relative">
+            <div className="relative">
               <input
                 type="text"
                 placeholder="Search"
-                class="w-full pr-16 input input-primary input-bordered"
+                className="w-full pr-16 input input-primary input-bordered"
               />
-              <button class="absolute top-0 right-0 rounded-l-none btn btn-primary">
+              <button className="absolute top-0 right-0 rounded-l-none btn btn-primary">
                 go
               </button>
             </div>

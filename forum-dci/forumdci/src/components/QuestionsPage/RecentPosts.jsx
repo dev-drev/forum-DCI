@@ -9,7 +9,7 @@ const RecentPosts = () => {
           <h3 className="text-3xl text-shadow font-semibold">RECENT POSTS</h3>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="h-7 ml-2 w-7"
+            className="h-7 ml-2 w-7"
             fill="none"
             viewBox="0 0 24 24"
             stroke="white"
@@ -34,9 +34,9 @@ const RecentPosts = () => {
         <CardPopular glass="glass" />
       </div>
       <div className="w-full justify-end pt-4  flex w-12/12 sm:w-11/12 pr-4">
-        <button class="btn pr-0 text-white btn-link">See More</button>
+        <button className="btn pr-0 text-white btn-link">See More</button>
       </div>
-      <div class="divider"></div>
+      <div className="divider"></div>
     </div>
   );
 };

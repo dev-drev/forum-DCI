@@ -14,7 +14,7 @@ function PopularPosts() {
             </h3>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-7 ml-2 w-7"
+              className="h-7 ml-2 w-7"
               fill="none"
               viewBox="0 0 24 24"
               stroke="white"
@@ -34,14 +34,14 @@ function PopularPosts() {
 
         <img src={messagesPic} className="w-20 h-20" alt="" />
       </div>
-      <div class="pb-8">
-        <div class="relative ">
+      <div className="pb-8">
+        <div className="relative ">
           <input
             type="text"
             placeholder="Search Tags..."
-            class=" pr-32 input rounded-r-none mt-4 text-white input-info input-bordered"
+            className=" pr-32 input rounded-r-none mt-4 text-white input-info input-bordered"
           />
-          <button class="absolute mt-4  text-white rounded-l-none btn btn-info">
+          <button className="absolute mt-4  text-white rounded-l-none btn btn-info">
             go
           </button>
         </div>
@@ -53,9 +53,9 @@ function PopularPosts() {
         <CardPopular width={width} glass="glass" />
       </div>
       <div className="w-full justify-end pt-1 flex w-12/12 sm:w-11/12 pr-4">
-        <button class="btn pr-0 text-white btn-link">See More</button>
+        <button className="btn pr-0 text-white btn-link">See More</button>
       </div>
-      <div class="divider"></div>
+      <div className="divider"></div>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import LoginBtn from "./LoginBtn";
 import jwt from "jwt-decode";
+// import Dashboard from "../AdminPage/Dashboard";
 
 export default function Login() {
   const [enteredLoginUsername, setEnteredLoginUsername] = useState("");
@@ -10,6 +11,7 @@ export default function Login() {
   const [enteredSignupUsername, setEnteredSignupUsername] = useState("");
   const [enteredSignupPassword, setEnteredSignupPassword] = useState("");
   const [enteredRePassword, setEnteredRePassword] = useState("");
+  const [errorMessages, setErrorMessages] = useState([]);
 
   const usernameLoginChangeHandler = (e) => {
     setEnteredLoginUsername(e.target.value);
@@ -63,17 +65,15 @@ export default function Login() {
         const data = await res.json();
         console.log(data);
 
-        localStorage.setItem("token", data.token);
-        console.log(jwt(data.token));
+        localStorage.setItem("isAuthenticated", "true");
+        // console.log(jwt(data.token));
         alert("hello ");
       }
     } catch (error) {
       console.log(error);
     }
-    console.log(loginData);
   };
 
-  // *****************************
   // SIGN UP HANDLER
 
   const signupSubmitHandler = async (e) => {
@@ -88,7 +88,7 @@ export default function Login() {
     };
 
     // console.log(registeredData);
-
+    //
     try {
       const res = await fetch("http://localhost:5000/users/signup", {
         method: "POST",
@@ -96,25 +96,26 @@ export default function Login() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(registeredData),
+        credentials: "include",
       });
 
-      if (res.status === 200) {
-        alert("You have been successfully added to the database!");
+      console.log(res);
 
-        setEnteredSignupUsername("");
-        setEnteredSignupPassword("");
-        setEnteredFullName("");
-        setEnteredFullName("");
-        setEnteredRePassword("");
-        setEnteredEmail("");
+      if (res.status !== 200) {
+        let errors = (await res.json()).errors.map((e) => e.msg);
+        setErrorMessages(errors);
+        return;
       }
+
+      // alert("You have been successfully added to the database!");
+      localStorage.setItem("isAuthenticated", "true");
+      window.location = "/admin";
     } catch (e) {
       console.log(e);
       alert("Try again!");
     }
   };
 
-  // ********************************
   return (
     <div className="lg:flex">
       {/* login form */}
@@ -190,9 +191,19 @@ export default function Login() {
             onSubmit={signupSubmitHandler}
             className="-mt-28 p-10 rounded-lg shadow-lg lg:-mt-14 w-10/12 mx-auto"
           >
-            <h1 className="text-center text-3xl text-gray-800 mb-12 text-gray-600 font-bold font-sans">
+            <h1 className="text-center text-3xl text-gray-800 mb-12 md:mt-2 mt-20 text-gray-600 font-bold font-sans">
               sign up
             </h1>
+
+            {errorMessages ? (
+              <ul className="list-disc mt-2 mb-2">
+                {errorMessages.map((e, i) => (
+                  <li key={i}>{e}</li>
+                ))}
+              </ul>
+            ) : (
+              ""
+            )}
 
             <div className="w-full m-auto">
               <div>
@@ -202,6 +213,7 @@ export default function Login() {
                   name="full name"
                   id="full name"
                   placeholder="full name"
+                  required
                   onChange={fullNameChangeHandler}
                   value={enteredFullName}
                 />
@@ -212,6 +224,7 @@ export default function Login() {
                   type="text"
                   name="username"
                   id="username"
+                  required
                   placeholder="username"
                   onChange={usernameSignupChangeHandler}
                   value={enteredSignupUsername}
@@ -223,6 +236,7 @@ export default function Login() {
                   type="email"
                   name="e-mail"
                   id="e-mail"
+                  required
                   placeholder="e-mail"
                   onChange={emailChangeHandler}
                   value={enteredEmail}
@@ -234,6 +248,7 @@ export default function Login() {
                   type="password"
                   name="password"
                   id="password"
+                  required
                   placeholder="password"
                   onChange={passwordSignupChangeHandler}
                   value={enteredSignupPassword}
@@ -245,13 +260,13 @@ export default function Login() {
                   type="password"
                   name="re-password"
                   id="re-password"
+                  required
                   placeholder="repeat password"
                   onChange={rePasswordSignupChangeHandler}
                   value={enteredRePassword}
                 />
               </div>
             </div>
-
             <LoginBtn>sign up</LoginBtn>
           </form>
         </div>
