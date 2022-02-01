@@ -22,12 +22,12 @@ router.route("/:id");
 // .delete(deleteUser)
 // .post(logoutUser);
 
-router.route("/edit").patch(validateToken, updateUser);
+// router.route("/edit").patch(validateToken, updateUser);
 
 
   router
   .route("/edit")
-  .patch(updateUser)
+  .patch(validateToken, updateUser)
 
   router
   .route("/getuser/:id")

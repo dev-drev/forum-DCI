@@ -94,7 +94,8 @@ export default function Login() {
             rePassword: enteredRePassword,
         };
 
-        console.log(registeredData);
+        console.log(registeredData.fullName, registeredData.userName);
+
         try {
             const res = await fetch("http://localhost:5000/users/signup", {
                 method: "POST",
@@ -104,7 +105,6 @@ export default function Login() {
                 body: JSON.stringify(registeredData),
                 credentials: "include",
             });
-
             console.log(res);
 
             // alert("You have been successfully added to the database!");
@@ -113,7 +113,9 @@ export default function Login() {
 
             if (res.status !== 200) {
                 let errors = data.errors.map((e) => e.msg);
-                setErrorMessages(errors);
+
+                setErrorMessages(errors)
+                console.log(errorMessages)
                 return;
             }
 
@@ -208,7 +210,7 @@ export default function Login() {
                             sign up
                         </h1>
 
-                        {errorMessages ? (
+                        {errorMessages? (
                             <ul className="list-disc mt-2 mb-2">
                                 {errorMessages.map((e, i) => (
                                     <li key={i}>{e}</li>

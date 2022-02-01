@@ -12,6 +12,7 @@ const validateUsersSignup = [
     .withMessage("userName shouldn't be empty")
     .isLength({ min: 3 })
     .withMessage("userName should be at least 3 chars."),
+
   body("email").isEmail().withMessage("Invalid email"),
 
   body("password")

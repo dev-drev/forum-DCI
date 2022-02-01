@@ -8,7 +8,7 @@ const createToken = (user) => {
     // The first one is the Payload, the data we need
     // The second one is the secret
     const accessToken = sign(
-        {username: user.userName, id: user.id},
+        {username: user.userName, id: user._id},
         process.env.JWTSECRET
     );
 
