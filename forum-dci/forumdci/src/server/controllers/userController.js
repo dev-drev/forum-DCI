@@ -103,7 +103,7 @@ async function loginUser(req, res, next) {
 
             res.status(200).json({msg: "Success", token: accessToken, user: {username: user.userName, userId: user._id}});
 
-           // res.status(200).json({msg: "Success", token: accessToken, user: {username: user.userName, userId: user.id}});
+          /*res.status(200).json({msg: "Success", token: accessToken, user: {username: user.userName, userId: user.id}});*/
 
         } else {
             res.status(400).send("Not Allowed");
@@ -112,11 +112,9 @@ async function loginUser(req, res, next) {
         next(error);
 
     }
-  } catch (error) {
-    next(error);
-  }
+
 }
 
-/*Logout user*/
+/*Get the user*/
 
 module.exports = { signUpUser, loginUser };

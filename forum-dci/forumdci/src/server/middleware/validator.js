@@ -7,6 +7,7 @@ const userRules = [
     .withMessage("fullName shouldn't be empty")
     .isLength({ min: 3 })
     .withMessage("fullName should be at least 3 chars."),
+
   body("userName")
     .notEmpty()
     .withMessage("userName shouldn't be empty")
@@ -14,6 +15,8 @@ const userRules = [
     .withMessage("userName should be at least 3 chars."),
   body("email").isEmail().withMessage("Invalid email"),
 ];
+
+
 const validateInputs = (rules) => {
   return [
     ...rules,
