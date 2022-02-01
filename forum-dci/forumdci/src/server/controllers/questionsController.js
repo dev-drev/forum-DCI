@@ -40,7 +40,7 @@ async function getSingleQuestion(req, res, next) {
   const { searchQuestion } = req.params;
 
   try {
-    var questionsReqExp = new RegExp(searchQuestion, "qui");
+    var questionsReqExp = new RegExp(searchQuestion, "gi");
 
     const questions = await Question.find({
       title: { questionsReqExp },

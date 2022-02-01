@@ -4,14 +4,14 @@ import messagesPic from "../../assets/messages.png";
 import axios from "axios";
 
 function PopularPosts() {
-  const [posts, setPosts] = useState();
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await axios.get("https://localhost:5000/questions");
-      setPosts(res);
+      axios.get("https://localhost:5000/questions").then((res) => {
+        setPosts(res.data);
+      });
     };
-
     fetchPosts();
     console.log(posts);
   });

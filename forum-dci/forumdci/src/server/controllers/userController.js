@@ -46,24 +46,22 @@ async function signUpUser(req, res, next) {
       return;
     }
 
+    const accessToken = createToken(user);
+    res.cookie("access-token", accessToken, {
+      maxAge: 60 * 60 * 24 * 30 * 1000,
+      // domain: "localhost", // http://avaaz.com
+      httpOnly: true,
+    });
 
-        const accessToken = createToken(user);
-        res.cookie("access-token", accessToken, {
-            maxAge: 60 * 60 * 24 * 30 * 1000,
-            // domain: "localhost", // http://avaaz.com
-            httpOnly: true,
-        })
-
-        /*returning "response" will expose the user, that is not safe*/
-        res.status(200).send({
-            message: `Hello ${user.userName}`, 
-            user: {username: user.userName, id: user._id}
-        });
-    } catch (err) {
-        console.log(err);
-        next(err);
-    }
-
+    /*returning "response" will expose the user, that is not safe*/
+    res.status(200).send({
+      message: `Hello ${user.userName}`,
+      user: { username: user.userName, id: user._id },
+    });
+  } catch (err) {
+    console.log(err);
+    next(err);
+  }
 }
 
 /*encrypting the password*/
@@ -100,17 +98,17 @@ async function loginUser(req, res, next) {
 
       console.log(accessToken);
 
+      res
+        .status(200)
+        .json({
+          msg: "Success",
+          token: accessToken,
+          user: { username: user.userName, userId: user._id },
+        });
 
-            res.status(200).json({msg: "Success", token: accessToken, user: {username: user.userName, userId: user._id}});
-
-           // res.status(200).json({msg: "Success", token: accessToken, user: {username: user.userName, userId: user.id}});
-
-        } else {
-            res.status(400).send("Not Allowed");
-        }
-    } catch (error) {
-        next(error);
-
+      // res.status(200).json({msg: "Success", token: accessToken, user: {username: user.userName, userId: user.id}});
+    } else {
+      res.status(400).send("Not Allowed");
     }
   } catch (error) {
     next(error);
