@@ -4,19 +4,19 @@ import Dashboard from "./Dashboard";
 import axios from "axios";
 import jwt from "jwt-decode";
 const Avatar = () => {
-  const [userId, setUserId] = useState("");
+  //const [userId, setUserId] = useState("");
 
-  useEffect(() => {
-    const token = localStorage.getItem("token")
-      ? jwt(localStorage.getItem("token")).id
-      : "";
-    setUserId(token);
-  }, []);
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token")
+  //     ? jwt(localStorage.getItem("token")).id
+  //     : "";
+  //   setUserId(token);
+  // }, []);
 
   async function deleteUser() {
     try {
       await axios
-        .delete(`http://localhost:5000/admin/delete/${userId}`)
+        .delete(`http://localhost:5000/admin/delete`)
         .then((data) => console.log(data));
       alert("user has been successfully deleted");
       console.log("deleted");

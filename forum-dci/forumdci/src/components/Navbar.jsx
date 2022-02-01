@@ -1,12 +1,9 @@
-import React, { useState } from "react";
-import {
-  Link,
-  NavLink,
-  BrowserRouter as Router,
-  useNavigate,
-} from "react-router-dom";
+
+import React, {useState} from "react";
+import {Link, NavLink, BrowserRouter as Router, useNavigate} from "react-router-dom";
 import Fade from "react-reveal/Fade";
 import jwt from "jwt-decode";
+
 
 import LightSpeed from "react-reveal/LightSpeed";
 
@@ -108,6 +105,7 @@ const Navbar = () => {
                                     onClick={logoutUser}
                                     to="/login"
                                     className="btn btn-ghost btn-sm mr-2 pt-1 text-lg md:text-sm rounded-btn"
+                                
                                 >
                                     LogOut
 

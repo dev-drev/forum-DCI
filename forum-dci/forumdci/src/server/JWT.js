@@ -10,7 +10,8 @@ const createToken = (user) => {
   // The second one is the secret
   const accessToken = sign(
     { username: user.userName, id: user.id },
-    process.env.JWTSECRET
+    process.env.JWTSECRET,
+    { expiresIn: "295000s" }
   );
 
   return accessToken;
@@ -28,6 +29,7 @@ const validateToken = (req, res, next) => {
 
     if (validateToken) {
       req.authenticated = true;
+      req.token_payload = validateToken;
       return next();
     }
     next();
@@ -35,25 +37,5 @@ const validateToken = (req, res, next) => {
     return res.status(400).json({ error: error });
   }
 };
-
-//verify token for deleting user
-
-// const verifyAccess = (req, res, next) => {
-//   const authHeader = req.headers.authorization;
-
-//   if (authHeader) {
-//     const token = authHeader.split(" ")[1];
-
-//     jwt.verify(token, "JWTSECRET", (err, user) => {
-//       if (err) {
-//         return res.status(401).json("Token is not valid");
-//       }
-//       req.user = user;
-//       next();
-//     });
-//   } else {
-//     res.status(401).json("you are not authorized");
-//   }
-// };
 
 module.exports = { createToken, validateToken };
