@@ -1,55 +1,84 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import LoginBtn from "./LoginBtn";
 // import jwt from "jwt-decode";
-import Dashboard from "../adminPage/Dashboard";
+import Dashboard from "../AdminPage/Dashboard";
 export default function Login() {
-  const [enteredLoginUsername, setEnteredLoginUsername] = useState("");
-  const [enteredLoginPassword, setEnteredLoginPassword] = useState("");
-  const [enteredFullName, setEnteredFullName] = useState("");
-  const [enteredEmail, setEnteredEmail] = useState("");
-  const [enteredSignupUsername, setEnteredSignupUsername] = useState("");
-  const [enteredSignupPassword, setEnteredSignupPassword] = useState("");
-  const [enteredRePassword, setEnteredRePassword] = useState("");
-  const [errorMessages, setErrorMessages] = useState([]);
+    const [enteredLoginUsername, setEnteredLoginUsername] = useState("");
+    const [enteredLoginPassword, setEnteredLoginPassword] = useState("");
+    const [enteredFullName, setEnteredFullName] = useState("");
+    const [enteredEmail, setEnteredEmail] = useState("");
+    const [enteredSignupUsername, setEnteredSignupUsername] = useState("");
+    const [enteredSignupPassword, setEnteredSignupPassword] = useState("");
+    const [enteredRePassword, setEnteredRePassword] = useState("");
+    const [errorMessages, setErrorMessages] = useState([]);
 
-  const usernameLoginChangeHandler = (e) => {
-    setEnteredLoginUsername(e.target.value);
-  };
-
-  const passwordLoginChangeHandler = (e) => {
-    setEnteredLoginPassword(e.target.value);
-  };
-
-  const fullNameChangeHandler = (e) => {
-    setEnteredFullName(e.target.value);
-  };
-
-  const usernameSignupChangeHandler = (e) => {
-    setEnteredSignupUsername(e.target.value);
-  };
-
-  const passwordSignupChangeHandler = (e) => {
-    setEnteredSignupPassword(e.target.value);
-  };
-
-  const rePasswordSignupChangeHandler = (e) => {
-    setEnteredRePassword(e.target.value);
-  };
-
-  const emailChangeHandler = (e) => {
-    setEnteredEmail(e.target.value);
-  };
-
-  // LOGIN HANDLER
-
-  const loginSubmitHandler = async (e) => {
-    e.preventDefault();
-
-    const loginData = {
-      userName: enteredLoginUsername,
-      password: enteredLoginPassword,
+    const usernameLoginChangeHandler = (e) => {
+        setEnteredLoginUsername(e.target.value);
     };
 
+    const passwordLoginChangeHandler = (e) => {
+        setEnteredLoginPassword(e.target.value);
+    };
+
+    const fullNameChangeHandler = (e) => {
+        setEnteredFullName(e.target.value);
+    };
+
+    const usernameSignupChangeHandler = (e) => {
+        setEnteredSignupUsername(e.target.value);
+    };
+
+    const passwordSignupChangeHandler = (e) => {
+        setEnteredSignupPassword(e.target.value);
+    };
+
+    const rePasswordSignupChangeHandler = (e) => {
+        setEnteredRePassword(e.target.value);
+    };
+
+    const emailChangeHandler = (e) => {
+        setEnteredEmail(e.target.value);
+    };
+
+    // LOGIN HANDLER
+
+    const loginSubmitHandler = async (e) => {
+        e.preventDefault();
+
+        const loginData = {
+            userName: enteredLoginUsername,
+            password: enteredLoginPassword,
+        };
+
+        try {
+            const res = await fetch("http://localhost:5000/users/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(loginData),
+            });
+            if (res.status === 200) {
+                setEnteredLoginUsername("");
+                setEnteredLoginPassword("");
+                const data = await res.json();
+                console.log(data);
+
+
+                localStorage.setItem("isAuthenticated", "true");
+                localStorage.setItem("user", JSON.stringify(data.user));
+                // console.log(jwt(data.token));
+
+
+                window.location = "/admin";
+                // console.log(jwt(data.token));
+                // alert("hello ");
+
+            }
+        } catch (error) {
+            console.log(error);
+        }
+      
     try {
       const res = await fetch("http://localhost:5000/users/login", {
         method: "POST",
