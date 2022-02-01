@@ -4,6 +4,7 @@ import jwt from "jwt-decode";
 import Dashboard from "../AdminPage/Dashboard.jsx";
 import Navbar from "../Navbar";
 
+
 export default function Login() {
     const [enteredLoginUsername, setEnteredLoginUsername] = useState("");
     const [enteredLoginPassword, setEnteredLoginPassword] = useState("");
@@ -80,6 +81,31 @@ export default function Login() {
         } catch (error) {
             console.log(error);
         }
+      
+    try {
+      const res = await fetch("http://localhost:5000/users/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(loginData),
+      });
+      if (res.status === 200) {
+        setEnteredLoginUsername("");
+        setEnteredLoginPassword("");
+        const data = await res.json();
+        console.log(data);
+
+        localStorage.setItem("isAuthenticated", "true");
+        localStorage.setItem("user", JSON.stringify(data.user));
+        // console.log(jwt(data.token));
+
+        window.location = "/admin";
+        // console.log(jwt(data.token));
+        // alert("hello ");
+      }
+    } catch (error) {
+      console.log(error);
     }
 
 // SIGN UP HANDLER
@@ -124,6 +150,45 @@ export default function Login() {
             console.log(e);
             alert("Try again!");
         }
+      
+      
+  // SIGN UP HANDLER
+  const signupSubmitHandler = async (e) => {
+    e.preventDefault();
+
+    const registeredData = {
+      fullName: enteredFullName,
+      email: enteredEmail,
+      userName: enteredSignupUsername,
+      password: enteredSignupPassword,
+      rePassword: enteredRePassword,
+    };
+
+    try {
+      const res = await fetch("http://localhost:5000/users/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(registeredData),
+        credentials: "include",
+      });
+
+      // console.log(registeredData);
+      //
+
+      // alert("You have been successfully added to the database!");
+      const data = await res.json();
+      console.log(data);
+
+      localStorage.setItem("isAuthenticated", "true");
+      localStorage.setItem("user", JSON.stringify(data.user));
+
+      // localStorage.setItem("isAuthenticated", "true");
+      window.location = "/admin";
+    } catch (e) {
+      console.log(e);
+      alert("Try again!");
     }
 
     return (

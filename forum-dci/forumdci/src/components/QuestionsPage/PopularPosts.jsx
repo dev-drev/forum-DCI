@@ -4,11 +4,11 @@ import messagesPic from "../../assets/messages.png";
 import axios from "axios";
 
 function PopularPosts() {
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState();
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await axios.get("https://localhost:5000/questions/");
+      const res = await axios.get("https://localhost:5000/questions");
       setPosts(res);
     };
 
@@ -16,6 +16,7 @@ function PopularPosts() {
     console.log(posts);
   });
 
+  console.log(posts);
   const [searchQuestion, setSearchQuestion] = useState("");
 
   const searchHandler = (e) => {
