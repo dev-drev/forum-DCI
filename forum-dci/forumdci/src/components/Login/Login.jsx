@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import LoginBtn from "./LoginBtn";
-import jwt from "jwt-decode";
-// import Dashboard from "../AdminPage/Dashboard";
-
+// import jwt from "jwt-decode";
+import Dashboard from "../adminPage/Dashboard";
 export default function Login() {
   const [enteredLoginUsername, setEnteredLoginUsername] = useState("");
   const [enteredLoginPassword, setEnteredLoginPassword] = useState("");
