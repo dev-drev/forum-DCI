@@ -10,16 +10,14 @@ import LightSpeed from "react-reveal/LightSpeed";
 const Navbar = () => {
   const navigate = useNavigate();
   const [isShown, setIsShown] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(
-    localStorage.getItem("isAuthenticated") === "true"
-  );
+  const [isAuthenticated, setIsAuthenticated] = useState(localStorage.getItem("isAuthenticated") === "true");
 
-    const logoutUser = async ()=>{
+    const logoutUser = async (res)=>{
         localStorage.clear();
         setIsAuthenticated(false);
         navigate("/login");
+        // res.redirect('/login')
     }
-
 
   return (
     <div className="relative  sm:mb-16 ">
@@ -105,7 +103,7 @@ const Navbar = () => {
                                     onClick={logoutUser}
                                     to="/login"
                                     className="btn btn-ghost btn-sm mr-2 pt-1 text-lg md:text-sm rounded-btn"
-                                
+
                                 >
                                     LogOut
 
