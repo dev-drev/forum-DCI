@@ -12,7 +12,7 @@ const [editedUser, setEditedUser] = useState({});
 const onSaveUpdatesHandler = (e) => {
     e.preventDefault();
     // setIsEditing(false); to implement later
-    console.log(document.cookie);
+    console.log("cookie", document.cookie);
     axios('http://localhost:5000/admin/edit', {method: 'PATCH', data: {editedUser, id: JSON.parse(localStorage.getItem('user')).userId}, })
     
     .then((data) => {

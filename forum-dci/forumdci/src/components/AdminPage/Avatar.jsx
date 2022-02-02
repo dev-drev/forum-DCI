@@ -12,7 +12,7 @@ const Avatar = (props) => {
     //fetch user from database
     useEffect(async () => {
         const currentUser = JSON.parse(localStorage.getItem("user"));
-        const res = await fetch(`http://localhost:5000/users/${currentUser.userId}`);
+        const res = await fetch(`http://localhost:5000/users/${currentUser.id}`);
         const userData = await res.json();
         setUser(userData);
     }, [])

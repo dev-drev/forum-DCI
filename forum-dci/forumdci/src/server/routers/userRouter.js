@@ -1,13 +1,15 @@
 const express = require("express");
-const { body } = require("express-validator");
+const {body} = require("express-validator");
 const router = express.Router();
-const { signUpUser, loginUser } = require("../controllers/userController.js");
-const { userRules, validateInputs } = require("../middleware/validator.js");
-const {validateUsersSignup}= require("../middleware/userRules.js")
+const {signUpUser, loginUser} = require("../controllers/userController.js");
+const {userRules, validateInputs} = require("../middleware/validator.js");
+const {validateUsersSignup} = require("../middleware/userRules.js")
 const {getUser} = require("../controllers/adminController");
 // IMPORT CONTROLLERS
 
 // ROUTES
+
+/*The validation with express-validator from the signup is already working. Please don't need to change it =^.^=*/
 router.route("/signup").post(validateUsersSignup, signUpUser);
 router.route("/login").post(loginUser);
 router.route("/:id").get(getUser);
