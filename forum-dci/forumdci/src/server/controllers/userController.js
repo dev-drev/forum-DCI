@@ -6,6 +6,9 @@ const cookie = require("cookie");
 const { validateToken } = require("../JWT");
 
 /*add a new user*/
+//
+
+/*add a new user*/
 async function signUpUser(req, res, next) {
   console.log("Hello New User!");
   // console.log(req.body)
@@ -17,17 +20,18 @@ async function signUpUser(req, res, next) {
   // Check if the user email and username are already taken
   const alreadyRegisteredEmail = await User.findOne({ email });
   if (alreadyRegisteredEmail) {
-    res.status(404).send("This e-mail address is already registered");
+    res
+      .status(404)
+      .send({ message: "This e-mail address is already registered" });
     return;
   }
 
   const alreadyRegisteredUser = await User.findOne({ userName });
   if (alreadyRegisteredUser) {
-    res
-      .status(404)
-      .send(
-        "This userName is already registered, please choose a different userName!"
-      );
+    res.status(404).send({
+      message:
+        "This userName is already registered, please choose a different userName!",
+    });
     return;
   }
 
@@ -39,6 +43,7 @@ async function signUpUser(req, res, next) {
     if (!err.isEmpty()) {
       return res.status(400).send(err);
     }
+
     const user = await User.create({
       fullName,
       userName,
@@ -116,11 +121,11 @@ async function loginUser(req, res, next) {
       return res
         .cookie("access_token", accessToken, {
           httpOnly: true,
-          maxage: 30000,
+          //maxage: 30000,
           domain: "localhost",
           secure: process.env.NODE_ENV === "production",
         })
-        .status(401)
+        .status(200)
         .json({ message: "user registered and token generated." });
     } else {
       res.status(400).send("Not Allowed");

@@ -11,7 +11,11 @@ async function deleteUser(req, res, next) {
     //extract payload of token
     //const token_payload = await jwt.verify(token, process.env.JWTSECRET);
     //console.log(req.token_payload);
-    const deletedUser = await User.findByIdAndDelete(req.token_payload.id);
+
+    console.log(req.cookie);
+    const deletedUser = await User.findByIdAndDelete(
+      "61f7b27d40bd79a3b8fa01ec"
+    );
     console.log(deletedUser);
     //if (deletedUser) {
     res.status(200).send({ deletedUser, msg: "User deleted successfully!" });

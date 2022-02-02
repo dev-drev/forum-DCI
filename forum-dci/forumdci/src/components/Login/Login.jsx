@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 import LoginBtn from "./LoginBtn";
 import jwt from "jwt-decode";
 import Dashboard from "../AdminPage/Dashboard.jsx";
 import Navbar from "../Navbar";
-import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [enteredLoginUsername, setEnteredLoginUsername] = useState("");
@@ -46,6 +45,41 @@ export default function Login() {
 
   // LOGIN HANDLER
 
+  // const loginSubmitHandler = async (e) => {
+  //     e.preventDefault();
+
+  //     const loginData = {
+  //         userName: enteredLoginUsername,
+  //         password: enteredLoginPassword,
+  //     };
+
+  //     try {
+  //         const res = await fetch("http://localhost:5000/users/login", {
+  //             method: "POST",
+  //             headers: {
+  //                 "Content-Type": "application/json",
+  //             },
+  //             body: JSON.stringify(loginData),
+  //         });
+  //         if (res.status === 200) {
+  //             setEnteredLoginUsername("");
+  //             setEnteredLoginPassword("");
+  //             const data = await res.json();
+  //             console.log(data);
+
+  //             localStorage.setItem("isAuthenticated", "true");
+  //             localStorage.setItem("user", JSON.stringify(data.user));
+  //             // console.log(jwt(data.token));
+  //             navigate("/admin");
+  //             // window.location = "/admin";
+  //             // console.log(jwt(data.token));
+  //             // alert("hello ");
+  //         }
+  //     } catch (error) {
+  //         console.log(error);
+  //     }
+
+  // }
   const loginSubmitHandler = async (e) => {
     e.preventDefault();
 
@@ -71,10 +105,12 @@ export default function Login() {
         localStorage.setItem("isAuthenticated", "true");
         localStorage.setItem("user", JSON.stringify(data.user));
         // console.log(jwt(data.token));
-        navigate("/admin");
-        // window.location = "/admin";
+
+        window.location = "/admin";
         // console.log(jwt(data.token));
         // alert("hello ");
+      } else {
+        alert("error");
       }
     } catch (error) {
       console.log(error);
@@ -92,6 +128,39 @@ export default function Login() {
       password: enteredSignupPassword,
       rePassword: enteredRePassword,
     };
+
+    console.log(registeredData.fullName, registeredData.userName);
+
+    try {
+      const res = await fetch("http://localhost:5000/users/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(registeredData),
+        credentials: "include",
+      });
+      console.log(res);
+
+      // alert("You have been successfully added to the database!");
+      const data = await res.json();
+      console.log(data);
+
+      if (res.status !== 200) {
+        let errors = data.errors.map((e) => e.msg);
+
+        setErrorMessages(errors);
+        console.log(errorMessages);
+        return;
+      }
+
+      localStorage.setItem("isAuthenticated", "true");
+      localStorage.setItem("user", JSON.stringify(data.user));
+      window.location = "/admin";
+    } catch (e) {
+      console.log(e);
+      alert("Try again!");
+    }
 
     console.log(registeredData);
     try {

@@ -8,18 +8,27 @@ import AdminBtn from "./AdminBtn";
 const Avatar = (props) => {
   async function deleteUser() {
     try {
-      await axios.delete("/admin/delete").then((data) => console.log(data));
+      await axios
+        .delete(`http://localhost:5000/admin/delete`)
+        .then((data) => console.log(data));
       alert("user has been successfully deleted");
       console.log("deleted");
     } catch (error) {
       console.log(error);
     }
   }
+
   //state
   const [isEditing, setIsEditing] = useState(false);
   const [user, setUser] = useState({});
 
   //fetch user from database
+  // useEffect(async () => {
+  //   const currentUser = JSON.parse(localStorage.getItem("user"));
+  //   const res = await fetch(`http://localhost:5000/users/${currentUser.id}`);
+  //   const userData = await res.json();
+  //   setUser(userData);
+  // }, []);
   useEffect(async () => {
     const currentUser = JSON.parse(localStorage.getItem("user"));
     const res = await fetch(

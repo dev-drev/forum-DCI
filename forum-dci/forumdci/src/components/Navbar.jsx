@@ -1,9 +1,7 @@
-
 import React, {useState} from "react";
 import {Link, NavLink, BrowserRouter as Router, useNavigate} from "react-router-dom";
-import Fade from "react-reveal/Fade";
-import jwt from "jwt-decode";
-
+// import Fade from "react-reveal/Fade";
+// import jwt from "jwt-decode";
 
 import LightSpeed from "react-reveal/LightSpeed";
 
