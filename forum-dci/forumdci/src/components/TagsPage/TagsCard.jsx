@@ -4,7 +4,7 @@ function TagsCard() {
   return (
     <div>
       <section
-        className={`sm:w-56 w-full glass z-0 rounded-2xl px-6 py-2 my-2 sm:py-6 shadow-lg`}
+        className={`lg:w-56 w-3xl glass z-0 rounded-2xl px-6 py-1 my-2 sm:py-6 shadow-lg`}
       >
         {/* FIRST BAR - DATE+ICON */}
         <div className="flex items-center pb-4  justify-between">
