@@ -33,6 +33,8 @@ const updateUser = async (req, res, next) => {
         res.status(200).send(user)
 
     } catch (err) {
+        console.log("helooooooooooo");
+
         res.status(500)
         console.log(err);
         next(err)
@@ -41,7 +43,6 @@ const updateUser = async (req, res, next) => {
 
 
 const getUser = async (req, res, next) => {
-// We need to add JWT validations
 
     try {
 

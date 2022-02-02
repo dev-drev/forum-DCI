@@ -40,15 +40,35 @@ async function getSingleQuestion(req, res, next) {
   const { searchQuestion } = req.params;
 
   try {
-    var questionsReqExp = new RegExp(searchQuestion, "qui");
-
+    var questionsReqExp = new RegExp(searchQuestion, "gi");
     const questions = await Question.find({
-      title: { questionsReqExp },
+      title: questionsReqExp,
     });
+    console.log(questions);
     res.status(200).send(questions);
   } catch (e) {
     next(e);
   }
 }
 
-module.exports = { addQuestion, getQuestions, getSingleQuestion };
+// async function deleteQuestion(req, res, next) {
+//   const searchQuestion = req.params.id;
+
+//   try {
+//   var questionsReqExp = new RegExp(searchQuestion, "gi");
+
+//   const questions = await Question.findByIdAndDelete({
+//      _id: { searchQuestion },
+//     });
+//     res.status(200).send(questions);
+//   } catch (e) {
+//     next(e);
+//   }
+// }
+
+module.exports = {
+  addQuestion,
+  getQuestions,
+  getSingleQuestion,
+  // deleteQuestion,
+};
