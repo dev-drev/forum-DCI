@@ -37,14 +37,14 @@ async function getQuestions(req, res, next) {
 }
 
 async function getSingleQuestion(req, res, next) {
-  const searchQuestion = req.params.id;
+  const { searchQuestion } = req.params;
 
   try {
-    // var questionsReqExp = new RegExp(searchQuestion, "gi");
-
+    var questionsReqExp = new RegExp(searchQuestion, "gi");
     const questions = await Question.find({
-      title: { searchQuestion },
+      title: questionsReqExp,
     });
+    console.log(questions);
     res.status(200).send(questions);
   } catch (e) {
     next(e);
@@ -55,10 +55,10 @@ async function getSingleQuestion(req, res, next) {
 //   const searchQuestion = req.params.id;
 
 //   try {
-//     // var questionsReqExp = new RegExp(searchQuestion, "gi");
+//   var questionsReqExp = new RegExp(searchQuestion, "gi");
 
-//     const questions = await Question.findByIdAndDelete({
-//       _id: { searchQuestion },
+//   const questions = await Question.findByIdAndDelete({
+//      _id: { searchQuestion },
 //     });
 //     res.status(200).send(questions);
 //   } catch (e) {

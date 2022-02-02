@@ -43,7 +43,6 @@ async function signUpUser(req, res, next) {
     if (!err.isEmpty()) {
       return res.status(400).send(err);
     }
-
     const user = await User.create({
       fullName,
       userName,
@@ -71,6 +70,7 @@ async function signUpUser(req, res, next) {
       .cookie("access_token", accessToken, {
         httpOnly: true,
         domain: "localhost",
+        sameSite: "Strict",
         secure: process.env.NODE_ENV === "production",
       })
       .status(401)
@@ -123,6 +123,7 @@ async function loginUser(req, res, next) {
           httpOnly: true,
           //maxage: 30000,
           domain: "localhost",
+          sameSite: "Strict",
           secure: process.env.NODE_ENV === "production",
         })
         .status(200)

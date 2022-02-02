@@ -1,28 +1,27 @@
 const User = require("../models/User");
 const mongoose = require("mongoose");
+const { sign, verify } = require("jsonwebtoken");
+
 const jwt = require("jsonwebtoken");
 //comment
 
 async function deleteUser(req, res, next) {
-  try {
-    //to extract token out of cookie
-    //const token = req.cookies["access-token"];
-    //console.log(token);
-    //extract payload of token
-    //const token_payload = await jwt.verify(token, process.env.JWTSECRET);
-    //console.log(req.token_payload);
+  //to extract token out of cookie
 
-    console.log(req.cookie);
-    const deletedUser = await User.findByIdAndDelete(
-      "61f7b27d40bd79a3b8fa01ec"
-    );
+  try {
+    const token = req.cookies["access-token"];
+    console.log("hello", token);
+    //extract payload of token
+    const token_payload = jwt.verify(token, "avazsecrettoken1010");
+    console.log(token_payload);
+    const deletedUser = await User.findByIdAndDelete(token_payload.id);
     console.log(deletedUser);
     //if (deletedUser) {
     res.status(200).send({ deletedUser, msg: "User deleted successfully!" });
     // }
   } catch (err) {
     console.log(err);
-    err.status(500);
+
     next(err);
   }
 }
