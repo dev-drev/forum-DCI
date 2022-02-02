@@ -76,6 +76,8 @@ export default function Login() {
                 // console.log(jwt(data.token));
                 // alert("hello ");
 
+            } else {
+              alert("error")
             }
         } catch (error) {
             console.log(error);
