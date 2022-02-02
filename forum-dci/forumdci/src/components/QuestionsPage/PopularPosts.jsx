@@ -25,7 +25,7 @@ function PopularPosts() {
 
     try {
       const data = await axios.post(
-        `http:/localhost:5000/questions/${searchQuestion}`
+        `http://localhost:5000/questions/${searchQuestion}`
       );
       console.log(data);
     } catch (e) {

@@ -34,22 +34,12 @@ mongoose.connection.once("open", () => {
 
 // app.use(cors());
 app.use(morgan("tiny"));
-
-app.use(
-  cors({
-    origin: ["http://localhost:3000", "http://localhost:5000"],
-    credentials: true,
-  })
-);
+app.use(cors());
 
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 
-// ROUTES
-// app.use("/", indexRouter);
-// app.use("/users", userRouter);
-// app.use("/questions", questionsRouter);
 app.use("/admin", adminRouter);
 app.use("/users", userRouter);
 app.use("/questions", questionsRouter);

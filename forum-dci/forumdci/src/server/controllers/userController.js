@@ -25,12 +25,10 @@ async function signUpUser(req, res, next) {
 
   const alreadyRegisteredUser = await User.findOne({ userName });
   if (alreadyRegisteredUser) {
-    res
-      .status(404)
-      .send({
-        message:
-          "This userName is already registered, please choose a different userName!",
-      });
+    res.status(404).send({
+      message:
+        "This userName is already registered, please choose a different userName!",
+    });
     return;
   }
 
@@ -42,8 +40,6 @@ async function signUpUser(req, res, next) {
     if (!err.isEmpty()) {
       return res.status(400).send(err);
     }
-
-    
     const user = await User.create({
       fullName,
       userName,
