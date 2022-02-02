@@ -4,19 +4,15 @@ import messagesPic from "../../assets/messages.png";
 import axios from "axios";
 
 function PopularPosts() {
-  const [posts, setPosts] = useState();
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    const fetchPosts = async () => {
-      const res = await axios.get("https://localhost:5000/questions");
-      setPosts(res);
-    };
+    axios.get("https://localhost:5000/questions").then((res) => {
+      setPosts(res.data);
+      console.log(res.data);
+    });
+  }, []);
 
-    fetchPosts();
-    console.log(posts);
-  });
-
-  console.log(posts);
   const [searchQuestion, setSearchQuestion] = useState("");
 
   const searchHandler = (e) => {
@@ -75,7 +71,7 @@ function PopularPosts() {
             value={searchQuestion}
             onChange={searchHandler}
             placeholder="Search Questions..."
-            className=" pr-32 input rounded-r-none mt-4 text-white input-info input-bordered"
+            className=" pr-32 input rounded-r-none mt-4 input-info input-bordered"
           />
           <button
             onClick={searchSubmit}

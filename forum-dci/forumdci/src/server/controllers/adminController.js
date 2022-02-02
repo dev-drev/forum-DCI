@@ -3,8 +3,10 @@ const mongoose = require('mongoose');
 
 const updateUser = async (req, res, next) => {
 // We need to add JWT validations
+    console.log("helooooooooooo");
+
     try {
-        console.log('edit', req.body);
+        console.log("helooooooooooo before try");
         const user = await User.findByIdAndUpdate(req.body.id, {
             fullName: req.body.editedUser.fullName,
             userName: req.body.editedUser.userName,
@@ -19,6 +21,8 @@ const updateUser = async (req, res, next) => {
         res.status(200).send(user)
 
     } catch (err) {
+        console.log("helooooooooooo");
+
         res.status(500)
         console.log(err);
         next(err)
@@ -27,7 +31,6 @@ const updateUser = async (req, res, next) => {
 
 
 const getUser = async (req, res, next) => {
-// We need to add JWT validations
 
     try {
         
