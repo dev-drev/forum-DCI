@@ -31,13 +31,13 @@ async function signUpUser(req, res, next) {
     if (alreadyRegisteredUser) {
         res.status(400).send({
             "errors": [
-                {"msg": "This e-mail address is already registered"}
+                {"msg": "This userName isn't available, please choose a different userName!"}
             ]
         });
         return;
     }
 
-    // ***************************************************
+    // ****************************************************/
 
     // our code
     try {
@@ -46,51 +46,19 @@ async function signUpUser(req, res, next) {
             return res.status(400).send(err);
         }
 
-        const alreadyRegisteredUser = await User.findOne({userName});
-        if (alreadyRegisteredUser) {
-            res
-                .status(400).send({
-                "errors": [
-                    {"msg": "This userName isn't available, please choose a different userName!"}
-                ]
-            });
+
+        const user = await User.create({
+            fullName,
+            userName,
+            email,
+            password: await encryptingPassword(password),
+        });
+
+        if (!user) {
+            res.status(500).send({"message": "Not able to create the user"});
             return;
         }
 
-        try {
-            const err = validationResult(req);
-            if (!err.isEmpty()) {
-                return res.status(400).send(err);
-            }
-            const user = await User.create({
-                fullName,
-                userName,
-                email,
-                password: await encryptingPassword(password),
-            });
-
-            if (!user) {
-                res.status(500).send({"message": "Not able to create the user"});
-                return;
-            }
-
-
-            const accessToken = createToken(user);
-            res.cookie("access-token", accessToken, {
-                maxAge: 60 * 60 * 24 * 30 * 1000,
-                // domain: "localhost", // http://avaaz.com
-                httpOnly: true,
-            })
-
-            /*returning "response" will expose the user, that is not safe*/
-            res.status(200).send({
-                message: `Hello ${user.username}`,
-                user: {username: user.userName, id: user._id}
-            });
-        } catch (err) {
-            console.log(err);
-            next(err);
-        }
         // *****************************
 
         const accessToken = jwt.sign(
@@ -110,10 +78,21 @@ async function signUpUser(req, res, next) {
             })
             .status(401)
             .json({message: "user registered and token generated."});
+
+        /*returning "response" will expose the user, that is not safe*/
+        res.status(200).send({
+            message: `Hello ${user.username}`,
+            user: {username: user.userName, id: user._id}
+        });
     } catch (err) {
         console.log(err);
         next(err);
     }
+
+    // } catch (err) {
+    //     console.log(err);
+    //     next(err);
+    // }
 }
 
 /*encrypting the password*/
@@ -128,6 +107,10 @@ const encryptingPassword = (password) => {
         });
     });
 };
+
+
+
+
 
 /*Login user*/
 async function loginUser(req, res, next) {
