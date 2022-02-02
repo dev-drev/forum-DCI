@@ -70,7 +70,7 @@ export default function Login() {
 
         localStorage.setItem("isAuthenticated", "true");
         localStorage.setItem("user", JSON.stringify(data.user));
-        // console.log(jwt(data.token));
+        console.log(jwt(data.token));
         navigate("/admin");
         // window.location = "/admin";
         // console.log(jwt(data.token));
@@ -110,11 +110,11 @@ export default function Login() {
       const data = await res.json();
       console.log(data);
 
-      if (res.status !== 200) {
-        let errors = data.errors.map((e) => e.msg);
-        setErrorMessages(errors);
-        return;
-      }
+      // if (res.status !== 200) {
+      //   let errors = data.errors.map((e) => e.msg);
+      //   setErrorMessages(errors);
+      //   return;
+      // }
 
       localStorage.setItem("isAuthenticated", "true");
       localStorage.setItem("user", JSON.stringify(data.user));

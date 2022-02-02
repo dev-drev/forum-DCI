@@ -28,6 +28,8 @@ async function addQuestion(req, res, next) {
 }
 
 async function getQuestions(req, res, next) {
+
+  
   try {
     const questions = await Question.find();
     res.status(200).send(questions);

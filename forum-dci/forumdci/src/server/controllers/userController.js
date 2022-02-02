@@ -17,7 +17,9 @@ async function signUpUser(req, res, next) {
   // Check if the user email and username are already taken
   const alreadyRegisteredEmail = await User.findOne({ email });
   if (alreadyRegisteredEmail) {
-    res.status(404).send("This e-mail address is already registered");
+    res
+      .status(404)
+      .send({ message: "This e-mail address is already registered" });
     return;
   }
 
@@ -25,9 +27,10 @@ async function signUpUser(req, res, next) {
   if (alreadyRegisteredUser) {
     res
       .status(404)
-      .send(
-        "This userName is already registered, please choose a different userName!"
-      );
+      .send({
+        message:
+          "This userName is already registered, please choose a different userName!",
+      });
     return;
   }
 
