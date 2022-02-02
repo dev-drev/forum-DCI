@@ -4,7 +4,7 @@ import LoginBtn from "./LoginBtn";
 import jwt from "jwt-decode";
 import Dashboard from "../AdminPage/Dashboard.jsx";
 import Navbar from "../Navbar";
-import {useNavigate} from "react-router-dom";
+
 
 export default function Login() {
     const [enteredLoginUsername, setEnteredLoginUsername] = useState("");
@@ -79,19 +79,9 @@ export default function Login() {
         } catch (error) {
             console.log(error);
         }
-    };
 
-    // SIGN UP HANDLER
-    // const signupSubmitHandler = async (e) => {
-    //   e.preventDefault();
-    //
-    //   const registeredData = {
-    //     fullName: enteredFullName,
-    //     email: enteredEmail,
-    //     userName: enteredSignupUsername,
-    //     password: enteredSignupPassword,
-    //     rePassword: enteredRePassword,
-    //   };
+    }
+
 
 // SIGN UP HANDLER
     const signupSubmitHandler = async (e) => {
@@ -168,7 +158,8 @@ export default function Login() {
             console.log(e);
             alert("Try again!");
         }
-    };
+
+    }
 
     return (
         <>
@@ -331,4 +322,6 @@ export default function Login() {
                 </div>
         </>
     )
-}
+
+};
+
