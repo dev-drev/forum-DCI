@@ -1,6 +1,5 @@
 const User = require('../models/User')
 const mongoose = require('mongoose');
-//comment
 
 const updateUser = async (req, res, next) => {
 // We need to add JWT validations
@@ -34,6 +33,7 @@ const updateUser = async (req, res, next) => {
 const getUser = async (req, res, next) => {
 
     try {
+        
         const user = await User.findById(req.params.id);
         console.log(user);
         if (!user) {
