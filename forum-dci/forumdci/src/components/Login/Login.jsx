@@ -70,17 +70,18 @@ export default function Login() {
 
         localStorage.setItem("isAuthenticated", "true");
         localStorage.setItem("user", JSON.stringify(data.user));
-        console.log(jwt(data.token));
-        navigate("/admin");
-        // window.location = "/admin";
+        // console.log(jwt(data.token));
+
+        window.location = "/admin";
         // console.log(jwt(data.token));
         // alert("hello ");
+      } else {
+        alert("error");
       }
     } catch (error) {
       console.log(error);
     }
   };
-
   // SIGN UP HANDLER
   const signupSubmitHandler = async (e) => {
     e.preventDefault();

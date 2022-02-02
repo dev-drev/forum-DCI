@@ -1,22 +1,20 @@
 import React, {useState, useEffect} from 'react';
 
 import axios from 'axios';
-// import jwt from 'jwt-decode';
 
 export default function EditProfForm(props) {
- 
+   
 const [editedUser, setEditedUser] = useState({});
-// const tokenn = localStorage.getItem('token') ? jwt(localStorage.getItem('token')).id : "";
 
 
 const onSaveUpdatesHandler = (e) => {
     e.preventDefault();
     // setIsEditing(false); to implement later
-    console.log(document.cookie);
+    console.log("cookie", document.cookie);
     axios('http://localhost:5000/admin/edit', {method: 'PATCH', data: {editedUser, id: JSON.parse(localStorage.getItem('user')).userId}, })
     
-    .then((data) => {
-        console.log(data);
+    .then((res) => {
+        console.log(res.data);
     })
     .catch((err) => {
         console.log(err);
@@ -28,7 +26,8 @@ setEditedUser({...editedUser, [e.target.name]: e.target.value})
 }
 
 useEffect(() => {
-    // const fetchUserData = () => {
+        
+        //fetching user's data
         console.log('fetch user data');
         axios(`http://localhost:5000/admin/getuser/${JSON.parse(localStorage.getItem('user')).userId}`)
         .then((res) => {
@@ -37,7 +36,7 @@ useEffect(() => {
         .catch((err) => {
             console.log(err);
         })
-    // }
+    
   }, []);
 
 

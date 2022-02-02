@@ -42,6 +42,8 @@ async function signUpUser(req, res, next) {
     if (!err.isEmpty()) {
       return res.status(400).send(err);
     }
+
+    
     const user = await User.create({
       fullName,
       userName,
