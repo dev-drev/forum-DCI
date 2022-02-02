@@ -51,6 +51,17 @@ async function getSingleQuestion(req, res, next) {
   }
 }
 
+const deleteQuestion = async (req, res, next) => {
+  const deleteQuestion = await Question.findByIdAndDelete(req.params.id);
+  if (!deleteQuestion) {
+    res
+      .status(404)
+      .send({ message: "Unable to delete question, please check " });
+  } else {
+    res.status(200).send({ message: "Question deleted successfully" });
+  }
+};
+
 // async function deleteQuestion(req, res, next) {
 //   const searchQuestion = req.params.id;
 
@@ -70,5 +81,6 @@ module.exports = {
   addQuestion,
   getQuestions,
   getSingleQuestion,
+  deleteQuestion,
   // deleteQuestion,
 };
