@@ -54,7 +54,6 @@ export default function Login() {
       password: enteredLoginPassword,
     };
 
-<<<<<<< HEAD
     // LOGIN HANDLER
 
     const loginSubmitHandler = async (e) => {
@@ -95,34 +94,6 @@ export default function Login() {
         } catch (error) {
             console.log(error);
         }
-=======
-    try {
-      const res = await fetch("http://localhost:5000/users/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(loginData),
-      });
-      if (res.status === 200) {
-        setEnteredLoginUsername("");
-        setEnteredLoginPassword("");
-        const data = await res.json();
-        console.log(data);
-
-        localStorage.setItem("isAuthenticated", "true");
-        localStorage.setItem("user", JSON.stringify(data.user));
-        // console.log(jwt(data.token));
-
-        window.location = "/admin";
-        // console.log(jwt(data.token));
-        // alert("hello ");
-      } else {
-        alert("error");
-      }
-    } catch (error) {
-      console.log(error);
->>>>>>> b9e94f72c9fa4c5a6e19409667144ed0ecf4c2f8
     }
   };
   // SIGN UP HANDLER
