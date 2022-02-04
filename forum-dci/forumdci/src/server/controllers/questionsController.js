@@ -28,8 +28,6 @@ async function addQuestion(req, res, next) {
 }
 
 async function getQuestions(req, res, next) {
-
-  
   try {
     const questions = await Question.find();
     res.status(200).send(questions);
@@ -39,28 +37,39 @@ async function getQuestions(req, res, next) {
 }
 
 async function getSingleQuestion(req, res, next) {
-  const searchQuestion = req.params.id;
+  const { searchQuestion } = req.params;
 
   try {
-    // var questionsReqExp = new RegExp(searchQuestion, "gi");
-
+    var questionsReqExp = new RegExp(searchQuestion, "gi");
     const questions = await Question.find({
-      title: { searchQuestion },
+      title: questionsReqExp,
     });
+    console.log(questions);
     res.status(200).send(questions);
   } catch (e) {
     next(e);
   }
 }
 
+const deleteQuestion = async (req, res, next) => {
+  const deleteQuestion = await Question.findByIdAndDelete(req.params.id);
+  if (!deleteQuestion) {
+    res
+      .status(404)
+      .send({ message: "Unable to delete question, please check " });
+  } else {
+    res.status(200).send({ message: "Question deleted successfully" });
+  }
+};
+
 // async function deleteQuestion(req, res, next) {
 //   const searchQuestion = req.params.id;
 
 //   try {
-//     // var questionsReqExp = new RegExp(searchQuestion, "gi");
+//   var questionsReqExp = new RegExp(searchQuestion, "gi");
 
-//     const questions = await Question.findByIdAndDelete({
-//       _id: { searchQuestion },
+//   const questions = await Question.findByIdAndDelete({
+//      _id: { searchQuestion },
 //     });
 //     res.status(200).send(questions);
 //   } catch (e) {
@@ -72,5 +81,6 @@ module.exports = {
   addQuestion,
   getQuestions,
   getSingleQuestion,
+  deleteQuestion,
   // deleteQuestion,
 };

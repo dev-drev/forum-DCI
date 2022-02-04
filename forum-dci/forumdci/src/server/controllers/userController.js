@@ -33,6 +33,7 @@ async function signUpUser(req, res, next) {
                 errors: [{"msg": "This userName is already registered, please choose a different userName!"}]
             })
         return;
+
     }
 
     // ***************************************************
