@@ -33,7 +33,8 @@ mongoose.connection.once("open", () => {
 //MIDDLEWARES
 
 // app.use(cors());
-app.use(cors({ origin: "http://localhost:3000" }));
+
+app.use(cors());
 app.use(morgan("tiny"));
 
 app.use(express.json());

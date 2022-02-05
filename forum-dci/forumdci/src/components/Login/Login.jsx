@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import LoginBtn from "./LoginBtn";
-import jwt from "jwt-decode";
-import Dashboard from "../AdminPage/Dashboard.jsx";
-import Navbar from "../Navbar";
+
+// import jwt from "jwt-decode";
+// import Dashboard from "../AdminPage/Dashboard.jsx";
+// import Navbar from "../Navbar";
 
 export default function Login() {
   const [enteredLoginUsername, setEnteredLoginUsername] = useState("");
@@ -119,8 +120,8 @@ export default function Login() {
       localStorage.setItem("isAuthenticated", "true");
       localStorage.setItem("user", JSON.stringify(data.user));
       window.location = "/admin";
-    } catch (e) {
-      console.log(e);
+    } catch (err) {
+      console.log(err);
       alert("Try again!");
     }
   };
