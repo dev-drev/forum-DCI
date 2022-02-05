@@ -94,6 +94,7 @@ export default function Login() {
         } catch (error) {
             console.log(error);
         }
+
     }
   };
   // SIGN UP HANDLER
@@ -125,14 +126,14 @@ export default function Login() {
       const data = await res.json();
       console.log(data);
 
-      // if (res.status !== 200) {
-      //   let errors = data.errors.map((e) => e.msg);
-      //   setErrorMessages(errors);
-      //   return;
-      // }
+      if (res.status !== 200) {
+        let errors = data.errors.map((e) => e.msg);
+        setErrorMessages(errors);
+        return;
+      }
 
       localStorage.setItem("isAuthenticated", "true");
-      localStorage.setItem("user", JSON.stringify(data.user));
+      localStorage.setItem("user", JSON.stringify(data));
       window.location = "/admin";
     } catch (e) {
       console.log(e);

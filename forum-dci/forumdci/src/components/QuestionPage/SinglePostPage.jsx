@@ -4,24 +4,22 @@ import ComponentButton from "./ComponentButton";
 import SinglePostPage2 from "./SinglePostPage2";
 import axios from "axios";
 
-function SinglePostPage() {
+function SinglePostPage({ id }) {
   const [showAnswerArea, setShowAnswerArea] = useState(false);
   const [deleteID, setDeleteID] = useState("");
   const switchMode = () => {
     setShowAnswerArea((showMe) => !showMe);
   };
 
-  //   async function DeleteQuestion(e) {
-  //     useEffect(() => {
-  //         const fetchQuestions=
-  //     }, []);
-  try {
-    const deleteRecord = axios.delete(
-      `http://localhost:500/questions/${deleteID}`
-    );
-    console.log(deleteRecord);
-  } catch (error) {
-    console.log(error);
+  async function deleteQuestion() {
+    try {
+      const deleteQuestion = axios.delete(
+        `http://localhost:500/questions/${id}`
+      );
+      console.log(deleteQuestion);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
