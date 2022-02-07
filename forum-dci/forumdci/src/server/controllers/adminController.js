@@ -1,19 +1,31 @@
-const User = require('../models/User')
+const User = require('../models/User');
 const mongoose = require('mongoose');
+// const bcrypt = require('bcrypt');
 
 const updateUser = async (req, res, next) => {
-// We need to add JWT validations
-    console.log("helooooooooooo");
+    
+    // to convert the req.body object into an array so we can loop through it.
+    const updates = Object.keys(req.body.editedUser)
 
     try {
-        console.log("helooooooooooo before try");
-        const user = await User.findByIdAndUpdate(req.body.id, {
-            fullName: req.body.editedUser.fullName,
-            userName: req.body.editedUser.userName,
-            email: req.body.editedUser.email,
-            password: req.body.editedUser.password
-        })
+        console.log('edit', req.body);
+        
+        const user = await User.findById(req.body.id)
 
+        updates.forEach(update => user[update] = req.body[update])
+
+        await user.save()
+
+       
+        // const user = await User.findByIdAndUpdate(req.body.id, {
+        //     fullName: req.body.editedUser.fullName,
+        //     userName: req.body.editedUser.userName,
+        //     email: req.body.editedUser.email,
+        //     password: req.body.editedUser.password
+            
+        // })
+
+    
         if (!user) {
             return res.status(404).send('user not found')
         }
@@ -33,7 +45,7 @@ const updateUser = async (req, res, next) => {
 const getUser = async (req, res, next) => {
 
     try {
-        
+
         const user = await User.findById(req.params.id);
         console.log(user);
         if (!user) {
