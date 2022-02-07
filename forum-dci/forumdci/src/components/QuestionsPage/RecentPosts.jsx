@@ -2,15 +2,25 @@ import React, { useState, useEffect } from "react";
 import CardPopular from "./CardPopular";
 import axios from "axios";
 const RecentPosts = () => {
-  const [recentPosts, setRecentPosts] = useState("");
+  const [recentPosts, setRecentPosts] = useState([]);
   const [loading, setLoading] = useState(false);
-
   useEffect(() => {
     axios.get("http://localhost:5000/questions").then((res) => {
       setRecentPosts(res.data);
       console.log(res.data);
     });
   }, []);
+
+  const deleteQuestion = async (id) => {
+    try {
+      const data = await axios.delete(`http://localhost:5000/questions/${id}`);
+      console.log(data);
+    } catch (e) {
+      console.log(e);
+    }
+
+    // setRecentPosts(recentPosts.filter((post) => post.id !== id));
+  };
 
   return (
     <div>
@@ -40,8 +50,16 @@ const RecentPosts = () => {
       </div>
 
       <div className="  flex-wrap justify-between  w-12/12 sm:w-11/12">
-        {recentPosts.map((id) => {
-          return <CardPopular glass="glass" />;
+        {recentPosts.map((post, id) => {
+          return (
+            <CardPopular
+              deleteQuestion={deleteQuestion}
+              id={post._id}
+              glass="glass"
+              title={post.title}
+              question={post.question}
+            />
+          );
         })}
 
         {/* <CardPopular glass="glass" />
