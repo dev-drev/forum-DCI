@@ -54,6 +54,7 @@ export default function Login() {
       password: enteredLoginPassword,
     };
 
+<<<<<<< HEAD
     try {
       const res = await fetch("http://localhost:5000/users/login", {
         method: "POST",
@@ -80,6 +81,49 @@ export default function Login() {
       }
     } catch (error) {
       console.log(error);
+=======
+    // LOGIN HANDLER
+
+    const loginSubmitHandler = async (e) => {
+        e.preventDefault();
+
+        const loginData = {
+            userName: enteredLoginUsername,
+            password: enteredLoginPassword,
+        };
+
+        try {
+            const res = await fetch("http://localhost:5000/users/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(loginData),
+            });
+            if (res.status === 200) {
+                setEnteredLoginUsername("");
+                setEnteredLoginPassword("");
+                const data = await res.json();
+                console.log(data);
+
+
+                localStorage.setItem("isAuthenticated", "true");
+                localStorage.setItem("user", JSON.stringify(data.user));
+                // console.log(jwt(data.token));
+
+
+                window.location = "/admin";
+                // console.log(jwt(data.token));
+                // alert("hello ");
+
+            } else {
+              alert("error")
+            }
+        } catch (error) {
+            console.log(error);
+        }
+
+>>>>>>> a6b3ce8e20ada41c43ce06241c2bf589198982b5
     }
   };
   // SIGN UP HANDLER
