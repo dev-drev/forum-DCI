@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-
-import LoginBtn from "./LoginBtn";
-import jwt from "jwt-decode";
-import Dashboard from "../AdminPage/Dashboard.jsx";
-import Navbar from "../Navbar";
 import { useNavigate } from "react-router-dom";
+import LoginBtn from "./LoginBtn";
+
+// import jwt from "jwt-decode";
+// import Dashboard from "../AdminPage/Dashboard.jsx";
+// import Navbar from "../Navbar";
 
 export default function Login() {
   const [enteredLoginUsername, setEnteredLoginUsername] = useState("");
@@ -102,7 +102,7 @@ export default function Login() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(registeredData),
-        credentials: "include",
+        //credentials: "include",
       });
 
       console.log(res);
@@ -120,8 +120,8 @@ export default function Login() {
       localStorage.setItem("isAuthenticated", "true");
       localStorage.setItem("user", JSON.stringify(data));
       window.location = "/admin";
-    } catch (e) {
-      console.log(e);
+    } catch (err) {
+      console.log(err);
       alert("Try again!");
     }
   };
