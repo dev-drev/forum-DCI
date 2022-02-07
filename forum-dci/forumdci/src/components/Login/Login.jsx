@@ -45,8 +45,8 @@ export default function Login() {
   };
 
   // LOGIN HANDLER
-
   const loginSubmitHandler = async (e) => {
+    console.log('hello bugs ')
     e.preventDefault();
 
     const loginData = {
@@ -54,34 +54,37 @@ export default function Login() {
       password: enteredLoginPassword,
     };
 
-    try {
-      const res = await fetch("http://localhost:5000/users/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(loginData),
-      });
-      if (res.status === 200) {
-        setEnteredLoginUsername("");
-        setEnteredLoginPassword("");
-        const data = await res.json();
-        console.log(data);
 
-        localStorage.setItem("isAuthenticated", "true");
-        localStorage.setItem("user", JSON.stringify(data));
-        // console.log(jwt(data.token));
+      try {
+        const res = await fetch("http://localhost:5000/users/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(loginData),
+        });
+        if (res.status === 200) {
+          setEnteredLoginUsername("");
+          setEnteredLoginPassword("");
+          const data = await res.json();
+          console.log(data);
 
-        window.location = "/admin";
-        // console.log(jwt(data.token));
-        // alert("hello ");
-      } else {
-        alert("error");
+          localStorage.setItem("isAuthenticated", "true");
+          localStorage.setItem("user", JSON.stringify(data.user));
+          // console.log(jwt(data.token));
+
+          window.location = "/admin";
+          // console.log(jwt(data.token));
+          // alert("hello ");
+        } else {
+          alert("error");
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+    };
+
+
   // SIGN UP HANDLER
   const signupSubmitHandler = async (e) => {
     e.preventDefault();
@@ -129,10 +132,8 @@ export default function Login() {
   return (
     <>
       <Navbar />
-
       <div className="lg:flex">
         {/* login form */}
-
         <div className="h-screen bg-tertiary flex justify-center items-center lg:w-1/2">
           <div className="lg:w-4/5 md:w-3/5 w-2/3">
             <form
