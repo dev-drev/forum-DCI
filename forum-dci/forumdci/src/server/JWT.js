@@ -21,12 +21,12 @@ const cookie = require("cookie");
     const accessToken = req.cookies["access-token"];
     console.log(accessToken);
 
-    if (!accessToken) {
-        return res.status(400).json({error: "user not authenticated"});
-    }
+  if (!accessToken) {
+    return res.status(400).json({ error: "user not authenticated" });
+  }
 
-    try {
-        const validateToken = verify(accessToken, process.env.JWTSECRET);
+  try {
+    const validateToken = verify(accessToken, process.env.JWTSECRET);
 
         if (validateToken) {
             req.authenticated = true;

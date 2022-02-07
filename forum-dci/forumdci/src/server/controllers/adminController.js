@@ -1,11 +1,13 @@
-<<<<<<< HEAD
 const User = require("../models/User");
-//const mongoose = require("mongoose");
-
+const mongoose = require("mongoose");
+// const bcrypt = require('bcrypt');
 //const { sign, verify } = require("jsonwebtoken");
 const { validateToken } = require("../JWT");
 const jwt = require("jsonwebtoken");
 //comment
+
+// ---------delete a User------------------------
+
 
 async function deleteUser(req, res, next) {
   //to extract token out of cookie
@@ -28,23 +30,8 @@ async function deleteUser(req, res, next) {
   }
 }
 
-const updateUser = async (req, res, next) => {
-  // We need to add JWT validations
-  try {
-    console.log("edit", req.body);
-    const user = await User.findByIdAndUpdate(req.body.id, {
-      fullName: req.body.editedUser.fullName,
-      userName: req.body.editedUser.userName,
-      email: req.body.editedUser.email,
-      password: req.body.editedUser.password,
-    });
 
-    if (!user) {
-      return res.status(404).send("user not found");
-=======
-const User = require('../models/User');
-const mongoose = require('mongoose');
-// const bcrypt = require('bcrypt');
+
 
 const updateUser = async (req, res, next) => {
     
@@ -82,27 +69,16 @@ const updateUser = async (req, res, next) => {
         res.status(500)
         console.log(err);
         next(err)
->>>>>>> 6c77fb23e69fd2351dafcebbdac947bb5254fd06
+
     }
 
+ 
     res.status(200).send(user);
-  } catch (err) {
-    res.status(500);
-    console.log(err);
-    next(err);
-  }
+  
 };
 
 const getUser = async (req, res, next) => {
-  // We need to add JWT validations
 
-<<<<<<< HEAD
-  try {
-    const user = await User.findById(req.params.id);
-    console.log(user);
-    if (!user) {
-      return res.status(404).send("user not found");
-=======
     try {
 
         const user = await User.findById(req.params.id);
@@ -121,19 +97,10 @@ const getUser = async (req, res, next) => {
         res.status(500)
         console.log(err);
         next(err)
->>>>>>> 6c77fb23e69fd2351dafcebbdac947bb5254fd06
+
     }
 
-    res.status(200).send({
-      fullName: user.fullName,
-      userName: user.userName,
-      email: user.email,
-    });
-  } catch (err) {
-    res.status(500);
-    console.log(err);
-    next(err);
-  }
 };
 
 module.exports = { updateUser, getUser, deleteUser };
+

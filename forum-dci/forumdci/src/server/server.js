@@ -3,13 +3,14 @@ const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const morgan = require("morgan");
-// const {signUpUser} = require("./controllers/userController");
-const userRouter = require("./routers/userRouter");
-const questionsRouter = require("./routers/questionsRouter");
-const adminRouter = require("./routers/adminRouter");
 const jwt = require("jsonwebtoken");
 const { body, validationResult } = require("express-validator");
 const cookieParser = require("cookie-parser");
+
+
+const adminRouter = require("./routers/adminRouter");
+const userRouter = require("./routers/userRouter");
+const questionsRouter = require("./routers/questionsRouter");
 
 dotenv.config();
 const app = express();
@@ -31,7 +32,6 @@ mongoose.connection.once("open", () => {
 
 //MIDDLEWARES
 
-// app.use(cors());
 
 app.use(cors());
 app.use(morgan("tiny"));
@@ -39,6 +39,7 @@ app.use(morgan("tiny"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+
 
 app.use("/admin", adminRouter);
 app.use("/users", userRouter);

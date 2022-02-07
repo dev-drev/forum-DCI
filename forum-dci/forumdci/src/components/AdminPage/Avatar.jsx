@@ -1,11 +1,21 @@
-import React, { useEffect, useState } from "react";
+
+import React, { useState, useEffect } from "react";
 import Dashboard from "./Dashboard";
 import EditProfForm from "./EditProfForm";
 import axios from "axios";
+import jwt from "jwt-decode";
 import AdminBtn from "./AdminBtn";
-//import getUser from "../../server/controllers/adminController";
+const Avatar = () => {
+  //const [userId, setUserId] = useState("");
 
-const Avatar = (props) => {
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token")
+  //     ? jwt(localStorage.getItem("token")).id
+  //     : "";
+  //   setUserId(token);
+  // }, []);
+
+
   async function deleteUser() {
     try {
       await axios
@@ -32,20 +42,7 @@ const Avatar = (props) => {
     };
     fetchData();
   }, []);
-  //****************************
-  // const fetchData = async () => {
-  //   const currentUser = JSON.parse(localStorage.getItem("user"));
-  //   const res = await fetch(
-  //     `http://localhost:5000/users/${currentUser.userId}`
-  //   );
-  //   const userData = await res.json();
-  //   setUser(userData);
-  // };
-  // // call the function
-  // fetchData();
-  // make sure to catch any error
-  // .catch(console.error);
-  // }, []);
+ 
 
   const startEditingHandler = () => {
     setIsEditing(true);
