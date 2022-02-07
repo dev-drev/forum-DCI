@@ -7,10 +7,10 @@ import Navbar from "../Navbar";
 export default function AdminPage() {
     const [isAuthenticated, setIsAuthenticated] = useState(localStorage.getItem("isAuthenticated"));
 
-    // if (!isAuthenticated) {
-    //     window.location = "/login";
-    //     return;
-    // }
+    if (!isAuthenticated) {
+        window.location = "/login";
+        return;
+    }
 
     return (
         <>
