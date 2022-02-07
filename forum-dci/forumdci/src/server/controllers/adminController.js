@@ -1,6 +1,8 @@
-const User = require('../models/User')
+const User = require('../models/User');
 const mongoose = require('mongoose');
 const jwt = require("jsonwebtoken");
+// const bcrypt = require('bcrypt');
+
 
 const updateUser = async (req, res, next) => {
 // We need to add JWT validations
@@ -13,14 +15,33 @@ const updateUser = async (req, res, next) => {
             password: req.body.editedUser.password
         })
 
-        if (!user) {
-            return res.status(404).send('user not found')
+
+        // to convert the req.body object into an array so we can loop through it.
+        const updates = Object.keys(req.body.editedUser)
+
+        try {
+            console.log('edit', req.body);
+
+            const user = await User.findById(req.body.id)
+
+            updates.forEach(update => user[update] = req.body[update])
+
+            await user.save()
+
+
+            if (!user) {
+                return res.status(404).send('user not found')
+            }
+
+            res.status(200).send(user)
+
+        } catch (err) {
+
+            res.status(500)
+            console.log(err);
+            next(err)
         }
-
-        res.status(200).send(user)
-
     } catch (err) {
-
         res.status(500)
         console.log(err);
         next(err)
@@ -39,11 +60,11 @@ const getUser = async (req, res, next) => {
 
 
     try {
-        
+
         const user = await User.findById(req.params.id);
         if (user.username !== authenticatedUser.username) {
             // erro
-           // not finished
+            // not finished
         }
 
         console.log(user);
@@ -63,6 +84,4 @@ const getUser = async (req, res, next) => {
         next(err)
     }
 }
-
-
 module.exports = {updateUser, getUser}
