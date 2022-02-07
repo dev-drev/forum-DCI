@@ -54,7 +54,7 @@ export default function Login() {
       password: enteredLoginPassword,
     };
 
-<<<<<<< HEAD
+
     // LOGIN HANDLER
 
     const loginSubmitHandler = async (e) => {
@@ -93,7 +93,7 @@ export default function Login() {
         console.log(error);
       }
     };
-=======
+
     try {
       const res = await fetch("http://localhost:5000/users/login", {
         method: "POST",
@@ -121,7 +121,7 @@ export default function Login() {
     } catch (error) {
       console.log(error);
     }
->>>>>>> cb8e21a6e1959bd2a9189af313ddd3d530d29762
+
   };
   // SIGN UP HANDLER
   const signupSubmitHandler = async (e) => {
