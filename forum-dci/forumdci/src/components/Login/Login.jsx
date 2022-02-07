@@ -128,7 +128,7 @@ export default function Login() {
 
   return (
     <>
-      {/*<Navbar />*/}
+      <Navbar />
 
       <div className="lg:flex">
         {/* login form */}

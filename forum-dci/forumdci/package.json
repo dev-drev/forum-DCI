@@ -16,6 +16,7 @@
     "ckeditor5": "^31.1.0",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
+    "crypto": "^1.0.1",
     "daisyui": "^1.24.2",
     "dotenv": "^14.3.2",
     "express": "^4.17.2",

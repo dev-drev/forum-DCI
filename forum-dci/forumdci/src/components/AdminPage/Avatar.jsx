@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import Dashboard from "./Dashboard";
 import EditProfForm from "./EditProfForm";
 import AdminBtn from "./AdminBtn";
-import getUser from "../../server/controllers/adminController"
+// import getUser from "../../server/controllers/adminController"
 
 const Avatar = (props) => {
     //state

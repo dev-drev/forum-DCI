@@ -4,11 +4,11 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const cookie = require("cookie");
 const {validateToken} = require("../JWT");
+const async = require("async");
 
 /*add a new user*/
 async function signUpUser(req, res, next) {
     console.log("Hello New User!");
-    // console.log(req.body)
     /*handle the error*/
     const {fullName, userName, email, password} = req.body;
 
@@ -33,6 +33,7 @@ async function signUpUser(req, res, next) {
                 errors: [{"msg": "This userName is already registered, please choose a different userName!"}]
             })
         return;
+
     }
 
     // ***************************************************
@@ -137,6 +138,12 @@ async function loginUser(req, res, next) {
     } catch (error) {
         next(error);
     }
+}
+
+
+/*Check if exists a user to redirect to admin page*/
+async function isUserExist(user) {
+
 }
 
 /*Get the user*/
