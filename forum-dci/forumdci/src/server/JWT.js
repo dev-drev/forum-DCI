@@ -1,5 +1,6 @@
 const { sign, verify } = require("jsonwebtoken");
 const jwt = require("jsonwebtoken");
+const cookie = require("cookie");
 
 // this allows to create a token and set the token to the user browser
 // The token is completely encrypted
@@ -35,9 +36,9 @@ const jwt = require("jsonwebtoken");
     } catch (error) {
         return res.status(400).json({error: error});
     }*/
-
+//*********************************************
 const validateToken = async (req, res, next) => {
-  const token = req.cookies.access_token;
+  const token = req.cookie.access_token;
   console.log("test", token);
 
   if (!token) {
@@ -51,4 +52,4 @@ const validateToken = async (req, res, next) => {
   }
 };
 
-module.exports = { validateToken };
+module.exports = validateToken;

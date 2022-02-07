@@ -14,6 +14,7 @@
     "axios": "^0.24.0",
     "bcrypt": "^5.0.1",
     "ckeditor5": "^31.1.0",
+    "cookie": "^0.4.2",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "daisyui": "^1.24.2",

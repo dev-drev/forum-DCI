@@ -1,21 +1,18 @@
 const express = require("express");
 const router = express.Router();
-const { createToken, validateToken } = require("../JWT");
+//const { createToken, validateToken } = require("../JWT");
+//const auth = require("../JWT");
 
-const {
-  updateUser,
-  getUser,
-  deleteUser,
-} = require("../controllers/adminController");
+const { getUser, deleteUser } = require("../controllers/adminController");
 
 // const { updateUser,getUser} = require('../controllers/adminController');
-const { verifyAuthToken } = require("../middleware/helper");
+//const { verifyAuthToken } = require("../middleware/helper");
 
 // IMPORT CONTROLLERS
 
 // ROUTES
 
-router.delete("/delete", deleteUser);
+router.route("/delete").delete(deleteUser);
 
 // router.route("/edit").patch(validateToken, updateUser);
 

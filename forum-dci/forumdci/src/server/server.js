@@ -7,7 +7,6 @@ const morgan = require("morgan");
 const userRouter = require("./routers/userRouter");
 const questionsRouter = require("./routers/questionsRouter");
 const adminRouter = require("./routers/adminRouter");
-
 const jwt = require("jsonwebtoken");
 const { body, validationResult } = require("express-validator");
 const cookieParser = require("cookie-parser");

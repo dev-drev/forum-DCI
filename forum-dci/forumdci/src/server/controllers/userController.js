@@ -2,7 +2,6 @@ const User = require("../models/User");
 const { validationResult } = require("express-validator");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const cookie = require("cookie");
 const { validateToken } = require("../JWT");
 
 /*add a new user*/
@@ -20,17 +19,20 @@ async function signUpUser(req, res, next) {
   // Check if the user email and username are already taken
   const alreadyRegisteredEmail = await User.findOne({ email });
   if (alreadyRegisteredEmail) {
-    res
-      .status(404)
-      .send({ message: "This e-mail address is already registered" });
+    res.status(404).send({
+      errors: [{ msg: "This e-mail address is already registered" }],
+    });
     return;
   }
 
   const alreadyRegisteredUser = await User.findOne({ userName });
   if (alreadyRegisteredUser) {
     res.status(404).send({
-      message:
-        "This userName is already registered, please choose a different userName!",
+      errors: [
+        {
+          msg: "This userName is already registered, please choose a different userName!",
+        },
+      ],
     });
     return;
   }
@@ -43,6 +45,7 @@ async function signUpUser(req, res, next) {
     if (!err.isEmpty()) {
       return res.status(400).send(err);
     }
+
     const user = await User.create({
       fullName,
       userName,
@@ -70,11 +73,10 @@ async function signUpUser(req, res, next) {
       .cookie("access_token", accessToken, {
         httpOnly: true,
         domain: "localhost",
-        sameSite: "Strict",
         secure: process.env.NODE_ENV === "production",
       })
-      .status(401)
-      .json({ message: "user registered and token generated." });
+      .status(200)
+      .json({ username: user.userName, id: user._id });
   } catch (err) {
     console.log(err);
     next(err);
@@ -103,6 +105,7 @@ async function loginUser(req, res, next) {
 
   if (!user) {
     res.status(404).send({ message: "No user found" });
+    return;
   }
 
   try {
@@ -121,13 +124,15 @@ async function loginUser(req, res, next) {
       return res
         .cookie("access_token", accessToken, {
           httpOnly: true,
-          //maxage: 30000,
+          // max-age: 30000,
           domain: "localhost",
-          sameSite: "Strict",
           secure: process.env.NODE_ENV === "production",
         })
         .status(200)
-        .json({ message: "user registered and token generated." });
+        .json({
+          username: user.userName,
+          id: user._id,
+        });
     } else {
       res.status(400).send("Not Allowed");
     }

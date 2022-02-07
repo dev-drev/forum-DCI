@@ -23,20 +23,29 @@ const Avatar = (props) => {
   const [user, setUser] = useState({});
 
   //fetch user from database
-  // useEffect(async () => {
+  useEffect(() => {
+    const fetchData = async () => {
+      const currentUser = JSON.parse(localStorage.getItem("user"));
+      const res = await fetch(`http://localhost:5000/users/${currentUser.id}`);
+      const userData = await res.json();
+      setUser(userData);
+    };
+    fetchData();
+  }, []);
+  //****************************
+  // const fetchData = async () => {
   //   const currentUser = JSON.parse(localStorage.getItem("user"));
-  //   const res = await fetch(`http://localhost:5000/users/${currentUser.id}`);
+  //   const res = await fetch(
+  //     `http://localhost:5000/users/${currentUser.userId}`
+  //   );
   //   const userData = await res.json();
   //   setUser(userData);
+  // };
+  // // call the function
+  // fetchData();
+  // make sure to catch any error
+  // .catch(console.error);
   // }, []);
-  useEffect(async () => {
-    const currentUser = JSON.parse(localStorage.getItem("user"));
-    const res = await fetch(
-      `http://localhost:5000/users/${currentUser.userId}`
-    );
-    const userData = await res.json();
-    setUser(userData);
-  }, []);
 
   const startEditingHandler = () => {
     setIsEditing(true);

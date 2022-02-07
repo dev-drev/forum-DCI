@@ -1,7 +1,8 @@
 const User = require("../models/User");
-const mongoose = require("mongoose");
-const { sign, verify } = require("jsonwebtoken");
+//const mongoose = require("mongoose");
 
+//const { sign, verify } = require("jsonwebtoken");
+const { validateToken } = require("../JWT");
 const jwt = require("jsonwebtoken");
 //comment
 
@@ -9,8 +10,8 @@ async function deleteUser(req, res, next) {
   //to extract token out of cookie
 
   try {
-    const token = req.cookies["access-token"];
-    console.log("hello", token);
+    const token = req.cookie["access_token"];
+    // console.log("hello", token);
     //extract payload of token
     const token_payload = jwt.verify(token, "avazsecrettoken1010");
     console.log(token_payload);
