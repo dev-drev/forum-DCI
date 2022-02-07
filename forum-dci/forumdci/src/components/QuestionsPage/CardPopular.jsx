@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-function CardPopular({ width, glass }) {
+function CardPopular({ width, glass, title, question, id, deleteQuestion }) {
+  const [isChecked, setIsChecked] = useState(false);
+
   return (
     <div>
       <section
@@ -15,13 +17,31 @@ function CardPopular({ width, glass }) {
           </div>
         </div>
         {/* HEADING */}
-        <h5 className="text-sm text-zinc-100 font-semibold">
-          Display an inherited Field in Django 4.0 with ModelAdmin
+        <h5 className="text-md text-zinc-100 font-semibold">
+          {title}
+          {/* Display an inherited Field in Django 4.0 with ModelAdmin */}
         </h5>
         {/* ACTIVE */}
-        <p className="text-secondary hidden text-sm sm:block font-semibold mt-2.5">
-          Active
+        <p className="text-white hidden text-sm sm:block font-base mt-2.5">
+          {question ? question.substring(0, 150) + "....more" : question}
         </p>
+        <p>{id}</p>
+        {/* <button
+          onClick={() => {
+            isChecked ? deleteQuestion(id) : deleteQuestion("");
+          }}
+          className="text-secondary hidden text-sm sm:block font-semibold mt-2.5"
+        >
+          Delete
+        </button> */}
+        {/*         
+        <input
+          type="checkbox"
+          value={isChecked}
+          onChange={(e) => setIsChecked(!isChecked)}
+        />
+
+        {isChecked ? <div> selected </div> : <div>not selected</div>} */}
 
         {/* ICONS LIKES+ ANSWERS */}
 
