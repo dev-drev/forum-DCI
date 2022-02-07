@@ -7,7 +7,7 @@ function PopularPosts() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    axios.get("https://localhost:5000/questions").then((res) => {
+    axios.get("http://localhost:5000/questions").then((res) => {
       setPosts(res.data);
       console.log(res.data);
     });

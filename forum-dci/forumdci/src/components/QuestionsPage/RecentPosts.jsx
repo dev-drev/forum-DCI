@@ -5,18 +5,12 @@ const RecentPosts = () => {
   const [recentPosts, setRecentPosts] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // useEffect(() => {
-  //   const fetchPosts = async () => {
-  //     setLoading(true);
-  //     const res = await axios.get("https://jsonplaceholder.typicode.com/posts");
-  //     setRecentPosts(res.data);
-  //     setLoading(false);
-  //   };
-
-  //   fetchPosts();
-  // });
-
-  // console.log(recentPosts);
+  useEffect(() => {
+    axios.get("http://localhost:5000/questions").then((res) => {
+      setRecentPosts(res.data);
+      console.log(res.data);
+    });
+  }, []);
 
   return (
     <div>
@@ -46,11 +40,15 @@ const RecentPosts = () => {
       </div>
 
       <div className="  flex-wrap justify-between  w-12/12 sm:w-11/12">
+        {recentPosts.map((id) => {
+          return <CardPopular glass="glass" />;
+        })}
+
+        {/* <CardPopular glass="glass" />
         <CardPopular glass="glass" />
-        <CardPopular glass="glass" />
-        <CardPopular glass="glass" />
-        <CardPopular glass="glass" />
+        <CardPopular glass="glass" /> */}
       </div>
+
       <div className="w-full justify-end pt-4  flex w-12/12 sm:w-11/12 pr-4">
         <button className="btn pr-0 text-white btn-link">See More</button>
       </div>

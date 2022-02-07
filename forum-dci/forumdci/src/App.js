@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "./components/Navbar.jsx";
 import AdminPage from "./components/AdminPage/AdminPage.jsx";
-import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import QuestionsPage from "./components/QuestionsPage/QuestionsPage.jsx";
 import SinglePostPage from "./components/QuestionPage/SinglePostPage.jsx";
 import AboutPage from "./components/AboutPage/AboutPage";
@@ -15,7 +15,7 @@ import Footer from "./components/Footer.jsx";
 function App() {
   return (
     <Router>
-      <Navbar/>
+      <Navbar />
       <Routes>
         <Route path="/about" element={<AboutPage />} />
         <Route path="/admin" element={<AdminPage />} />
@@ -25,6 +25,7 @@ function App() {
         <Route path="/community" element={<Community />} />
         <Route path="/ask" element={<Ask />} />
         <Route path="/login" element={<Login />} />
+        {/* <Route path={`/questions/${id}`}  /> */}
       </Routes>
       <Footer />
     </Router>
