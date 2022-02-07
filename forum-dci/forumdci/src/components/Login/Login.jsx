@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-
-import LoginBtn from "./LoginBtn";
-import jwt from "jwt-decode";
-import Dashboard from "../AdminPage/Dashboard.jsx";
-import Navbar from "../Navbar";
 import { useNavigate } from "react-router-dom";
+import LoginBtn from "./LoginBtn";
+
+// import jwt from "jwt-decode";
+// import Dashboard from "../AdminPage/Dashboard.jsx";
+// import Navbar from "../Navbar";
 
 export default function Login() {
   const [enteredLoginUsername, setEnteredLoginUsername] = useState("");
@@ -54,46 +54,32 @@ export default function Login() {
       password: enteredLoginPassword,
     };
 
-    // LOGIN HANDLER
+    try {
+      const res = await fetch("http://localhost:5000/users/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(loginData),
+      });
+      if (res.status === 200) {
+        setEnteredLoginUsername("");
+        setEnteredLoginPassword("");
+        const data = await res.json();
+        console.log(data);
 
-    const loginSubmitHandler = async (e) => {
-        e.preventDefault();
+        localStorage.setItem("isAuthenticated", "true");
+        localStorage.setItem("user", JSON.stringify(data));
+        // console.log(jwt(data.token));
 
-        const loginData = {
-            userName: enteredLoginUsername,
-            password: enteredLoginPassword,
-        };
-
-        try {
-            const res = await fetch("http://localhost:5000/users/login", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(loginData),
-            });
-            if (res.status === 200) {
-                setEnteredLoginUsername("");
-                setEnteredLoginPassword("");
-                const data = await res.json();
-                console.log(data);
-
-
-                localStorage.setItem("isAuthenticated", "true");
-                localStorage.setItem("user", JSON.stringify(data.user));
-                // console.log(jwt(data.token));
-
-
-                window.location = "/admin";
-                // console.log(jwt(data.token));
-                // alert("hello ");
-
-            } else {
-              alert("error")
-            }
-        } catch (error) {
-            console.log(error);
-        }
+        window.location = "/admin";
+        // console.log(jwt(data.token));
+        // alert("hello ");
+      } else {
+        alert("error");
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
   // SIGN UP HANDLER
@@ -116,7 +102,7 @@ export default function Login() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(registeredData),
-        credentials: "include",
+        //credentials: "include",
       });
 
       console.log(res);
@@ -125,17 +111,17 @@ export default function Login() {
       const data = await res.json();
       console.log(data);
 
-      // if (res.status !== 200) {
-      //   let errors = data.errors.map((e) => e.msg);
-      //   setErrorMessages(errors);
-      //   return;
-      // }
+      if (res.status !== 200) {
+        let errors = data.errors.map((e) => e.msg);
+        setErrorMessages(errors);
+        return;
+      }
 
       localStorage.setItem("isAuthenticated", "true");
-      localStorage.setItem("user", JSON.stringify(data.user));
+      localStorage.setItem("user", JSON.stringify(data));
       window.location = "/admin";
-    } catch (e) {
-      console.log(e);
+    } catch (err) {
+      console.log(err);
       alert("Try again!");
     }
   };
