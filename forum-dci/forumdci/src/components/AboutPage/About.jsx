@@ -2,7 +2,7 @@ import React from "react";
 
 const About = () => {
   return (
-    <div>
+    <div className="bg-white">
       <div className=" min-h-screen p-10">
         <div className="grid md:grid-cols-3 gap-y-6 justify-center items-center">
           <div className=" md:col-span-3 md:row-start-1 lg:col-span-2">
@@ -24,7 +24,7 @@ const About = () => {
             </p>
           </div>
 
-          <div className="bg-white md:col-span-3 lg:col-span-1">
+          <div className=" md:col-span-3 lg:col-span-1">
             <h2 className="text-2xl font-bold">Features</h2>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi
@@ -108,9 +108,7 @@ const About = () => {
                   src="/assets/images/alcione.jpeg"
                   alt="profile Alcione"
                 />
-                <h2 className="w-40 text-center font-bold">
-                  ALCIONE DE FRANCA RIBEIRO
-                </h2>
+                <h2 className="w-40 text-center font-bold">ALCIONE</h2>
               </div>
 
               <div className="flex flex-col flex-wrap gap-5">
@@ -119,7 +117,7 @@ const About = () => {
                   src="/assets/images/andrea.jpeg"
                   alt="profile Andrea"
                 />
-                <h2 className="w-40 text-center font-bold">ANDREA DAVIDE</h2>
+                <h2 className="w-40 text-center font-bold">ANDREA </h2>
               </div>
 
               <div className="flex flex-col flex-wrap gap-5">
@@ -128,9 +126,7 @@ const About = () => {
                   src="/assets/images/zhino.jpeg"
                   alt="profile Zhino"
                 />
-                <h2 className="w-40 text-center font-bold">
-                  ZHINO MAHMOUDPOUR
-                </h2>
+                <h2 className="w-40 text-center font-bold">ZHINO</h2>
               </div>
 
               <div className="flex flex-col flex-wrap gap-5">
@@ -139,7 +135,7 @@ const About = () => {
                   src="/assets/images/viviana.jpeg"
                   alt="profile Viviana"
                 />
-                <h2 className="w-40 text-center font-bold">VIVIANA CASTALDO</h2>
+                <h2 className="w-40 text-center font-bold">VIVIANA </h2>
               </div>
             </div>
           </div>
