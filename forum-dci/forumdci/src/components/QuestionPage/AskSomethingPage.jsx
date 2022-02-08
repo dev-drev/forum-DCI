@@ -19,7 +19,7 @@ function AskSomethingPage() {
     console.log(question);
 
     try {
-      const res = await fetch("http://localhost:5000/ask", {
+      const res = await fetch("http://localhost:5000/questions/ask", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -37,6 +37,7 @@ function AskSomethingPage() {
           question: "",
         });
       }
+      console.log(question);
     } catch (e) {
       alert("Try again!");
     }
@@ -93,7 +94,9 @@ function AskSomethingPage() {
                   {/*<TextEditor/>*/}
                 </div>
                 <div>
-                  <input type="submit" />
+                  <button type="submit" onClick={handleSubmit}>
+                    Click
+                  </button>
                 </div>
               </div>
             </div>

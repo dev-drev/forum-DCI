@@ -8,7 +8,9 @@ function PopularPosts() {
 
   useEffect(() => {
     axios.get("http://localhost:5000/questions").then((res) => {
-      setPosts(res.data);
+      if (res.data.likes > 20) {
+        setPosts(res.data);
+      }
       console.log(res.data);
     });
   }, []);

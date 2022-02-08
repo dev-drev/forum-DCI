@@ -3,35 +3,52 @@ import TextEditor from "./TextEditor.jsx";
 import ComponentButton from "./ComponentButton";
 import SinglePostPage2 from "./SinglePostPage2";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 function SinglePostPage({ id }) {
+  const params = useParams();
+
+  console.log(params.id);
+
   const [showAnswerArea, setShowAnswerArea] = useState(false);
   const [deleteID, setDeleteID] = useState("");
   const switchMode = () => {
     setShowAnswerArea((showMe) => !showMe);
   };
 
-  async function deleteQuestion() {
+  const [singlePost, setSinglePost] = useState({});
+
+  useEffect(async () => {
     try {
-      const deleteQuestion = axios.delete(
-        `http://localhost:500/questions/${id}`
+      const data = await axios.get(
+        `http://localhost:5000/questions/${params.id}`
       );
-      console.log(deleteQuestion);
-    } catch (error) {
-      console.log(error);
+      console.log(data.data);
+      setSinglePost(data.data);
+    } catch (e) {
+      console.log(e);
     }
-  }
+  }, []);
+
+  // async function deleteQuestion() {
+  //   try {
+  //     const deleteQuestion = axios.delete(
+  //       `http://localhost:500/questions/${id}`
+  //     );
+  //     console.log(deleteQuestion);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
 
   return (
     <div className="bg-gray-500">
       <div className="container mx-auto min-h-screen bg-gray-200">
         <div className="bg-indigo-50 ">
-          <h4 className="font-bold px-6 py-6 ">
-            How to get random number in solana on-chain program?
-          </h4>
+          <h4 className="font-bold px-6 py-6 ">{singlePost.title}</h4>
 
           <ul className=" flex  px-6 py-4 ">
-            <li className="mr-4">asked today</li>
+            <li className="mr-4">{singlePost.date.substring(0, 10)}</li>
             <li className="mr-4">active today</li>
             <li className="mr-4">viewed 5 times</li>
           </ul>
@@ -39,45 +56,20 @@ function SinglePostPage({ id }) {
         <div>
           <h4 className="font-bold px-6 py-6">Description</h4>
           <p className="px-6 py-6">
-            <span>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci
-              cum eaque est explicabo magnam maxime minus provident. Amet
-              asperiores, quo? Aliquam aperiam dolorum eveniet explicabo odit
-              optio quod sed voluptatem.
-            </span>
-            <span>
-              Accusamus deserunt enim iure laborum nihil pariatur repellat vel?
-              Accusantium alias fugiat illum, incidunt nemo perferendis quam
-              sit. Aliquam architecto aspernatur commodi cupiditate dolore
-              excepturi facilis quibusdam reiciendis rem voluptates.
-            </span>
-            <span>
-              Alias, eaque in laboriosam nisi possimus quis repellat veniam vero
-              voluptate voluptatibus. Accusantium amet assumenda dignissimos eos
-              harum maiores odit quam quas, repellendus repudiandae sint,
-              suscipit, tempore veritatis. Neque, veritatis?
-            </span>
-            <span>
-              A distinctio eos est impedit iusto molestias, neque possimus
-              praesentium ut, vel veniam, voluptatum. Consectetur corporis illum
-              nam non quas, reiciendis sit soluta veniam. Explicabo mollitia
-              quia quos. Ad, modi?
-            </span>
-            <span>
-              Ad animi cumque distinctio doloribus esse expedita fuga in maiores
-              odio reiciendis rerum saepe, soluta sunt tempora totam vero
-              voluptatum! Assumenda delectus in libero minima molestias
-              reprehenderit vel velit vitae!
-            </span>
+            <span>{singlePost.question}</span>
           </p>
         </div>
 
         <ul className=" flex  px-6 py-4 ">
-          <li className="mr-4 px-2  bg-gray-500 rounded text-white">
-            javascript
-          </li>
-          <li className="mr-4 px-2 bg-gray-500 rounded text-white">promise</li>
-          <li className="mr-4 px-2 bg-gray-500 rounded text-white">program</li>
+          {singlePost.tags
+            ? singlePost.tags.map((tag) => {
+                return (
+                  <li className="mr-4 px-2  bg-gray-500 rounded text-white">
+                    {tag}
+                  </li>
+                );
+              })
+            : ""}
         </ul>
         <div className="text-center ">
           <ComponentButton
@@ -90,7 +82,7 @@ function SinglePostPage({ id }) {
           {showAnswerArea ? <TextEditor /> : ""}
         </div>
         <div className="ml-10 mr-10 mt-6 text-lg font-bold flex justify-between">
-          <p>15 replies</p>
+          <p>{singlePost.answers.length}</p>
           <p>Follow replies</p>
         </div>
         <div>

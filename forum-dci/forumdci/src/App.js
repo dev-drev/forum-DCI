@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+
 import Navbar from "./components/Navbar.jsx";
 import AdminPage from "./components/AdminPage/AdminPage.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -11,6 +12,7 @@ import Ask from "./components/QuestionPage/AskSomethingPage";
 import Login from "./components/Login/Login";
 
 import Footer from "./components/Footer.jsx";
+import axios from "axios";
 
 function App() {
   return (
@@ -20,12 +22,13 @@ function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/questions" element={<QuestionsPage />} />
-        <Route path="/answer" element={<SinglePostPage />} />
+        {/* <Route path="/answer" element={<SinglePostPage />} /> */}
         <Route path="/tags" element={<TagsBody />} />
         <Route path="/community" element={<Community />} />
         <Route path="/ask" element={<Ask />} />
         <Route path="/login" element={<Login />} />
-        {/* <Route path={`/questions/${id}`}  /> */}
+
+        <Route path={`/questions/:id`} element={<SinglePostPage />} />
       </Routes>
       <Footer />
     </Router>
