@@ -4,7 +4,7 @@ const QuestionSchema = new mongoose.Schema({
   title: { type: String, required: true },
   question: { type: String, required: true },
   language: { type: String, required: true },
-  tags: { type: String, required: true },
+  tags: [{ type: String, required: true }],
   date: { type: Date },
   likes: { type: Number, default: 0 },
   answers: [

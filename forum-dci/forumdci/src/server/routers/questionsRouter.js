@@ -7,13 +7,14 @@ const {
   getQuestions,
   getSingleQuestion,
   deleteQuestion,
+  getQuestionById,
 } = require("../controllers/questionsController");
 
 // ROUTES
 router.route("/ask").post(addQuestion);
 router.route("/").get(getQuestions);
 router.route("/:searchQuestion").post(getSingleQuestion);
-router.route("/:id").delete(deleteQuestion);
+router.route("/:id").delete(deleteQuestion).get(getQuestionById);
 
 // router.route(":qid").get(getQuestion).post(askQuestion).delete(deleteQuestion);
 
