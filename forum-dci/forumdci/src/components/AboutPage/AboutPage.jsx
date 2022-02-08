@@ -10,7 +10,7 @@ const AboutPage = () => {
             <Navbar/>
             <SubNavbar/>
             <About/>
-            <Footer/>
+            {/* <Footer/> */}
         </div>
     );
 };

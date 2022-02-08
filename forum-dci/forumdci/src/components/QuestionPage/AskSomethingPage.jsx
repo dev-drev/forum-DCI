@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import TextEditor from "./TextEditor";
-
 function AskSomethingPage() {
   const [question, setQuestion] = useState({
     title: "",
@@ -8,16 +7,13 @@ function AskSomethingPage() {
     tags: "",
     question: "",
   });
-
   const handleChange = (event) => {
     setQuestion({ ...question, [event.target.name]: event.target.value });
   };
-
   const handleSubmit = async (event) => {
     // prevents the submit button from refreshing the page
     event.preventDefault();
     console.log(question);
-
     try {
       const res = await fetch("http://localhost:5000/questions/ask", {
         method: "POST",
@@ -27,7 +23,6 @@ function AskSomethingPage() {
         },
         body: JSON.stringify(question),
       });
-
       if (res.status === 200) {
         alert("Your question has been successfully sent to the database!");
         setQuestion({
@@ -42,7 +37,6 @@ function AskSomethingPage() {
       alert("Try again!");
     }
   };
-
   return (
     <div className="bg-gray-500">
       <div className="container mx-auto min-h-screen bg-gray-200">
@@ -64,7 +58,6 @@ function AskSomethingPage() {
                     className=" outline-none py-1 px-2 text-md border-2 rounded-md  w-full"
                   />
                 </div>
-
                 <div className="md:flex">
                   <div className="mb-4">
                     <input
@@ -106,5 +99,4 @@ function AskSomethingPage() {
     </div>
   );
 }
-
 export default AskSomethingPage;
