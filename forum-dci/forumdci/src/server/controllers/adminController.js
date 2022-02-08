@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 //const { sign, verify } = require("jsonwebtoken");
 const { validateToken } = require("../JWT");
 const jwt = require("jsonwebtoken");
+const multer = require("multer");
 //comment
 
 // ---------delete a User------------------------
@@ -102,5 +103,55 @@ const getUser = async (req, res, next) => {
 
 };
 
-module.exports = { updateUser, getUser, deleteUser };
+//multer upload picture
+
+
+const multerConfig = multer.diskStorage({
+    // destination: (req, file, cb) => {
+    //     cb(null, 'userPics');
+    // },
+    filename: (req, file, cb) => {
+        const extension = file.mimetype.split("/")[1]
+        cb(null, `image-${Date.now()}.${extension}`)
+    }
+});
+
+const isPic = (req, file, cb) => {
+    if(file.mimetype.startsWith('image')) {
+        cb(null, true)
+    } else {
+        cb(new Error('Please upload an image.'))
+    }
+}
+
+const upload = multer({
+    limits: {
+    fileSize: 1000000
+    },
+    storage: multerConfig,
+    fileFilter: isPic
+})
+
+
+//middleware
+
+const uploadPictureMiddleware = upload.single('photo');
+
+
+const uploadPicture = async (req, res, next) => {
+
+    try {
+        res.status(200).send("success")
+        console.log(req.file);
+
+       } catch (err) {
+        res.status(500)
+        console.log(err);
+        next(err)
+
+    }
+
+};
+
+module.exports = { updateUser, getUser, deleteUser, uploadPicture, uploadPictureMiddleware };
 

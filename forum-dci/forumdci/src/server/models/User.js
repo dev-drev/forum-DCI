@@ -11,12 +11,18 @@ const UserSchema = new mongoose.Schema({
     unique: true,
     lowercase: true,
   },
+
   password: {
     type: String,
     required: true,
     trim: true,
     minlength: 8,
   },
+
+  avatar: {
+    //to store the buffer with our binary image data in the db
+    type: String,
+  }
   //   questions: {
   //     type: mongoose.Schema.Types.ObjectId,
   //     ref: "Question",
