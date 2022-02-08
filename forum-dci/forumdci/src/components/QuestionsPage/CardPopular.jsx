@@ -26,14 +26,14 @@ function CardPopular({ width, glass, title, question, id, deleteQuestion }) {
           {question ? question.substring(0, 150) + "....more" : question}
         </p>
         <p>{id}</p>
-        {/* <button
+        <button
           onClick={() => {
             isChecked ? deleteQuestion(id) : deleteQuestion("");
           }}
           className="text-secondary hidden text-sm sm:block font-semibold mt-2.5"
         >
           Delete
-        </button> */}
+        </button>
         {/*         
         <input
           type="checkbox"

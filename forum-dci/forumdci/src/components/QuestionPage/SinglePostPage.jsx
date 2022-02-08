@@ -48,7 +48,9 @@ function SinglePostPage({ id }) {
           <h4 className="font-bold px-6 py-6 ">{singlePost.title}</h4>
 
           <ul className=" flex  px-6 py-4 ">
-            <li className="mr-4">{singlePost.date.substring(0, 10)}</li>
+            <li className="mr-4">
+              {singlePost.date ? singlePost.date.substring(0, 10) : Date.now()}
+            </li>
             <li className="mr-4">active today</li>
             <li className="mr-4">viewed 5 times</li>
           </ul>
@@ -82,7 +84,7 @@ function SinglePostPage({ id }) {
           {showAnswerArea ? <TextEditor /> : ""}
         </div>
         <div className="ml-10 mr-10 mt-6 text-lg font-bold flex justify-between">
-          <p>{singlePost.answers.length}</p>
+          <p>{singlePost.answers ? singlePost.answers.length : 0}</p>
           <p>Follow replies</p>
         </div>
         <div>
