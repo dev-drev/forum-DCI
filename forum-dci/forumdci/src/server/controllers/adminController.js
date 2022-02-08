@@ -84,6 +84,8 @@ const updateUser = async (req, res, next) => {
 
 const getUser = async (req, res, next) => {
     const token = req.cookies["access_token"];
+    console.log("wasasasas");
+    console.log(token);
     const authenticatedUser = jwt.verify(token, "avazsecrettoken1010");
 
     if (authenticatedUser) {

@@ -11,6 +11,17 @@ const Avatar = (props) => {
     const [isEditing, setIsEditing] = useState(false);
     const [user, setUser] = useState({});
 
+    //fetch user from database
+    useEffect(async () => {
+        const currentUser = await JSON.parse(localStorage.getItem("user"));
+        const res = await fetch(`http://localhost:5000/users/profile/${currentUser.id}`, {
+            credentials: "include"
+        });
+        const userData = await res.json();
+        console.log("aaaaaaaaaa");
+        console.log(userData)
+        setUser(userData);
+    }, [])
 
     async function deleteUser() {
         try {
@@ -24,15 +35,8 @@ const Avatar = (props) => {
         }
     }
 
-    //fetch user from database
-    useEffect(async () => {
-        const currentUser = JSON.parse(localStorage.getItem("user"));
-        const res = await fetch(`http://localhost:5000/users/${currentUser.id}`);
-        const userData = await res.json();
-        setUser(userData);
-    }, [])
 
-  const startEditingHandler = () => {
+    const startEditingHandler = () => {
     setIsEditing(true);
   };
 

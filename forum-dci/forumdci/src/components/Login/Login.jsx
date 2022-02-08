@@ -66,14 +66,14 @@ export default function Login() {
         if (res.status === 200) {
           setEnteredLoginUsername("");
           setEnteredLoginPassword("");
-          const data = await res.json();
-          console.log(data);
+          const user = await res.json();
+          console.log(user);
 
-          localStorage.setItem("isAuthenticated", "true");
-          localStorage.setItem("user", JSON.stringify(data.user));
+          await localStorage.setItem("user", JSON.stringify(user));
+          await localStorage.setItem("isAuthenticated", "true");
           // console.log(jwt(data.token));
 
-          window.location = "/admin";
+          navigate( "/admin");
           // console.log(jwt(data.token));
           // alert("hello ");
         } else {

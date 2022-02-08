@@ -12,7 +12,7 @@ const {getUser} = require("../controllers/adminController");
 /*The validation with express-validator from the signup is already working. Please don't need to change it =^.^=*/
 router.route("/signup").post(validateUsersSignup, signUpUser);
 router.route("/login").post(loginUser);
-router.route("/:id").get(getUser);
+router.route("/profile/:id").get(getUser);
 // router.route("/update").post(validateToken, updateUser);
 // router.route("/admin").post(validateToken, updateUser);
 

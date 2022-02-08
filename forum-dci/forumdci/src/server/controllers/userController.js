@@ -98,6 +98,7 @@ const encryptingPassword = (password) => {
 
 /*Login user*/
 async function loginUser(req, res, next) {
+  console.log("asasasasas")
   const { userName, password } = req.body;
 
   const user = await User.findOne({ userName });
@@ -125,7 +126,7 @@ async function loginUser(req, res, next) {
         .cookie("access_token", accessToken, {
           httpOnly: true,
           // max-age: 30000,
-          domain: "localhost",
+          // domain: "localhost",
           secure: process.env.NODE_ENV === "production",
         })
         .status(200)

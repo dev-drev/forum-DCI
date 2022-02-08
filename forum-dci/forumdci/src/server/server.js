@@ -11,6 +11,7 @@ const cookieParser = require("cookie-parser");
 const adminRouter = require("./routers/adminRouter");
 const userRouter = require("./routers/userRouter");
 const questionsRouter = require("./routers/questionsRouter");
+const domain = require("domain");
 
 dotenv.config();
 const app = express();
@@ -33,7 +34,10 @@ mongoose.connection.once("open", () => {
 //MIDDLEWARES
 
 
-app.use(cors());
+app.use(cors({
+  origin: ["http://localhost:5000", "http://localhost:3000"],
+  credentials: true,
+}));
 app.use(morgan("tiny"));
 
 app.use(express.json());
