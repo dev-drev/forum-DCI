@@ -27,7 +27,6 @@ function App() {
         <Route path="/community" element={<Community />} />
         <Route path="/ask" element={<Ask />} />
         <Route path="/login" element={<Login />} />
-
         <Route path={`/questions/:id`} element={<SinglePostPage />} />
       </Routes>
       <Footer />
