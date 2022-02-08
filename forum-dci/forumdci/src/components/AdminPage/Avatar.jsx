@@ -15,6 +15,9 @@ const Avatar = () => {
   //   setUserId(token);
   // }, []);
 
+  //state
+  const [isEditing, setIsEditing] = useState(false);
+  const [user, setUser] = useState({});
 
   async function deleteUser() {
     try {
@@ -28,9 +31,6 @@ const Avatar = () => {
     }
   }
 
-  //state
-  const [isEditing, setIsEditing] = useState(false);
-  const [user, setUser] = useState({});
 
   //fetch user from database
   useEffect(() => {
@@ -52,11 +52,14 @@ const Avatar = () => {
     setIsEditing(false);
   };
 
+
+
   return (
     <div className="min-h-screen p-10 lg:p-0 lg:grid lg:grid-cols-3 ">
       <section className="flex flex-col items-center lg:justify-center lg:col-span-1 lg:col-start-1 lg:col-end-1 lg:bg-secondary">
         <div className="card shadow-lg flex items-center w-3/4 glass p-2 lg:invisible">
           <div className="avatar placeholder bg-white rounded-full w-40 h-40 lg:visible"></div>
+         
           {user ? (
             <div className="flex  flex-col items-center m-5 font-bold lg:visible">
               <h1 className="m-3 text-black uppercase">{user.fullName}</h1>

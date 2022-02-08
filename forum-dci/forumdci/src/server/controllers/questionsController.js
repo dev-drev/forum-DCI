@@ -11,13 +11,14 @@ async function addQuestion(req, res, next) {
     if (!err.isEmpty()) {
       return res.status(400).send(err);
     }
-    const { title, language, tags, question } = req.body;
+    const { title, language, tags, question, likes } = req.body;
 
     const response = await Question.create({
       title,
       language,
       question,
       tags,
+      likes,
       date: new Date(),
     });
     res.status(200).send(response);
@@ -44,6 +45,18 @@ async function getSingleQuestion(req, res, next) {
     const questions = await Question.find({
       title: questionsReqExp,
     });
+    console.log(questions);
+    res.status(200).send(questions);
+  } catch (e) {
+    next(e);
+  }
+}
+
+async function getQuestionById(req, res, next) {
+  const { id } = req.params;
+
+  try {
+    const questions = await Question.findById(id);
     console.log(questions);
     res.status(200).send(questions);
   } catch (e) {
@@ -80,6 +93,7 @@ const deleteQuestion = async (req, res, next) => {
 module.exports = {
   addQuestion,
   getQuestions,
+  getQuestionById,
   getSingleQuestion,
   deleteQuestion,
   // deleteQuestion,

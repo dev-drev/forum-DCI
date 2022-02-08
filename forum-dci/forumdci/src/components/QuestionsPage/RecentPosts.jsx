@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import CardPopular from "./CardPopular";
+
 import axios from "axios";
+import { Link } from "react-router-dom";
 const RecentPosts = () => {
   const [recentPosts, setRecentPosts] = useState([]);
   const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     axios.get("http://localhost:5000/questions").then((res) => {
       setRecentPosts(res.data);
@@ -52,19 +55,18 @@ const RecentPosts = () => {
       <div className="  flex-wrap justify-between  w-12/12 sm:w-11/12">
         {recentPosts.map((post, id) => {
           return (
-            <CardPopular
-              deleteQuestion={deleteQuestion}
-              id={post._id}
-              glass="glass"
-              title={post.title}
-              question={post.question}
-            />
+            <Link to={`/questions/${post._id}`}>
+              <CardPopular
+                deleteQuestion={deleteQuestion}
+                key={id}
+                id={post._id}
+                glass="glass"
+                title={post.title}
+                question={post.question}
+              />
+            </Link>
           );
         })}
-
-        {/* <CardPopular glass="glass" />
-        <CardPopular glass="glass" />
-        <CardPopular glass="glass" /> */}
       </div>
 
       <div className="w-full justify-end pt-4  flex w-12/12 sm:w-11/12 pr-4">
