@@ -13,16 +13,19 @@ import Login from "./components/Login/Login";
 
 import Footer from "./components/Footer.jsx";
 import axios from "axios";
+import Home from "./components/HomePage/Home.jsx";
 
 function App() {
   return (
     <Router>
       <Navbar />
+
       <Routes>
+        <Route path="/" exact element={<Home />} />
+
         <Route path="/about" element={<AboutPage />} />
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/questions" element={<QuestionsPage />} />
-        {/* <Route path="/answer" element={<SinglePostPage />} /> */}
         <Route path="/tags" element={<TagsBody />} />
         <Route path="/community" element={<Community />} />
         <Route path="/ask" element={<Ask />} />

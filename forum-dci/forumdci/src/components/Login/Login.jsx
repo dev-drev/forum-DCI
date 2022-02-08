@@ -54,48 +54,33 @@ export default function Login() {
       password: enteredLoginPassword,
     };
 
+    try {
+      const res = await fetch("http://localhost:5000/users/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(loginData),
+      });
+      if (res.status === 200) {
+        setEnteredLoginUsername("");
+        setEnteredLoginPassword("");
+        const data = await res.json();
+        console.log(data);
 
+        localStorage.setItem("isAuthenticated", "true");
+        localStorage.setItem("user", JSON.stringify(data));
+        // console.log(jwt(data.token));
 
-    // LOGIN HANDLER
-
-    const loginSubmitHandler = async (e) => {
-      e.preventDefault();
-
-      const loginData = {
-        userName: enteredLoginUsername,
-        password: enteredLoginPassword,
-      };
-
-      try {
-        const res = await fetch("http://localhost:5000/users/login", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(loginData),
-        });
-        if (res.status === 200) {
-          setEnteredLoginUsername("");
-          setEnteredLoginPassword("");
-          const data = await res.json();
-          console.log(data);
-
-          localStorage.setItem("isAuthenticated", "true");
-          localStorage.setItem("user", JSON.stringify(data.user));
-          // console.log(jwt(data.token));
-
-          window.location = "/admin";
-          // console.log(jwt(data.token));
-          // alert("hello ");
-        } else {
-          alert("error");
-        }
-      } catch (error) {
-        console.log(error);
+        window.location = "/admin";
+        // console.log(jwt(data.token));
+        // alert("hello ");
+      } else {
+        alert("error");
       }
-    };
-
-
+    } catch (error) {
+      console.log(error);
+    }
   };
   // SIGN UP HANDLER
   const signupSubmitHandler = async (e) => {
