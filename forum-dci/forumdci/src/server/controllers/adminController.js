@@ -103,13 +103,12 @@ const getUser = async (req, res, next) => {
 
 };
 
-//multer upload picture
-
+//file upload / multer profile pic
 
 const multerConfig = multer.diskStorage({
-    // destination: (req, file, cb) => {
-    //     cb(null, 'userPics');
-    // },
+    destination: (req, file, cb) => {
+        cb(null, 'userPics');
+    },
     filename: (req, file, cb) => {
         const extension = file.mimetype.split("/")[1]
         cb(null, `image-${Date.now()}.${extension}`)
@@ -120,12 +119,12 @@ const isPic = (req, file, cb) => {
     if(file.mimetype.startsWith('image')) {
         cb(null, true)
     } else {
-        cb(new Error('Please upload an image.'))
+        cb(new Error('only image is allowed'))
     }
 }
 
 const upload = multer({
-    limits: {
+   limits: {
     fileSize: 1000000
     },
     storage: multerConfig,
@@ -137,14 +136,15 @@ const upload = multer({
 
 const uploadPictureMiddleware = upload.single('photo');
 
+// upload picture handler
 
 const uploadPicture = async (req, res, next) => {
 
-    try {
+     try {
         res.status(200).send("success")
         console.log(req.file);
-
-       } catch (err) {
+       
+    } catch (err) {
         res.status(500)
         console.log(err);
         next(err)
