@@ -17,7 +17,7 @@ import Home from "./components/HomePage/Home.jsx";
 
 function App() {
   return (
-    <Router>
+     <>
       <Navbar />
 
       <Routes>
@@ -33,7 +33,7 @@ function App() {
         <Route path={`/questions/:id`} element={<SinglePostPage />} />
       </Routes>
       <Footer />
-    </Router>
+    </>
   );
 }
 

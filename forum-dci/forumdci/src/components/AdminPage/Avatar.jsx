@@ -21,7 +21,7 @@ const Avatar = () => {
   const [file, setFile] = useState(null);
 
   const onInputChange = (e) => {
-    setFile(e.target.value)
+    setFile(e.target.files[0])
   };
 
   const submitHandler = (e) => {
@@ -84,7 +84,9 @@ const Avatar = () => {
     <div className="min-h-screen p-10 lg:p-0 lg:grid lg:grid-cols-3 ">
       <section className="flex flex-col items-center lg:justify-center lg:col-span-1 lg:col-start-1 lg:col-end-1 lg:bg-secondary">
         <div className="card shadow-lg flex items-center w-3/4 glass p-2 lg:invisible">
-          <div className="avatar placeholder bg-white rounded-full w-40 h-40 lg:visible"></div>
+          <div className="avatar placeholder bg-white rounded-full w-40 h-40 lg:visible">
+            <img src={file ? URL.createObjectURL(file) : null} alt="prof pic" />
+          </div>
           
           <form onSubmit={submitHandler}>
             <input type="file" name="photo" onChange={onInputChange}/>

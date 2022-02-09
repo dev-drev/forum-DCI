@@ -9,7 +9,7 @@ export default function AdminPage() {
     <>
       <Navbar />
       <div className="bg-secondary lg:bg-white">
-        <SubNavbar />
+        {/* <SubNavbar /> */}
         <Avatar />
       </div>
     </>

@@ -37,25 +37,25 @@ async function deleteUser(req, res, next) {
 const updateUser = async (req, res, next) => {
     
     // to convert the req.body object into an array so we can loop through it.
-    const updates = Object.keys(req.body.editedUser)
+    // const updates = Object.keys(req.body.editedUser)
 
     try {
         console.log('edit', req.body);
         
-        const user = await User.findById(req.body.id)
+        // const user = await User.findById(req.body.id)
 
-        updates.forEach(update => user[update] = req.body[update])
+        // updates.forEach(update => user[update] = req.body[update])
 
-        await user.save()
+        // await user.save()
 
        
-        // const user = await User.findByIdAndUpdate(req.body.id, {
-        //     fullName: req.body.editedUser.fullName,
-        //     userName: req.body.editedUser.userName,
-        //     email: req.body.editedUser.email,
-        //     password: req.body.editedUser.password
+        const user = await User.findByIdAndUpdate(req.body.id, {
+            fullName: req.body.editedUser.fullName,
+            userName: req.body.editedUser.userName,
+            email: req.body.editedUser.email,
+            password: req.body.editedUser.password
             
-        // })
+        })
 
     
         if (!user) {
@@ -142,7 +142,10 @@ const uploadPicture = async (req, res, next) => {
 
      try {
         res.status(200).send("success")
+        // console.log(req.file);
+        
         console.log(req.file);
+
        
     } catch (err) {
         res.status(500)

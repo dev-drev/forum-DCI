@@ -12,7 +12,7 @@ const verifyAuthToken = async (req, res, next) => {
   // verify token
 
   try {
-    const tokenData = await jwt.verify(token, process.env.JWTSECRET);
+    const tokenData = await jwt.verify(token, "avazsecrettoken1010");
     req.tokenData = tokenData;
     res.send({ tokenData });
   } catch (err) {

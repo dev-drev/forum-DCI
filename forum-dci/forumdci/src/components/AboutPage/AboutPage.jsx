@@ -8,7 +8,7 @@ const AboutPage = () => {
     return (
         <div>
             <Navbar/>
-            <SubNavbar/>
+            {/* <SubNavbar/> */}
             <About/>
             {/* <Footer/> */}
         </div>
