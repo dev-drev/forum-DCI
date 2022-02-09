@@ -11,7 +11,7 @@ function PopularPosts() {
       if (res.data.likes > 20) {
         setPosts(res.data);
       }
-      console.log(res.data);
+      console.log("DATA", res.data);
     });
   }, []);
 
