@@ -6,6 +6,8 @@ const {
   deleteUser,
   getUser,
   updateUser,
+  uploadPicture,
+  uploadPictureMiddleware
 } = require("../controllers/adminController");
 
 
@@ -14,5 +16,12 @@ const {
 router.route("/delete").delete(deleteUser);
 router.route("/edit").patch(updateUser);
 router.route("/getuser/:id").get(getUser);
+
+//upload picture route 
+// !add the auth before uploadPictureMiddleware later
+
+router.route("/upload").post(uploadPictureMiddleware, uploadPicture, (error, req, res, next) => {
+  res.status(400).send({error: error.message});
+})
 
 module.exports = router;
