@@ -1,39 +1,52 @@
 import React, { useState, useEffect } from "react";
 
-function CardPopular({ width, glass, title, question, id, deleteQuestion }) {
+function CardPopular({
+  style,
+  title,
+  question,
+  likes,
+  titleStyle,
+  titleCont,
+  tagsStyle,
+  id,
+  tags,
+  deleteQuestion,
+}) {
   const [isChecked, setIsChecked] = useState(false);
-
+  console.log(tags);
   return (
     <div>
-      <section
-        className={`${width} w-full ${glass} z-0 rounded-2xl px-6 py-2 my-2 sm:py-6 shadow-lg`}
-      >
+      <section className={style}>
         {/* FIRST BAR - DATE+ICON */}
-        <div className="flex items-center pb-4  justify-between">
-          <span className="text-gray-400 text-sm">2d ago</span>
+        <div className="flex items-center justify-between">
+          <span className="text-secondary pb-2 text-sm">2d ago</span>
           <div className=" flex items-center content-center text-secondary">
             <span className="text-sm italic">drevil dev</span>
             <div className="bg-gray-100 w-5 h-5 ml-2 rounded-full"></div>
           </div>
         </div>
         {/* HEADING */}
-        <h5 className="text-md text-zinc-100 font-semibold">
-          {title}
-          {/* Display an inherited Field in Django 4.0 with ModelAdmin */}
-        </h5>
+        <div className={`${titleCont}`}>
+          <h5 className={`${titleStyle} text-zinc-100  font-semibold`}>
+            {title}
+            {/* Display an inherited Field in Django 4.0 with ModelAdmin */}
+          </h5>
+        </div>
+
         {/* ACTIVE */}
-        <p className="text-white hidden text-sm sm:block font-base mt-2.5">
-          {question ? question.substring(0, 150) + "....more" : question}
+        <p className="text-white hidden leading-relaxed sm:pr-16 text-sm sm:block font-base mt-4 md:mt-2">
+          {question ? question.substring(0, 200) : question}
+          <strong className="md:hidden text-secondary">...MORE</strong>
         </p>
-        <p>{id}</p>
-        <button
+
+        {/* <button
           onClick={() => {
             isChecked ? deleteQuestion(id) : deleteQuestion("");
           }}
           className="text-secondary hidden text-sm sm:block font-semibold mt-2.5"
         >
           Delete
-        </button>
+        </button> */}
         {/*         
         <input
           type="checkbox"
@@ -45,9 +58,9 @@ function CardPopular({ width, glass, title, question, id, deleteQuestion }) {
 
         {/* ICONS LIKES+ ANSWERS */}
 
-        <div className="flex w-10 justify-between">
+        <div className="flex pt-6  sm:pt-4 items-center justify-between">
           {" "}
-          <div className="mt-3 flex items-center content-center text-white text-sm">
+          <div className="flex items-center content-center text-white text-sm">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-4 w-4"
@@ -63,9 +76,11 @@ function CardPopular({ width, glass, title, question, id, deleteQuestion }) {
               />
             </svg>
 
-            <span className="pl-1 text-sm text-white  font-semibold">145</span>
+            <span className="pl-1 text-sm text-white  font-semibold">
+              {likes}
+            </span>
           </div>
-          <div className="px-6 mt-3 flex items-center content-center text-white text-sm">
+          {/* <div className="px-6 flex items-center content-center text-white text-sm">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-4 w-4"
@@ -82,7 +97,8 @@ function CardPopular({ width, glass, title, question, id, deleteQuestion }) {
             </svg>
 
             <span className="pl-1 text-white text-sm font-semibold">39</span>
-          </div>
+          </div> */}
+          <div className={`${tagsStyle} `}>{tags}</div>
         </div>
       </section>
     </div>

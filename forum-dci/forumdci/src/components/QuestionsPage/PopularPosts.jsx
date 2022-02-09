@@ -2,18 +2,26 @@ import React, { useState, useEffect } from "react";
 import CardPopular from "./CardPopular";
 import messagesPic from "../../assets/messages.png";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function PopularPosts() {
+  const width = "";
   const [posts, setPosts] = useState([]);
+  const [searchedPosts, setSearchedPosts] = useState([]);
 
+  // GET ALL QUESTIONS
   useEffect(() => {
     axios.get("http://localhost:5000/questions").then((res) => {
-      if (res.data.likes > 20) {
+      {
         setPosts(res.data);
       }
-      console.log(res.data);
+      console.log("DATA", res.data);
     });
   }, []);
+
+  //************************************************************ */
+
+  // GET SINGLE QUESTION
 
   const [searchQuestion, setSearchQuestion] = useState("");
 
@@ -26,27 +34,91 @@ function PopularPosts() {
     e.preventDefault();
 
     try {
-      const data = await axios.post(
+      const { data } = await axios.post(
         `http://localhost:5000/questions/${searchQuestion}`
       );
       console.log(data);
+      setSearchedPosts(data);
     } catch (e) {
       console.log(e);
     }
   };
 
-  const width = "sm:w-56";
+  console.log("SEARCHED POSTS", searchedPosts);
+
+  // **********************************************************
+
   return (
     <div>
       <div className="flex justify-between">
-        <div className="flex-col mb-4 content-center pt-4 items-center">
+        <div className="flex-col mb-4 content-center pt-2 items-center">
+          {/* **************************** SEARCHED QUESTIONS SECTION ************************** */}
+
+          <div className="pb-8">
+            <div className="flex  justify-between w-[70vw]">
+              <div className="relative ">
+                <input
+                  type="text"
+                  value={searchQuestion}
+                  onChange={searchHandler}
+                  placeholder="Search Questions..."
+                  className="  input mb-4 rounded-r-none w-[69vw] sm:w-[50vw] md:w-[40vw] mt-4 input-info input-bordered"
+                />
+                <button
+                  onClick={searchSubmit}
+                  className="absolute mt-4  text-white rounded-l-none btn btn-info"
+                >
+                  go
+                </button>
+              </div>
+              <img
+                src={messagesPic}
+                className="w-32 h-32 hidden md:block"
+                alt=""
+              />
+            </div>
+
+            <div className="w-[100vw]">
+              {searchQuestion ? (
+                <h2 className="text-4xl text-zinc-100 p-2 pb-10 pt-6">
+                  You searched for "{searchQuestion}"" ...
+                </h2>
+              ) : (
+                ""
+              )}
+
+              {searchedPosts.map((post) => {
+                return (
+                  <Link to={`/questions/${post._id}`}>
+                    <CardPopular
+                      likes={post.likes}
+                      title={post.title.substring(0, 80)}
+                      tags={post.tags}
+                      titleCont="h-[8vh] md:h-[4vh]"
+                      question={post.question.substring(0, 200)}
+                      style="py-4 sm:py-6  glass sm:w-[65vw] md:w-[72vw] w-[80vw] z-0 md:mb-4 rounded-2xl duration-[0.4s] hover:scale-105 px-6 my-2 shadow-lg "
+                      tagsStyle="text-zinc-100 rounded-full bg-primary  text-sm py-1 px-4  "
+                      titleStyle="text-lg"
+                      answers={post.answers}
+                      language={post.language}
+                      date={post.date}
+                      glass="glass"
+                    />
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* **************************** POPULAR QUESTIONS SECTION ************************** */}
+
           <div className="flex content-center pb-3 items-center ">
             <h3 className="text-3xl text-shadow text-zinc-100 font-semibold">
               POPULAR QUESTIONS
             </h3>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-7 ml-2 w-7"
+              className="h-7 hidden md:block ml-2 w-7"
               fill="none"
               viewBox="0 0 24 24"
               stroke="white"
@@ -63,31 +135,33 @@ function PopularPosts() {
             This is a collection of the most rated posts
           </p>
         </div>
+      </div>
 
-        <img src={messagesPic} className="w-20 h-20" alt="" />
-      </div>
-      <div className="pb-8">
-        <div className="relative ">
-          <input
-            type="text"
-            value={searchQuestion}
-            onChange={searchHandler}
-            placeholder="Search Questions..."
-            className=" pr-32 input rounded-r-none mt-4 input-info input-bordered"
-          />
-          <button
-            onClick={searchSubmit}
-            className="absolute mt-4  text-white rounded-l-none btn btn-info"
-          >
-            go
-          </button>
-        </div>
-      </div>
-      <div className=" flex flex-wrap justify-between  w-12/12 sm:w-11/12">
+      <div className=" flex flex-wrap justify-between  w-12/12 sm:w-[72vw]">
+        {posts.map((post) => {
+          if (post.likes > 20)
+            return (
+              <Link to={`/questions/${post._id}`}>
+                <CardPopular
+                  likes={post.likes}
+                  title={post.title.substring(0, 50)}
+                  tags={post.tags}
+                  style="py-4 sm:py-8  glass sm:w-[65vw] md:w-[22vw] md:h-[30vh] w-[80vw] z-0 md:mb-4 rounded-2xl duration-[0.4s] hover:scale-105 px-6 my-2 shadow-lg "
+                  tagsStyle="text-zinc-100 rounded-full bg-primary  bg-opacity-5  md:text-sm py-1 px-4  "
+                  titleStyle="text-md py-2 "
+                  answers={post.answers}
+                  titleCont="h-[8vh]  md:h-[9vh]"
+                  language={post.language}
+                  date={post.date}
+                  glass="glass"
+                />
+              </Link>
+            );
+        })}
+
+        {/* <CardPopular width={width} glass="glass" />
         <CardPopular width={width} glass="glass" />
-        <CardPopular width={width} glass="glass" />
-        <CardPopular width={width} glass="glass" />
-        <CardPopular width={width} glass="glass" />
+        <CardPopular width={width} glass="glass" /> */}
       </div>
       <div className="w-full justify-end pt-1 flex w-12/12 sm:w-11/12 pr-4">
         <button className="btn pr-0 text-white btn-link">See More</button>

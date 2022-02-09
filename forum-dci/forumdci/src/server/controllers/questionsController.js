@@ -35,6 +35,13 @@ async function getQuestions(req, res, next) {
     } catch (e) {
         next(e);
     }
+  
+//   try {
+//     const questions = await Question.find().sort();
+//     res.status(200).send(questions);
+//   } catch (e) {
+//     next(e);
+//   }
 }
 
 async function getSingleQuestion(req, res, next) {
