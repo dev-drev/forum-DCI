@@ -85,7 +85,7 @@ function PopularPosts() {
             <div className="w-[100vw]">
               {searchQuestion ? (
                 <h2 className="text-4xl text-zinc-100 p-2 pb-10 pt-6">
-                  You searched for "{searchQuestion}"" ...
+                  You searched for "{searchQuestion}""
                 </h2>
               ) : (
                 ""
