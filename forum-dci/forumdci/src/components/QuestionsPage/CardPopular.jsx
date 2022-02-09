@@ -6,6 +6,7 @@ function CardPopular({
   question,
   likes,
   titleStyle,
+  titleCont,
   tagsStyle,
   id,
   tags,
@@ -25,7 +26,7 @@ function CardPopular({
           </div>
         </div>
         {/* HEADING */}
-        <div className="  h-[8vh]  md:h-[6vh]">
+        <div className={`${titleCont}`}>
           <h5 className={`${titleStyle} text-zinc-100  font-semibold`}>
             {title}
             {/* Display an inherited Field in Django 4.0 with ModelAdmin */}
@@ -33,9 +34,9 @@ function CardPopular({
         </div>
 
         {/* ACTIVE */}
-        <p className="text-white hidden leading-relaxed sm:pr-16  text-sm sm:block font-base mt-4">
+        <p className="text-white hidden leading-relaxed sm:pr-16 text-sm sm:block font-base mt-4 md:mt-2">
           {question ? question.substring(0, 200) : question}
-          <strong className="text-secondary">MORE</strong>
+          <strong className="md:hidden text-secondary">...MORE</strong>
         </p>
 
         {/* <button
@@ -97,7 +98,7 @@ function CardPopular({
 
             <span className="pl-1 text-white text-sm font-semibold">39</span>
           </div> */}
-          <div className={tagsStyle}>{tags}</div>
+          <div className={`${tagsStyle} `}>{tags}</div>
         </div>
       </section>
     </div>

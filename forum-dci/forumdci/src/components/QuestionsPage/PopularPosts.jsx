@@ -80,7 +80,7 @@ function PopularPosts() {
 
             <div className="w-[100vw]">
               {searchQuestion ? (
-                <h2 className="text-3xl text-zinc-100 p-2 py-8">
+                <h2 className="text-4xl text-zinc-100 p-2 pb-10 pt-6">
                   You searched for "{searchQuestion}"" ...
                 </h2>
               ) : (
@@ -94,6 +94,7 @@ function PopularPosts() {
                       likes={post.likes}
                       title={post.title.substring(0, 80)}
                       tags={post.tags}
+                      titleCont="h-[8vh] md:h-[4vh]"
                       question={post.question.substring(0, 200)}
                       style="py-4 sm:py-6  glass sm:w-[65vw] md:w-[72vw] w-[80vw] z-0 md:mb-4 rounded-2xl duration-[0.4s] hover:scale-105 px-6 my-2 shadow-lg "
                       tagsStyle="text-zinc-100 rounded-full bg-primary  text-sm py-1 px-4  "
@@ -136,7 +137,7 @@ function PopularPosts() {
         </div>
       </div>
 
-      <div className=" flex flex-wrap justify-between  w-12/12 sm:w-11/12">
+      <div className=" flex flex-wrap justify-between  w-12/12 sm:w-[72vw]">
         {posts.map((post) => {
           if (post.likes > 20)
             return (
@@ -146,9 +147,10 @@ function PopularPosts() {
                   title={post.title.substring(0, 50)}
                   tags={post.tags}
                   style="py-4 sm:py-8  glass sm:w-[65vw] md:w-[22vw] md:h-[30vh] w-[80vw] z-0 md:mb-4 rounded-2xl duration-[0.4s] hover:scale-105 px-6 my-2 shadow-lg "
-                  tagsStyle="text-zinc-100 rounded-full bg-primary  md:text-sm py-1 px-4  "
-                  titleStyle="text-md py-1 "
+                  tagsStyle="text-zinc-100 rounded-full bg-primary  bg-opacity-5  md:text-sm py-1 px-4  "
+                  titleStyle="text-md py-2 "
                   answers={post.answers}
+                  titleCont="h-[8vh]  md:h-[9vh]"
                   language={post.language}
                   date={post.date}
                   glass="glass"
