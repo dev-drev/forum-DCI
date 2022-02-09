@@ -141,10 +141,16 @@ const uploadPictureMiddleware = upload.single('photo');
 const uploadPicture = async (req, res, next) => {
 
      try {
-        res.status(200).send("success")
-        // console.log(req.file);
+        // res.status(200).send("success")
+        console.log(req.file.filename);
         
-        console.log(req.file);
+        const user = await User.findByIdAndUpdate(req.body.id, {avatar: req.file.filename}, {returnDocuments: "after", })
+        console.log(user);
+        if (!user) {
+          return  res.status(403).send('Wrong user ID')
+        }
+        res.status(200).send('successfully updated')
+        // console.log(req.file);
 
        
     } catch (err) {

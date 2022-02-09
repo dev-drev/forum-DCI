@@ -29,6 +29,8 @@ const Avatar = () => {
 
     const formData = new FormData();
     formData.append('photo', file);
+    const userData = JSON.parse(localStorage.getItem('user'));
+    formData.append('id', userData.id);
     const config = {
       headers: {
         'content-type': 'multipart/form-data',

@@ -11,7 +11,7 @@ const {
   uploadPictureMiddleware
 } = require("../controllers/adminController");
 
-router.use(verifyAuthToken)
+// router.use(verifyAuthToken)
 
 // ROUTES
 router.route("/delete").delete(deleteUser);

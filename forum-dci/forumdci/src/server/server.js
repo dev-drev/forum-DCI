@@ -6,6 +6,7 @@ const morgan = require("morgan");
 const jwt = require("jsonwebtoken");
 const { body, validationResult } = require("express-validator");
 const cookieParser = require("cookie-parser");
+const path = require("path");
 
 
 const adminRouter = require("./routers/adminRouter");
@@ -39,11 +40,12 @@ app.use(morgan("tiny"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-
+app.use(express.static(path.join(__dirname)))
 
 app.use("/admin", adminRouter);
 app.use("/users", userRouter);
 app.use("/questions", questionsRouter);
+
 
 const PORT = process.env.PORT || 5000;
 
