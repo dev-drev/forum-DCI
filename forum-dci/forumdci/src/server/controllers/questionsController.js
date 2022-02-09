@@ -30,7 +30,7 @@ async function addQuestion(req, res, next) {
 
 async function getQuestions(req, res, next) {
   try {
-    const questions = await Question.find();
+    const questions = await Question.find().sort();
     res.status(200).send(questions);
   } catch (e) {
     next(e);
