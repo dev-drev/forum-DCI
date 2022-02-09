@@ -57,6 +57,10 @@ function PopularPosts() {
           <div className="pb-8">
             <div className="flex  justify-between w-[70vw]">
               <div className="relative ">
+                <h3 className="text-5xl mb-4 text-shadow text-zinc-100 font-semibold">
+                  QUESTIONS
+                </h3>
+                {/* <p className="text-secondary">Type what you're looking for </p> */}
                 <input
                   type="text"
                   value={searchQuestion}
@@ -144,13 +148,13 @@ function PopularPosts() {
               <Link to={`/questions/${post._id}`}>
                 <CardPopular
                   likes={post.likes}
-                  title={post.title.substring(0, 50)}
+                  title={post.title.substring(0, 90)}
                   tags={post.tags}
-                  style="py-4 sm:py-8  glass sm:w-[65vw] md:w-[22vw] md:h-[30vh] w-[80vw] z-0 md:mb-4 rounded-2xl duration-[0.4s] hover:scale-105 px-6 my-2 shadow-lg "
+                  style="py-4 sm:py-8  glass sm:w-[65vw] md:w-[22vw] md:h-[29vh] w-[80vw] z-0 md:mb-4 rounded-2xl duration-[0.4s] hover:scale-105 px-6 my-2 shadow-lg "
                   tagsStyle="text-zinc-100 rounded-full bg-primary  bg-opacity-5  md:text-sm py-1 px-4  "
                   titleStyle="text-md py-2 "
                   answers={post.answers}
-                  titleCont="h-[8vh]  md:h-[9vh]"
+                  titleCont="h-[8vh]  md:h-[12vh]"
                   language={post.language}
                   date={post.date}
                   glass="glass"

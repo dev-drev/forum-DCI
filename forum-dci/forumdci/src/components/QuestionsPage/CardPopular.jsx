@@ -37,6 +37,7 @@ function CardPopular({
         <p className="text-white hidden leading-relaxed sm:pr-16 text-sm sm:block font-base mt-4 md:mt-2">
           {question ? question.substring(0, 200) : question}
           <strong className="md:hidden text-secondary">...MORE</strong>
+          {id}
         </p>
 
         {/* <button
