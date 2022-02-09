@@ -18,6 +18,32 @@ const Avatar = () => {
   //state
   const [isEditing, setIsEditing] = useState(false);
   const [user, setUser] = useState({});
+  const [file, setFile] = useState(null);
+
+  const onInputChange = (e) => {
+    setFile(e.target.value)
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append('photo', file);
+    const config = {
+      headers: {
+        'content-type': 'multipart/form-data',
+      }
+    }
+    
+    axios.post('http://localhost:5000/admin/upload', formData, config)
+    .then((response) => {
+      alert('Image uploaded successfully!')
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+
+  }
 
   async function deleteUser() {
     try {
@@ -59,13 +85,17 @@ const Avatar = () => {
       <section className="flex flex-col items-center lg:justify-center lg:col-span-1 lg:col-start-1 lg:col-end-1 lg:bg-secondary">
         <div className="card shadow-lg flex items-center w-3/4 glass p-2 lg:invisible">
           <div className="avatar placeholder bg-white rounded-full w-40 h-40 lg:visible"></div>
+          
+          <form onSubmit={submitHandler}>
+            <input type="file" name="photo" onChange={onInputChange}/>
+            <button type="submit">Upload</button>
+          </form>
          
           {user ? (
             <div className="flex  flex-col items-center m-5 font-bold lg:visible">
               <h1 className="m-3 text-black uppercase">{user.fullName}</h1>
               <h2 className="m-3 text-black">{user.email}</h2>
               <h2 className="m-3 text-black">{user.userName}</h2>
-              <h2 className="m-3 text-black">Berlin, Germany</h2>
             </div>
           ) : (
             ""
