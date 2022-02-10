@@ -26,7 +26,8 @@ const SubNavbar = () => {
       );
       console.log(data);
       setSearchedPosts(data);
-      navigate("/questions");
+
+      navigate(`/questions/${searchQuestion}`);
     } catch (e) {
       console.log(e);
     }

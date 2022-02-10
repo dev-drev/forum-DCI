@@ -55,7 +55,7 @@ const RecentPosts = () => {
       <div className="  flex-wrap justify-between  w-12/12 sm:w-11/12">
         {recentPosts.map((post, id) => {
           return (
-            <Link to={`/questions/${post._id}`}>
+            <Link to={`/question/${post._id}`}>
               <CardPopular
                 likes={post.likes}
                 title={post.title.substring(0, 80)}

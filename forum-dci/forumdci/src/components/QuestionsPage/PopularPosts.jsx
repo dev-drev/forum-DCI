@@ -4,21 +4,32 @@ import messagesPic from "../../assets/messages.png";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import question from "./iconQuestion.png";
+import { useParams } from "react-router-dom";
 
-function PopularPosts() {
+function PopularPosts(props) {
   const [posts, setPosts] = useState([]);
   const [searchedPosts, setSearchedPosts] = useState([]);
-
+  const params = useParams();
+  console.log("PARAMS QUESTION --- ", params.question);
   // GET ALL QUESTIONS
-  useEffect(() => {
-    axios.get("http://localhost:5000/questions").then((res) => {
-      {
-        setPosts(res.data);
-      }
-      console.log("DATA", res.data);
+  useEffect(async () => {
+    if (params.question) {
+      axios
+        .post(`http://localhost:5000/questions/${params.question}`)
+        .then((res) => {
+          {
+            setSearchedPosts(res.data);
+          }
+          console.log("DATA", res.data);
+        });
+    }
+    const response = await axios({
+      url: "http://localhost:5000/questions",
+      method: "get",
     });
+    setPosts(response.data);
   }, []);
-
+  // console.log(props.match.params.searchQuestion);
   //************************************************************ */
 
   // GET SINGLE QUESTION
@@ -29,7 +40,6 @@ function PopularPosts() {
     setSearchQuestion(e.target.value);
   };
   console.log(searchQuestion);
-
   const searchSubmit = async (e) => {
     e.preventDefault();
 
@@ -37,7 +47,7 @@ function PopularPosts() {
       const { data } = await axios.post(
         `http://localhost:5000/questions/${searchQuestion}`
       );
-      console.log(data);
+      // console.log(data);
       setSearchedPosts(data);
     } catch (e) {
       console.log(e);
@@ -93,9 +103,9 @@ function PopularPosts() {
                 ""
               )}
 
-              {searchedPosts.map((post) => {
+              {searchedPosts.map((post, key) => {
                 return (
-                  <Link to={`/questions/${post._id}`}>
+                  <Link to={`/question/${post._id}`} key={key}>
                     <CardPopular
                       likes={post.likes}
                       date={post.date}
@@ -145,10 +155,10 @@ function PopularPosts() {
       </div>
 
       <div className=" flex flex-wrap justify-between  w-12/12 sm:w-[72vw]">
-        {posts.map((post) => {
+        {posts.map((post, key) => {
           if (post.likes > 20)
             return (
-              <Link to={`/questions/${post._id}`}>
+              <Link to={`/question/${post._id}`} key={key}>
                 <CardPopular
                   likes={post.likes}
                   title={post.title.substring(0, 90)}

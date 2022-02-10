@@ -42,12 +42,13 @@ async function getQuestions(req, res, next) {
 
 async function getSingleQuestion(req, res, next) {
   const { searchQuestion } = req.params;
-
+  console.log(searchQuestion);
   try {
     var questionsReqExp = new RegExp(searchQuestion, "gi");
     const questions = await Question.find({
       title: questionsReqExp,
     });
+
     console.log(questions);
     res.status(200).send(questions);
   } catch (e) {
