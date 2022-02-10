@@ -17,7 +17,7 @@ async function addQuestion(req, res, next) {
             title,
             language,
             question,
-            tags,
+            tags: tags.split(',').map((e) => e.trim()), // sending the tags as array do database
             likes,
             date: new Date(),
         });
@@ -74,7 +74,10 @@ async function getQuestionById(req, res, next) {
 
 async function getQuestionByTag(req, res, next) {
     const {tag} = req.params;
-    let query = {tags: tag};
+    const tag_elements = decodeURIComponent(tag).split(',').map((e) => e.trim());
+    // const tag_elements = tag.replaceAll('%20', '').split(',').map((e) => e.trim()); // another way to do it
+    console.log(tag_elements)
+    let query = {tags: {$in: tag_elements}};
 
     if (tag === "all") {
         try {

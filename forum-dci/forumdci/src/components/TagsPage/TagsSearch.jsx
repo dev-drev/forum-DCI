@@ -8,6 +8,7 @@ function TagsSearch({questions, setQuestions}) {
     }, []);
 
     const fetchQuestions = async () => {
+
         const response = await fetch(`http://localhost:5000/questions/search/${tag}`);
         setQuestions(await response.json());
     }
