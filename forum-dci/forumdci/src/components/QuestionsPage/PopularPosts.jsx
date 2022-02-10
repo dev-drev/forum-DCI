@@ -3,9 +3,9 @@ import CardPopular from "./CardPopular";
 import messagesPic from "../../assets/messages.png";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import question from "./iconQuestion.png";
 
 function PopularPosts() {
-  const width = "";
   const [posts, setPosts] = useState([]);
   const [searchedPosts, setSearchedPosts] = useState([]);
 
@@ -50,23 +50,25 @@ function PopularPosts() {
 
   return (
     <div>
-      <div className="flex justify-between">
+      <div className="flex w-full justify-between">
         <div className="flex-col mb-4 content-center pt-2 items-center">
           {/* **************************** SEARCHED QUESTIONS SECTION ************************** */}
 
-          <div className="pb-8">
+          <div className="pb-8 w-[70vw]">
             <div className="flex  justify-between w-[70vw]">
               <div className="relative ">
-                <h3 className="text-5xl mb-4 text-shadow text-zinc-100 font-semibold">
+                <h3 className="text-5xl mb-4 flex items-center text-shadow text-zinc-100 font-semibold">
                   QUESTIONS
+                  <img src={question} className="pl-4 max-w-10" alt="" />
                 </h3>
+
                 {/* <p className="text-secondary">Type what you're looking for </p> */}
                 <input
                   type="text"
                   value={searchQuestion}
                   onChange={searchHandler}
                   placeholder="Search Questions..."
-                  className="  input mb-4 rounded-r-none w-[69vw] sm:w-[50vw] md:w-[40vw] mt-4 input-info input-bordered"
+                  className="  input mb-8 rounded-r-none w-[69vw] sm:w-[50vw] md:w-[40vw] mt-4 input-info input-bordered"
                 />
                 <button
                   onClick={searchSubmit}
@@ -85,7 +87,7 @@ function PopularPosts() {
             <div className="w-[100vw]">
               {searchQuestion ? (
                 <h2 className="text-4xl text-zinc-100 p-2 pb-10 pt-6">
-                  You searched for "{searchQuestion}""
+                  You searched for "{searchQuestion}"
                 </h2>
               ) : (
                 ""
@@ -96,6 +98,7 @@ function PopularPosts() {
                   <Link to={`/questions/${post._id}`}>
                     <CardPopular
                       likes={post.likes}
+                      date={post.date}
                       title={post.title.substring(0, 80)}
                       tags={post.tags}
                       titleCont="h-[8vh] md:h-[4vh]"
@@ -150,7 +153,7 @@ function PopularPosts() {
                   likes={post.likes}
                   title={post.title.substring(0, 90)}
                   tags={post.tags}
-                  style="py-4 sm:py-8  glass sm:w-[65vw] md:w-[22vw] md:h-[29vh] w-[80vw] z-0 md:mb-4 rounded-2xl duration-[0.4s] hover:scale-105 px-6 my-2 shadow-lg "
+                  style="py-4 sm:py-8  glass sm:w-[65vw] md:w-[34vw] md:h-[32vh] lg:w-[22vw] lg:h-[32vh] w-[80vw] z-0 md:mb-4 rounded-2xl duration-[0.4s] hover:scale-105 px-6 my-2 shadow-lg "
                   tagsStyle="text-zinc-100 rounded-full bg-primary  bg-opacity-5  md:text-sm py-1 px-4  "
                   titleStyle="text-md py-2 "
                   answers={post.answers}

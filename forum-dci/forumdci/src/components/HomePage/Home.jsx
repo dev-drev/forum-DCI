@@ -2,6 +2,7 @@ import React from "react";
 import SubNavbar from "../QuestionsPage/SubNavbar";
 import womanImage from "../../assets/woman.png";
 import coding from "../../assets/coding_1.png";
+import { Link } from "react-router-dom";
 
 function Home() {
   return (
@@ -19,18 +20,21 @@ function Home() {
               alt=""
             />
           </div>
-          <div className="w-96 flex flex-col items-center justify-center md:w-[37vw] ">
+          <div className=" flex flex-col items-center justify-center md:w-[37vw] ">
             {" "}
-            <h1 class="mb-5 text-5xl font-bold ">
-              Looking for something?
+            <h1 class="mb-5 leading-[55px] w-full text-5xl font-bold ">
+              Looking for <br />
+              &#60;something/&#62;?
             </h1>{" "}
-            <p class="mb-10 px-10">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi.
+            <p class="mb-10 px-2">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. error.
+              There's A Bit Of Software In All Of Us.
             </p>
-            <button class="btn md::w-[10vw] hover:bg-secondary hover:text-primary hover:scale-105 bg-primary">
-              Get Started
-            </button>
+            <Link to="/questions">
+              <button class="btn md::w-[10vw] hover:bg-secondary hover:text-primary hover:scale-105 bg-primary">
+                Get Started
+              </button>{" "}
+            </Link>
           </div>
         </div>
       </div>
