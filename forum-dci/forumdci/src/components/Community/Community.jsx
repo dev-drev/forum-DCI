@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import SubNavbar from "../QuestionsPage/SubNavbar";
 const randomUserUrl = "https://randomuser.me/api/?results=16";
 
 export default function Community() {
@@ -27,7 +28,7 @@ export default function Community() {
   else {
     return (
       <div className="bg-gray-100">
-        <div className="w-full h-16 bg-gradient-to-r from-gray-800 to-primary  border-gray-200 shadow-xl"></div>
+        <SubNavbar />
 
         <div className="w-10/12 md:h-auto lg:h-screen m-auto bg-white">
           <div className="flex items-center justify-center  md:justify-between md:mb-24 pt-2">

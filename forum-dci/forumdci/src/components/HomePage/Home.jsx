@@ -8,18 +8,18 @@ function Home() {
     <div className="w-screen h-[125vh] md:h-screen relative">
       <SubNavbar />
 
-      <div class=" mt-24 lg:mt-16 px-24">
+      <div class=" mt-24 lg:mt-22 px-24">
         <div class="hero-overlay bg-opacity-60"></div>
 
         <div class="text-center flex   text-neutral-content">
           <div className=" hidden lg:block">
             <img
               src={womanImage}
-              className="md:max-w-[24vw] max-w-[40vw] "
+              className="md:max-w-[25vw] max-w-[40vw] "
               alt=""
             />
           </div>
-          <div className="w-96 flex flex-col items-center justify-center md:w-[40vw] ">
+          <div className="w-96 flex flex-col items-center justify-center md:w-[37vw] ">
             {" "}
             <h1 class="mb-5 text-5xl font-bold ">
               Looking for something?

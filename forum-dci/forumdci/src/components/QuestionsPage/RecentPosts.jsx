@@ -58,11 +58,17 @@ const RecentPosts = () => {
             <Link to={`/questions/${post._id}`}>
               <CardPopular
                 deleteQuestion={deleteQuestion}
-                key={id}
-                id={post._id}
+                likes={post.likes}
+                title={post.title.substring(0, 80)}
+                tags={post.tags}
+                question={post.question.substring(0, 200)}
+                style="py-4 sm:py-6  glass sm:w-[65vw] md:w-[72vw] w-[80vw] z-0 md:mb-4 rounded-2xl duration-[0.4s] hover:scale-105 px-6 my-2 shadow-lg "
+                tagsStyle="text-zinc-100 rounded-full bg-primary  text-sm py-1 px-4  "
+                titleStyle="text-lg"
+                answers={post.answers}
+                language={post.language}
+                date={post.date}
                 glass="glass"
-                title={post.title}
-                question={post.question}
               />
             </Link>
           );

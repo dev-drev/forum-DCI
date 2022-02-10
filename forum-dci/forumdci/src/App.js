@@ -10,7 +10,6 @@ import TagsBody from "./components/TagsPage/TagsBody.jsx";
 import Community from "./components/Community/Community.jsx";
 import Ask from "./components/QuestionPage/AskSomethingPage";
 import Login from "./components/Login/Login";
-
 import Footer from "./components/Footer.jsx";
 import axios from "axios";
 import Home from "./components/HomePage/Home.jsx";
@@ -19,10 +18,8 @@ function App() {
   return (
      <>
       <Navbar />
-
       <Routes>
         <Route path="/" exact element={<Home />} />
-
         <Route path="/about" element={<AboutPage />} />
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/questions" element={<QuestionsPage />} />
