@@ -2,12 +2,15 @@ import React from "react";
 
 const About = () => {
   return (
-    <div className="bg-white">
-      <div className=" min-h-screen p-10">
-        <div className="grid md:grid-cols-3 gap-y-6 justify-center items-center">
-          <div className=" md:col-span-3 md:row-start-1 lg:col-span-2">
-            <h2 className="text-2xl font-bold">What is AVAZ?</h2>
-            <p>
+    <div className="bg-blueReact">
+      {" "}
+      <div className=" min-h-screen">
+        <div className="grid md:grid-cols-3  gap-y-6 justify-center items-center">
+          <div className=" md:col-span-3 md:row-start-1 bg-primary rounded  shadow-xl  p-10 mr-24 lg:col-span-2">
+            <h2 className="text-5xl  text-secondary font-bold">
+              What is AVAZ?
+            </h2>
+            <p className="pt-6 pr-16 text-zinc-100">
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Voluptatibus obcaecati dolorum accusamus, similique eum
               consectetur. Repellat, vero laboriosam voluptas at perspiciatis
@@ -25,7 +28,7 @@ const About = () => {
           </div>
 
           <div className=" md:col-span-3 lg:col-span-1">
-            <h2 className="text-2xl font-bold">Features</h2>
+            <h2 className="text-5xl text-secondary font-bold">Features</h2>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi
               voluptate repellendus minima repellat quis, aliquid at nam magnam

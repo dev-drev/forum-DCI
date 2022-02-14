@@ -6,12 +6,14 @@ import Navbar from "../Navbar";
 
 const AboutPage = () => {
     return (
-        <div>
-            <Navbar/>
-            {/* <SubNavbar/> */}
-            <About/>
-            {/* <Footer/> */}
-        </div>
-    );
+
+    <div>
+      <Navbar />
+
+      <About />
+      <Footer/> 
+    </div>
+  );
+
 };
 export default AboutPage;

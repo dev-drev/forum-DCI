@@ -13,7 +13,9 @@ import Login from "./components/Login/Login";
 
 import Footer from "./components/Footer.jsx";
 import axios from "axios";
+
 import Home from "./components/HomePage/Home.jsx";
+import PopularPosts from "./components/QuestionsPage/PopularPosts.jsx";
 
 function App() {
   return (
@@ -26,11 +28,12 @@ function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/questions" element={<QuestionsPage />} />
+        <Route path="/questions/:question" element={<QuestionsPage />} />
         <Route path="/tags" element={<TagsBody />} />
         <Route path="/community" element={<Community />} />
         <Route path="/ask" element={<Ask />} />
         <Route path="/login" element={<Login />} />
-        <Route path={`/questions/:id`} element={<SinglePostPage />} />
+        <Route path={`/question/:id`} element={<SinglePostPage />} />
       </Routes>
       <Footer />
     </>
