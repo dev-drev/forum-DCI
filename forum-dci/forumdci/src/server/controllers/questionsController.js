@@ -50,11 +50,7 @@ async function addQuestion(req, res, next) {
       date: formatDate,
     });
     res.status(200).send(response);
-  } catch (err) {
-    console.log(err);
-    next(err);
-  }
-}
+  } 
 
 async function getQuestions(req, res, next) {
   try {
