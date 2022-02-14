@@ -6,13 +6,13 @@ import { Link } from "react-router-dom";
 
 function Home() {
   return (
-    <div className="w-screen h-[125vh] md:h-screen relative">
+    <div className="w-full h-[125vh] md:h-screen relative">
       <SubNavbar />
 
-      <div class=" mt-24 lg:mt-22 px-24">
-        <div class="hero-overlay bg-opacity-60"></div>
+      <div className=" mt-24 lg:mt-22  md:px-20">
+        <div className="hero-overlay bg-opacity-60"></div>
 
-        <div class="text-center flex   text-neutral-content">
+        <div className="text-center flex   text-neutral-content">
           <div className=" hidden lg:block">
             <img
               src={womanImage}
@@ -20,18 +20,18 @@ function Home() {
               alt=""
             />
           </div>
-          <div className=" flex flex-col items-center justify-center md:w-[37vw] ">
+          <div className=" flex flex-col items-center justify-center  md:w-[37vw] ">
             {" "}
-            <h1 class="mb-5 leading-[55px] w-full text-5xl font-bold ">
+            <h1 className="mb-5 leading-[55px]  text-5xl font-bold ">
               Looking for <br />
               &#60;something/&#62;?
             </h1>{" "}
-            <p class="mb-10 px-2">
+            <p className="mb-10 px-20 ">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. error.
               There's A Bit Of Software In All Of Us.
             </p>
             <Link to="/questions">
-              <button class="btn md::w-[10vw] hover:bg-secondary hover:text-primary hover:scale-105 bg-primary">
+              <button className="btn  w-[26vw] md:w-[15vw] hover:bg-secondary hover:text-primary hover:scale-105 bg-primary">
                 Get Started
               </button>{" "}
             </Link>
@@ -39,10 +39,10 @@ function Home() {
         </div>
       </div>
 
-      <div>
+      <div className="mt-32">
         <img
           src={coding}
-          className="absolute bottom-[30vh] z-40 max-w-[9rem] right-[21vw] md:right-[16vw] lg:right-[14vw]"
+          className="absolute bottom-[30vh] z-40 max-w-[9rem] right-[21vw] md:right-[16vw] lg:right-[14vw] sm:block hidden"
           alt=""
         />{" "}
       </div>
@@ -50,7 +50,7 @@ function Home() {
       <svg
         width="250"
         height="250"
-        className="bg-secondary bg-opacity-80 shadow-xl z-30 rounded-full absolute bottom-[22vh] right-[10vw] "
+        className="bg-secondary bg-opacity-80 shadow-xl z-30 rounded-full absolute bottom-[22vh] right-[10vw] hidden sm:block  "
         viewBox="0 0 317 321"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -61,8 +61,8 @@ function Home() {
             cy="154.5"
             r="154.5"
             // fill="#c2f8ff"
-            fill-opacity="0.60"
-            shape-rendering="crispEdges"
+            fillOpacity="0.60"
+            shapeRendering="crispEdges"
           />
         </g>
 
@@ -74,9 +74,9 @@ function Home() {
             width="317"
             height="321"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feColorMatrix
               in="SourceAlpha"
               type="matrix"
@@ -119,8 +119,8 @@ function Home() {
             cy="265.5"
             r="265.5"
             fill="#7700BB"
-            fill-opacity="0.9"
-            shape-rendering="crispEdges"
+            fillOpacity="0.9"
+            shapeRendering="crispEdges"
           />
         </g>
         <defs>
@@ -131,9 +131,9 @@ function Home() {
             width="539"
             height="539"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feColorMatrix
               in="SourceAlpha"
               type="matrix"

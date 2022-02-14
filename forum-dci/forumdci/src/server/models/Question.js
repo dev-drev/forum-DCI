@@ -6,7 +6,13 @@ const QuestionSchema = new mongoose.Schema({
   language: { type: String, required: true },
   tags: [{ type: String, required: true }],
   date: { type: Date },
-  likes: { type: Number, default: 0 },
+  likes: [
+    {
+      user_id: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+      type: Number,
+      default: 0,
+    },
+  ],
   answers: [
     {
       user_id: {

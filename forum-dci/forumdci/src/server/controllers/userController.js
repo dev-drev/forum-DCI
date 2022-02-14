@@ -68,6 +68,7 @@ async function signUpUser(req, res, next) {
       }
     );
     console.log("Access Token: ", accessToken);
+    localStorage.setItem("isAuthenticated", true);
 
     return res
       .cookie("access_token", accessToken, {

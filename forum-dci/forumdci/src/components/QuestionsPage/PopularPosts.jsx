@@ -10,7 +10,6 @@ function PopularPosts(props) {
   const [posts, setPosts] = useState([]);
   const [searchedPosts, setSearchedPosts] = useState([]);
   const params = useParams();
-  console.log("PARAMS QUESTION --- ", params.question);
   // GET ALL QUESTIONS
   useEffect(async () => {
     if (params.question) {
@@ -20,7 +19,6 @@ function PopularPosts(props) {
           {
             setSearchedPosts(res.data);
           }
-          console.log("DATA", res.data);
         });
     }
     const response = await axios({
@@ -69,9 +67,8 @@ function PopularPosts(props) {
               <div className="relative ">
                 <h3 className="text-5xl mb-4 flex items-center text-shadow text-zinc-100 font-semibold">
                   QUESTIONS
-                  <img src={question} className="pl-4 max-w-10" alt="" />
                 </h3>
-
+                <p className="text-secondary">What are you looking for?</p>
                 {/* <p className="text-secondary">Type what you're looking for </p> */}
                 <input
                   type="text"
