@@ -3,6 +3,7 @@ import hashtag from "../../assets/hashtag.png";
 import TagsCard from "./TagsCard";
 import TagsSearch from "./TagsSearch";
 import { Link } from "react-router-dom";
+import { data } from "autoprefixer";
 
 function TagsPosts() {
   const [questions, setQuestions] = useState([]);
@@ -41,7 +42,7 @@ function TagsPosts() {
       <div className=" flex flex-wrap justify-between pt-4  w-12/12 sm:w-11/12">
         {questions.map((question, key) => (
           <Link to={`/questions/${question._id}`}>
-            <TagsCard data={question} key={key} />
+            <TagsCard data={question} key={key} tags={question.tags} />
           </Link>
         ))}
       </div>
