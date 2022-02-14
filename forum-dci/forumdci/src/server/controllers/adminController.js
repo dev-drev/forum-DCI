@@ -9,7 +9,6 @@ const multer = require("multer");
 
 // ---------delete a User------------------------
 
-
 async function deleteUser(req, res, next) {
   //to extract token out of cookie
 
@@ -31,136 +30,119 @@ async function deleteUser(req, res, next) {
   }
 }
 
-
-
-
 const updateUser = async (req, res, next) => {
-    
-    // to convert the req.body object into an array so we can loop through it.
-    // const updates = Object.keys(req.body.editedUser)
+  // to convert the req.body object into an array so we can loop through it.
+  // const updates = Object.keys(req.body.editedUser)
 
-    try {
-        console.log('edit', req.body);
-        
-        // const user = await User.findById(req.body.id)
+  try {
+    console.log("edit", req.body);
 
-        // updates.forEach(update => user[update] = req.body[update])
+    const user = await User.findByIdAndUpdate(req.body.id, {
+      fullName: req.body.editedUser.fullName,
+      userName: req.body.editedUser.userName,
+      email: req.body.editedUser.email,
+      password: req.body.editedUser.password,
+    }, {returnDocument:'after'});
 
-        // await user.save()
-
-       
-        const user = await User.findByIdAndUpdate(req.body.id, {
-            fullName: req.body.editedUser.fullName,
-            userName: req.body.editedUser.userName,
-            email: req.body.editedUser.email,
-            password: req.body.editedUser.password
-            
-        })
-
-    
-        if (!user) {
-            return res.status(404).send('user not found')
-        }
-
-        res.status(200).send(user)
-
-    } catch (err) {
-        console.log("helooooooooooo");
-
-        res.status(500)
-        console.log(err);
-        next(err)
-
+    if (!user) {
+      return res.status(404).send("user not found");
     }
 
- 
-    // res.status(200).send(user);
-  
+    res.status(200).send(user);
+  } catch (err) {
+    console.log("helooooooooooo");
+
+    res.status(500);
+    console.log(err);
+    next(err);
+  }
+
+  // res.status(200).send(user);
 };
 
 const getUser = async (req, res, next) => {
-
     try {
-
-        const user = await User.findById(req.params.id);
+        const userId = req.params.id;
+        const user = await User.findById(userId);
         console.log(user);
         if (!user) {
-            return res.status(404).send('user not found')
+            return res.status(404).send("user not found");
         }
 
         res.status(200).send({
-            fullName: user.fullName,
-            userName: user.userName,
-            email: user.email,
-        })
-
+        fullName: user.fullName,
+        userName: user.userName,
+        email: user.email,
+        avatar: user.avatar
+        });
     } catch (err) {
-        res.status(500)
+        res.status(500);
         console.log(err);
-        next(err)
-
+        next(err);
     }
-
 };
 
 //file upload / multer profile pic
 
 const multerConfig = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'userPics');
-    },
-    filename: (req, file, cb) => {
-        const extension = file.mimetype.split("/")[1]
-        cb(null, `image-${Date.now()}.${extension}`)
-    }
+  destination: (req, file, cb) => {
+    cb(null, "userPics");
+  },
+  filename: (req, file, cb) => {
+    const extension = file.mimetype.split("/")[1];
+    cb(null, `image-${Date.now()}.${extension}`);
+  },
 });
 
 const isPic = (req, file, cb) => {
-    if(file.mimetype.startsWith('image')) {
-        cb(null, true)
-    } else {
-        cb(new Error('only image is allowed'))
-    }
-}
+  if (file.mimetype.startsWith("image")) {
+    cb(null, true);
+  } else {
+    cb(new Error("only image is allowed"));
+  }
+};
 
 const upload = multer({
-   limits: {
-    fileSize: 1000000
-    },
-    storage: multerConfig,
-    fileFilter: isPic
-})
-
+  limits: {
+    fileSize: 1000000,
+  },
+  storage: multerConfig,
+  fileFilter: isPic,
+});
 
 //middleware
 
-const uploadPictureMiddleware = upload.single('photo');
+const uploadPictureMiddleware = upload.single("photo");
 
 // upload picture handler
 
 const uploadPicture = async (req, res, next) => {
+  try {
+    // res.status(200).send("success")
+    console.log(req.file.filename);
 
-     try {
-        // res.status(200).send("success")
-        console.log(req.file.filename);
-        
-        const user = await User.findByIdAndUpdate(req.body.id, {avatar: req.file.filename}, {returnDocuments: "after", })
-        console.log(user);
-        if (!user) {
-          return  res.status(403).send('Wrong user ID')
-        }
-        res.status(200).send('successfully updated')
-        // console.log(req.file);
-
-       
-    } catch (err) {
-        res.status(500)
-        console.log(err);
-        next(err)
-
+    const user = await User.findByIdAndUpdate(
+      req.body.id,
+      { avatar: req.file.filename },
+      { returnDocuments: "after" }
+    );
+    console.log(user);
+    if (!user) {
+      return res.status(403).send("Wrong user ID");
     }
-
+    res.status(200).send("successfully updated");
+    // console.log(req.file);
+  } catch (err) {
+    res.status(500);
+    console.log(err);
+    next(err);
+  }
 };
 
-module.exports = { updateUser, getUser, deleteUser, uploadPicture, uploadPictureMiddleware };
-
+module.exports = {
+  updateUser,
+  getUser,
+  deleteUser,
+  uploadPicture,
+  uploadPictureMiddleware,
+};

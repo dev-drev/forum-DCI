@@ -33,14 +33,19 @@ mongoose.connection.once("open", () => {
 
 //MIDDLEWARES
 
+const corsOptions = {
+  "origin": "http://localhost:3000",
+  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+  "optionsSuccessStatus": 204,
+  "credentials": true
+}
 
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(morgan("tiny"));
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname)))
+app.use(express.static(path.join('userPics')))
 
 app.use("/admin", adminRouter);
 app.use("/users", userRouter);
