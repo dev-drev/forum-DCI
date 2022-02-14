@@ -41,8 +41,13 @@ function TagsPosts() {
       <TagsSearch questions={questions} setQuestions={setQuestions} />
       <div className=" flex flex-wrap justify-between pt-4  w-12/12 sm:w-11/12">
         {questions.map((question, key) => (
-          <Link to={`/questions/${question._id}`}>
-            <TagsCard data={question} key={key} tags={question.tags} />
+          <Link to={`/question/${question._id}`}>
+            <TagsCard
+              data={question}
+              key={key}
+              tags={question.tags}
+              likes={question.likes}
+            />
           </Link>
         ))}
       </div>

@@ -124,7 +124,6 @@ async function loginUser(req, res, next) {
       return res
         .cookie("access_token", accessToken, {
           httpOnly: true,
-          // max-age: 30000,
           domain: "localhost",
           secure: process.env.NODE_ENV === "production",
         })

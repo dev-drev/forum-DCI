@@ -19,7 +19,8 @@ function TagsCard({ data, tags, likes }) {
   return (
     <div>
       <section
-        className={`lg:w-56 w-3xl glass z-0 rounded-2xl px-6 py-1 my-2 sm:py-6 shadow-lg`}
+        // className={`lg:w-56 w-3xl glass z-0 rounded-2xl px-6 py-1 my-2 sm:py-6 shadow-lg`}
+        className="py-4 sm:py-8  glass sm:w-[65vw] md:w-[34vw] md:h-[32vh] lg:w-[22vw] lg:h-[32vh] w-[80vw] z-0 md:mb-4 rounded-2xl duration-[0.4s] hover:scale-105 px-6 my-2 shadow-lg "
       >
         {/* FIRST BAR - DATE+ICON */}
         <div className="flex items-center pb-4  justify-between">
@@ -79,7 +80,7 @@ function TagsCard({ data, tags, likes }) {
 
             <span className="pl-1 text-white text-sm font-semibold">39</span>
           </div>
-          <div className="bg-primary rounded-full text-sm py-1 px-4">
+          <div className="text-zinc-100 rounded-full bg-primary  bg-opacity-5  md:text-sm py-1 px-4 ">
             {tags}
           </div>
         </div>

@@ -21,7 +21,7 @@ function CardPopular({
         {/* FIRST BAR - DATE+ICON */}
         <div className="flex items-center justify-between">
           <span className="text-secondary pb-2 text-sm">
-            {date.substring(0, 10)}
+            {/* {date.substring(0, 10)} */}
           </span>
           <div className=" flex items-center content-center text-secondary">
             <span className="text-sm italic">drevil dev</span>
