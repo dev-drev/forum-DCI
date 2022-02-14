@@ -28,7 +28,6 @@ export default function Community() {
   else {
     return (
       <div className="bg-gray-100">
-        <SubNavbar />
 
         <div className="w-10/12 md:h-auto lg:h-screen m-auto bg-white">
           <div className="flex items-center justify-center  md:justify-between md:mb-24 pt-2">
