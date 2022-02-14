@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+// import Question from "../models/Question";
 
 function TagsSearch({questions, setQuestions}) {
     const [tag, setTag] = useState("all");
@@ -12,6 +13,32 @@ function TagsSearch({questions, setQuestions}) {
         const response = await fetch(`http://localhost:5000/questions/search/${tag}`);
         setQuestions(await response.json());
     }
+
+    //
+    //
+    // async function getLatestQuestionsByTag(req, res, next) {
+    //     const {tag} = req.params;
+    //     const tag_elements = decodeURIComponent(tag).split(',').map((e) => e.trim());
+    //     let query = {tags: {$in: tag_elements}};
+    //
+    //     if (tag === "latest") {
+    //         try {
+    //             const questions = await Question.find({}).sort({date: 'desc'}).limit(50);
+    //             console.log(questions);
+    //             res.status(200).send(questions);
+    //         } catch (e) {
+    //             next(e);
+    //         }
+    //     } else {
+    //         try {
+    //             const questions = await Question.find(query);
+    //             console.log(questions);
+    //             res.status(200).send(questions);
+    //         } catch (e) {
+    //             next(e);
+    //         }
+    //     }
+    // }
 
     return (
         <div>

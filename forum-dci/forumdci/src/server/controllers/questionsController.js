@@ -14,32 +14,9 @@ async function addQuestion(req, res, next) {
         if (!err.isEmpty()) {
             return res.status(400).send(err);
         }
-        const {title, language, tags, question, likes} = req.body;
 
-        const response = await Question.create({
-            title,
-            language,
-            question,
-            tags: tags.split(',').map((e) => e.trim()), // sending the tags as array do database
-            likes,
-            date: new Date(),
-        });
-        res.status(200).send(response);
-    } catch (err) {
-        console.log(err);
-        next(err);
-//   console.log("You have a question!");
-//   const date = new Date();
-//   const formatDate = new Intl.DateTimeFormat("en-US").format(date);
-
-//   /*handle the error*/
-//   try {
-//     const err = validationResult(req);
-//     if (!err.isEmpty()) {
-//       return res.status(400).send(err);
-    }
     const { title, language, tags, question, likes } = req.body;
-    const tagsSplitted = tags.split(" ");
+    const tagsSplitted = tags.split(',').map((e) => e.trim()) // sending the tags as array do database
     console.log(tagsSplitted);
     const response = await Question.create({
       title,
@@ -155,4 +132,5 @@ module.exports = {
   getSingleQuestion,
   deleteQuestion,
   // deleteQuestion,
+    getQuestionByTag
 };
