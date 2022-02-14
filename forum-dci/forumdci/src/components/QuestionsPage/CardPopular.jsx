@@ -9,6 +9,7 @@ function CardPopular({
   titleCont,
   tagsStyle,
   id,
+  date,
   tags,
   deleteQuestion,
 }) {
@@ -19,7 +20,9 @@ function CardPopular({
       <section className={style}>
         {/* FIRST BAR - DATE+ICON */}
         <div className="flex items-center justify-between">
-          <span className="text-secondary pb-2 text-sm">2d ago</span>
+          <span className="text-secondary pb-2 text-sm">
+            {date.substring(0, 10)}
+          </span>
           <div className=" flex items-center content-center text-secondary">
             <span className="text-sm italic">drevil dev</span>
             <div className="bg-gray-100 w-5 h-5 ml-2 rounded-full"></div>
@@ -81,24 +84,6 @@ function CardPopular({
               {likes}
             </span>
           </div>
-          {/* <div className="px-6 flex items-center content-center text-white text-sm">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"
-              />
-            </svg>
-
-            <span className="pl-1 text-white text-sm font-semibold">39</span>
-          </div> */}
           <div className={`${tagsStyle} `}>{tags}</div>
         </div>
       </section>
