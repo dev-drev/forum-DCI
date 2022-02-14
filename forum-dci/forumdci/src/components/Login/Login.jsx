@@ -71,8 +71,8 @@ export default function Login() {
         localStorage.setItem("isAuthenticated", "true");
         localStorage.setItem("user", JSON.stringify(data));
         // console.log(jwt(data.token));
-
-        window.location = "/admin";
+        navigate("/admin");
+        // window.location = "/admin";
         // console.log(jwt(data.token));
         // alert("hello ");
       } else {
@@ -119,7 +119,8 @@ export default function Login() {
 
       localStorage.setItem("isAuthenticated", "true");
       localStorage.setItem("user", JSON.stringify(data));
-      window.location = "/admin";
+      // window.location = "/admin";
+      navigate("/admin")
     } catch (err) {
       console.log(err);
       alert("Try again!");

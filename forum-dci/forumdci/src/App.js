@@ -10,6 +10,7 @@ import TagsBody from "./components/TagsPage/TagsBody.jsx";
 import Community from "./components/Community/Community.jsx";
 import Ask from "./components/QuestionPage/AskSomethingPage";
 import Login from "./components/Login/Login";
+
 import Footer from "./components/Footer.jsx";
 import axios from "axios";
 
@@ -18,10 +19,12 @@ import PopularPosts from "./components/QuestionsPage/PopularPosts.jsx";
 
 function App() {
   return (
-    <Router>
+     <>
       <Navbar />
+
       <Routes>
         <Route path="/" exact element={<Home />} />
+
         <Route path="/about" element={<AboutPage />} />
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/questions" element={<QuestionsPage />} />
@@ -33,7 +36,7 @@ function App() {
         <Route path={`/question/:id`} element={<SinglePostPage />} />
       </Routes>
       <Footer />
-    </Router>
+    </>
   );
 }
 

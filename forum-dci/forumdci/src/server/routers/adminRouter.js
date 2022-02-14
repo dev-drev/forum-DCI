@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const {verifyAuthToken} = require("../middleware/helper")
 
 // IMPORT CONTROLLERS
 const {
@@ -10,7 +11,7 @@ const {
   uploadPictureMiddleware
 } = require("../controllers/adminController");
 
-
+ router.use(verifyAuthToken)
 
 // ROUTES
 router.route("/delete").delete(deleteUser);
@@ -23,5 +24,7 @@ router.route("/getuser/:id").get(getUser);
 router.route("/upload").post(uploadPictureMiddleware, uploadPicture, (error, req, res, next) => {
   res.status(400).send({error: error.message});
 })
+
+
 
 module.exports = router;
