@@ -11,10 +11,10 @@ function CardPopular({
   id,
   date,
   tags,
+  userName,
   deleteQuestion,
 }) {
   const [isChecked, setIsChecked] = useState(false);
-  console.log(tags);
   return (
     <div>
       <section className={style}>
@@ -24,7 +24,9 @@ function CardPopular({
             {date ? date.substring(0, 10) : " date"}
           </span>
           <div className=" flex items-center content-center text-secondary">
-            <span className="text-sm italic">drevil dev</span>
+            <span className="text-sm italic">
+              {userName ? userName : "No user"}
+            </span>
             <div className="bg-gray-100 w-5 h-5 ml-2 rounded-full"></div>
           </div>
         </div>
@@ -80,9 +82,9 @@ function CardPopular({
               />
             </svg>
 
-            <span className="pl-1 text-sm text-white  font-semibold">
+            {/* <span className="pl-1 text-sm text-white  font-semibold">
               {likes}
-            </span>
+            </span> */}
           </div>
           <div className={`${tagsStyle} `}>{tags}</div>
         </div>

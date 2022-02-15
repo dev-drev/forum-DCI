@@ -54,7 +54,7 @@ async function signUpUser(req, res, next) {
     });
 
     if (!user) {
-      res.status(500).send("Not able to create the user");
+      res.status(500).send({ message: "Not able to create the user" });
       return;
     }
 
@@ -68,7 +68,7 @@ async function signUpUser(req, res, next) {
       }
     );
     console.log("Access Token: ", accessToken);
-    
+
     localStorage.setItem("isAuthenticated", true);
 
     return res

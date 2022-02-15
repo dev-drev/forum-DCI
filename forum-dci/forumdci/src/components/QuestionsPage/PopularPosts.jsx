@@ -105,6 +105,7 @@ function PopularPosts(props) {
                   <Link to={`/question/${post._id}`} key={key}>
                     <CardPopular
                       likes={post.likes}
+                      userName={post.userName}
                       date={post.date}
                       title={post.title.substring(0, 80)}
                       tags={post.tags}
@@ -160,6 +161,7 @@ function PopularPosts(props) {
                   likes={post.likes}
                   title={post.title.substring(0, 90)}
                   tags={post.tags}
+                  userName={post.userName}
                   style="py-4 sm:py-8  glass sm:w-[65vw] md:w-[34vw] md:h-[32vh] lg:w-[22vw] lg:h-[32vh] w-[80vw] z-0 md:mb-4 rounded-2xl duration-[0.4s] hover:scale-105 px-6 my-2 shadow-lg "
                   tagsStyle="text-zinc-100 rounded-full bg-primary  bg-opacity-5  md:text-sm py-1 px-4  "
                   titleStyle="text-md py-2 "

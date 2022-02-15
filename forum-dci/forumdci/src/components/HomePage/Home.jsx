@@ -50,7 +50,7 @@ function Home() {
       <svg
         width="250"
         height="250"
-        className="bg-secondary bg-opacity-80 shadow-xl z-30 rounded-full absolute bottom-[22vh] right-[10vw] hidden sm:block  "
+        className="bg-secondary bg-opacity-80 shadow-xl z-30 rounded-full absolute bottom-[22vh] right-[10vw]  sm:block  "
         viewBox="0 0 317 321"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

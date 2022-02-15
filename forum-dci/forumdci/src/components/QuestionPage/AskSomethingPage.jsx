@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import TextEditor from "./TextEditor";
 function AskSomethingPage() {
+  console.log("USERNAME", localStorage.getItem("username"));
+  const userName = localStorage.getItem("userName");
+
   const [question, setQuestion] = useState({
     title: "",
     language: "",
     tags: "",
     question: "",
+    userName: userName,
   });
+
   const handleChange = (event) => {
     setQuestion({ ...question, [event.target.name]: event.target.value });
   };
@@ -23,6 +28,7 @@ function AskSomethingPage() {
         },
         body: JSON.stringify(question),
       });
+
       if (res.status === 200) {
         alert("Your question has been successfully sent to the database!");
         setQuestion({

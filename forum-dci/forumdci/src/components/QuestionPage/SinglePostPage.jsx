@@ -11,7 +11,7 @@ function SinglePostPage({ id }) {
   const navigate = useNavigate();
 
   console.log(params.id);
-
+  const [singlePost, setSinglePost] = useState({});
   const [showAnswerArea, setShowAnswerArea] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
   const [showDeleted, setShowDeleted] = useState(false);
@@ -20,8 +20,6 @@ function SinglePostPage({ id }) {
   const switchMode = () => {
     setShowAnswerArea((showMe) => !showMe);
   };
-
-  const [singlePost, setSinglePost] = useState({});
 
   useEffect(async () => {
     try {
@@ -133,12 +131,7 @@ function SinglePostPage({ id }) {
           ></ComponentButton>
         </div> */}
 
-        <div>
-          <SinglePostPage2 />
-          <SinglePostPage2 />
-          <SinglePostPage2 />
-          <SinglePostPage2 />
-        </div>
+        <div></div>
       </div>
 
       {isAuthenticated ? (

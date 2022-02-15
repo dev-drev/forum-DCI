@@ -19,12 +19,11 @@ import PopularPosts from "./components/QuestionsPage/PopularPosts.jsx";
 
 function App() {
   return (
-     <>
+    <>
       <Navbar />
 
       <Routes>
         <Route path="/" exact element={<Home />} />
-
         <Route path="/about" element={<AboutPage />} />
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/questions" element={<QuestionsPage />} />

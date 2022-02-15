@@ -222,7 +222,7 @@ const Navbar = () => {
                 About{" "}
               </li>
             </Link>
-            <Link to="/about">
+            <Link to="/ask">
               {" "}
               <li className="ml-3 pl-1 p-4 flex content-center text-md items-center hover:glass rounded-btn">
                 {" "}

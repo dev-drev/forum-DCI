@@ -1,7 +1,24 @@
 const Question = require("../models/Question");
+const Answer = require("../models/Answer");
 const { validationResult } = require("express-validator");
 
 /*add a new user*/
+
+const addAnswer = async (req, res, next) => {
+  try {
+    console.log("REQBODY", req.body);
+    const answer = await Answer.create({
+      question_id: req.params.id,
+      user_id: req.body.user_id,
+      desc: req.body.description,
+    });
+    console.log(answer);
+    res.status(200).send({ message: "Done", answer });
+  } catch (e) {
+    next(e);
+  }
+};
+
 async function addQuestion(req, res, next) {
   console.log("You have a question!");
 
@@ -15,7 +32,7 @@ async function addQuestion(req, res, next) {
       return res.status(400).send(err);
     }
 
-    const { title, language, tags, question, likes } = req.body;
+    const { title, language, tags, question, likes, userName } = req.body;
     const tagsSplitted = tags.split(",").map((e) => e.trim());
     console.log(tagsSplitted);
     const response = await Question.create({
@@ -25,7 +42,9 @@ async function addQuestion(req, res, next) {
       tagsSplitted,
       likes,
       date: formatDate,
+      userName,
     });
+    console.log(response);
     res.status(200).send(response);
   } catch (err) {
     console.log(err);
@@ -129,6 +148,7 @@ const deleteQuestion = async (req, res, next) => {
 
 module.exports = {
   addQuestion,
+  addAnswer,
   getQuestions,
   getQuestionById,
   getQuestionByTag,
