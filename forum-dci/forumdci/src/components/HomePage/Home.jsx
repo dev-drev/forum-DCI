@@ -42,7 +42,7 @@ function Home() {
       <div className="mt-32">
         <img
           src={coding}
-          className="absolute bottom-[30vh] z-40 max-w-[9rem] right-[21vw] md:right-[16vw] lg:right-[14vw] sm:block hidden"
+          className="absolute bottom-[30vh] z-40 max-w-[9rem] right-[21vw] md:right-[16vw] lg:right-[14vw]  "
           alt=""
         />{" "}
       </div>

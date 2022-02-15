@@ -148,7 +148,6 @@ function SinglePostPage({ id }) {
       ) : (
         ""
       )}
-
       {showDeleted ? (
         <p className="mb-8 ml-20 text-red-600">
           You deleted your question correctly!
