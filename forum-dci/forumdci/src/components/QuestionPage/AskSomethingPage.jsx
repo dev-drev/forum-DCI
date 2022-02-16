@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import TextEditor from "./TextEditor";
 function AskSomethingPage() {
-  console.log("USERNAME", localStorage.getItem("username"));
   const userName = localStorage.getItem("userName");
+  const [isSent, setIsSent] = useState(false);
+  const navigate = useNavigate();
 
   const [question, setQuestion] = useState({
     title: "",
@@ -30,13 +32,16 @@ function AskSomethingPage() {
       });
 
       if (res.status === 200) {
-        alert("Your question has been successfully sent to the database!");
         setQuestion({
           title: "",
           language: "",
           tags: "",
           question: "",
         });
+        setIsSent(true);
+        setTimeout(() => {
+          navigate("/questions");
+        }, 3000);
       }
       console.log(question);
     } catch (e) {
@@ -52,6 +57,14 @@ function AskSomethingPage() {
               <h1 className="text-white border-b-2 pb-2 border-secondary px-2 text-3xl md:text-4xl font-bold md:mb-4 mb-10">
                 Ask Your Question
               </h1>
+              {isSent ? (
+                <p className="text-sm text-secondary leading-tight">
+                  Your questions has been successfully sent!
+                </p>
+              ) : (
+                ""
+              )}
+
               <div className="p-8  bg-primary rounded-xl space-y-4">
                 <div>
                   <div className="pb-2">
@@ -159,6 +172,13 @@ function AskSomethingPage() {
                     Submit
                   </button>
                 </div>
+                {isSent ? (
+                  <p className="text-2xl text-secondary mt-10  leading-tight">
+                    Your questions has been successfully sent!
+                  </p>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
           </div>

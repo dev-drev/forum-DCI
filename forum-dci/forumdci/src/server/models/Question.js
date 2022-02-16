@@ -8,11 +8,13 @@ const QuestionSchema = new mongoose.Schema({
   date: { type: Date },
   userName: { type: String, required: true },
   user_id: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-  likes: [
-    {
-      user_id: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-    },
-  ],
+  likes: { type: Number },
+
+  // [
+  //   {
+  //     user_id: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+  //   },
+  // ],
 });
 
 module.exports = mongoose.model("Question", QuestionSchema);
