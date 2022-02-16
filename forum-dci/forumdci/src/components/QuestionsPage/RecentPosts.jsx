@@ -66,6 +66,7 @@ const RecentPosts = () => {
                 tagsStyle="text-zinc-100 rounded-full bg-primary  text-sm py-1 px-4  "
                 titleStyle="text-lg"
                 answers={post.answers}
+                userName={post.userName}
                 language={post.language}
                 date={post.date}
                 glass="glass"

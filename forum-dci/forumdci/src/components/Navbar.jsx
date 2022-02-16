@@ -9,7 +9,7 @@ import {
 // import jwt from "jwt-decode";
 
 import LightSpeed from "react-reveal/LightSpeed";
-
+import { MdOutlineQuestionAnswer } from "react-icons/md";
 const Navbar = () => {
   const navigate = useNavigate();
   const [isShown, setIsShown] = useState(false);
@@ -58,7 +58,7 @@ const Navbar = () => {
             {" "}
             <Link
               to="/"
-              class="text-lg btn font-bold lg:ml-5 border-none hover:bg-transparent bg-transparent text-4xl"
+              className="text-lg btn font-bold lg:ml-5 border-none hover:bg-transparent bg-transparent text-4xl"
             >
               AVAZ
             </Link>
@@ -100,9 +100,9 @@ const Navbar = () => {
             stroke="currentColor"
           >
             <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
               d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
             />
           </svg>
@@ -130,7 +130,7 @@ const Navbar = () => {
       </div>
 
       {isShown && (
-        <div className="bg-primary h-60 px-6 sm:hidden shadow-lg">
+        <div className="bg-primary h-72 px-6 sm:hidden shadow-lg">
           <ul className="flex-col text-zinc-100">
             <Link to="/questions">
               {" "}
@@ -147,9 +147,9 @@ const Navbar = () => {
                   stroke="currentColor"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>{" "}
@@ -222,6 +222,18 @@ const Navbar = () => {
                 About{" "}
               </li>
             </Link>
+            <Link to="/ask">
+              {" "}
+              <li className="ml-3 pl-1 p-4 flex content-center text-md items-center hover:glass rounded-btn">
+                {" "}
+                <MdOutlineQuestionAnswer className="text-xl mr-4" />
+                Ask Something{" "}
+              </li>
+            </Link>
+
+            {/* <li className="btn ml-12 mt-2 bg-secondary glass mx-8 text-primary hover:bg-gray-600 hover:text-white btn-sm ">
+              <Link to="/ask">Ask Something</Link>
+            </li> */}
           </ul>
         </div>
       )}

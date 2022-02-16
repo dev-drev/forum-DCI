@@ -37,7 +37,7 @@ const SubNavbar = () => {
 
   // **********************************************************
   return (
-    <nav className=" bg-secondary  bg-opacity-90 shadow-xl z-50 flex justify-center px-2 sm:px-4 py-2  ">
+    <nav className=" bg-secondary w-full  bg-opacity-90 shadow-xl z-50 flex justify-center px-2 sm:px-4 py-2  ">
       <div className=" hidden sm:block"></div>
       <div className="mt-1 form-control">
         <div className="flex content-center items-center">
@@ -46,7 +46,7 @@ const SubNavbar = () => {
             value={searchQuestion}
             placeholder="Search"
             onChange={searchHandler}
-            className=" pr-56 input border-1 border-primary bg-zinc-200 md:w-[35vw] h-[6.5vh] rounded-r-none h-12"
+            className=" pr-56 w-[20vw] input border-1 border-primary bg-zinc-200 md:w-[35vw] xs:h-[5.3vh] sm:h-[6.1vh] rounded-r-none h-12"
           />
           <Link to="/questions">
             <button

@@ -1,9 +1,28 @@
 const Question = require("../models/Question");
 const {validationResult} = require("express-validator");
 
+const Answer = require("../models/Answer");
+
+
 /*add a new user*/
+
+const addAnswer = async (req, res, next) => {
+  try {
+    console.log("REQBODY", req.body);
+    const answer = await Answer.create({
+      question_id: req.params.id,
+      user_id: req.body.user_id,
+      desc: req.body.description,
+    });
+    console.log(answer);
+    res.status(200).send({ message: "Done", answer });
+  } catch (e) {
+    next(e);
+  }
+};
+
 async function addQuestion(req, res, next) {
-    console.log("You have a question!");
+  console.log("You have a question!");
 
     const date = new Date();
     const formatDate = new Intl.DateTimeFormat("en-US").format(date);
@@ -31,8 +50,8 @@ async function addQuestion(req, res, next) {
         console.log(err);
         next(err);
     }
-}
-
+=======
+ 
 async function getQuestions(req, res, next) {
     try {
         const questions = await Question.find().sort();
@@ -102,11 +121,10 @@ async function getQuestionByTag(req, res, next) {
         } catch (e) {
             next(e);
         }
-    }
-}
 
 
 const deleteQuestion = async (req, res, next) => {
+
     const deleteQuestion = await Question.findByIdAndDelete(req.params.id);
     if (!deleteQuestion) {
         res
@@ -115,6 +133,7 @@ const deleteQuestion = async (req, res, next) => {
     } else {
         res.status(200).send({message: "Question deleted successfully"});
     }
+
 };
 
 // async function deleteQuestion(req, res, next) {
@@ -133,11 +152,14 @@ const deleteQuestion = async (req, res, next) => {
 // }
 
 module.exports = {
-    addQuestion,
-    getQuestions,
-    getQuestionById,
-    getSingleQuestion,
-    deleteQuestion,
-    // deleteQuestion,
-    getQuestionByTag
+
+  addQuestion,
+  addAnswer,
+  getQuestions,
+  getQuestionById,
+  getQuestionByTag,
+  getSingleQuestion,
+  deleteQuestion,
+  // deleteQuestion,
+
 };

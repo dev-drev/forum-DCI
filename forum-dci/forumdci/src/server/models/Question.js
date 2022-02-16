@@ -6,22 +6,15 @@ const QuestionSchema = new mongoose.Schema({
   language: { type: String, required: true },
   tags: [{ type: String, required: true }],
   date: { type: Date },
-  likes: { type: Number, default: 0 },
-  answers: [
-    {
-      user_id: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-        required: true,
-      },
-      desc: {
-        type: String,
-        minLength: 7,
-        maxLength: 400,
-      },
-      likes: { type: Number, default: 0 },
-    },
-  ],
+  userName: { type: String, required: true },
+  user_id: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+  likes: { type: Number },
+
+  // [
+  //   {
+  //     user_id: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+  //   },
+  // ],
 });
 
 module.exports = mongoose.model("Question", QuestionSchema);
