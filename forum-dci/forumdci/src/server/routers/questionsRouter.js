@@ -18,9 +18,7 @@ router.route("/ask").post(addQuestion);
 router.route("/").get(getQuestions);
 router.route("/:searchQuestion").post(getSingleQuestion);
 router.route("/:id").delete(deleteQuestion).get(getQuestionById);
-
 router.route("/answer/:id").post(addAnswer);
-
 router.route("/search/:tag").get(getQuestionByTag);
 // router.route(":qid").get(getQuestion).post(askQuestion).delete(deleteQuestion);
 // router.route(":qid/answers").get(getQAnswers);

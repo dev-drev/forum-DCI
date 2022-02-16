@@ -126,7 +126,7 @@ function AskSomethingPage() {
                       </label>{" "}
                       <br />
                       <p className=" shadow-xl  text-sm text-secondary leading-tight">
-                        Please choose 1-2 tags
+                        Please choose 1-2 tags divided by a comma
                       </p>
                     </div>
 

@@ -21,6 +21,7 @@ function CardPopular({
         {/* FIRST BAR - DATE+ICON */}
         <div className="flex items-center justify-between">
           <span className="text-secondary pb-2 text-sm">
+            {}
             {date ? date.substring(0, 10) : " date"}
           </span>
           <div className=" flex items-center content-center text-secondary">
@@ -82,11 +83,15 @@ function CardPopular({
               />
             </svg>
 
-            {/* <span className="pl-1 text-sm text-white  font-semibold">
-              {likes}
-            </span> */}
+            <span className="pl-1 text-sm text-white  font-semibold">
+              {likes ? likes : "20"}
+            </span>
           </div>
-          <div className={`${tagsStyle} `}>{tags}</div>
+          <div>
+            {tags.map((tag) => (
+              <p className={tagsStyle}>{tag}</p>
+            ))}
+          </div>
         </div>
       </section>
     </div>
