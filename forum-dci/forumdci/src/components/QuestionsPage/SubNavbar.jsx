@@ -46,7 +46,7 @@ const SubNavbar = () => {
             value={searchQuestion}
             placeholder="Search"
             onChange={searchHandler}
-            className=" pr-56 w-[20vw] input border-1 border-primary bg-zinc-200 md:w-[35vw] xs:h-[5.3vh] sm:h-[6.1vh] rounded-r-none h-12"
+            className=" w-[50vw] input text-gray-700 border-1 border-primary bg-zinc-200 md:w-[35vw] xs:h-[5.3vh] sm:h-[6.1vh] rounded-r-none h-12"
           />
           <Link to="/questions">
             <button

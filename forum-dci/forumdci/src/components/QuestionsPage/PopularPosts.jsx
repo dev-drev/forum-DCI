@@ -7,6 +7,10 @@ import question from "./iconQuestion.png";
 import { useParams } from "react-router-dom";
 
 function PopularPosts(props) {
+  const cutPara = (para) => {
+    let words = para.split(/\s+/).slice(0, 10).join(" ") + "...";
+    return words;
+  };
   const [posts, setPosts] = useState([]);
   const [searchedPosts, setSearchedPosts] = useState([]);
   const params = useParams();
@@ -109,11 +113,11 @@ function PopularPosts(props) {
                       date={post.date}
                       title={post.title.substring(0, 80)}
                       tags={post.tags}
-                      titleCont="h-[8vh] md:h-[4vh]"
-                      question={post.question.substring(0, 200)}
+                      titleCont="h-[9vh] md:h-[6vh] lg:h-[4vh]"
+                      question={cutPara(post.question)}
                       style="py-4 sm:py-6  glass sm:w-[65vw] md:w-[72vw] w-[80vw] z-0 md:mb-4 rounded-2xl duration-[0.4s] hover:scale-105 px-6 my-2 shadow-lg "
                       tagsStyle="text-zinc-100 rounded-full bg-primary mt-2  text-sm py-1 px-4  "
-                      titleStyle="text-lg"
+                      titleStyle="text-lg leading-tight"
                       answers={post.answers}
                       language={post.language}
                       date={post.date}
@@ -159,7 +163,7 @@ function PopularPosts(props) {
               <Link to={`/question/${post._id}`} key={key}>
                 <CardPopular
                   likes={post.likes}
-                  title={post.title.substring(0, 90)}
+                  title={cutPara(post.title)}
                   tags={post.tags}
                   userName={post.userName}
                   style="py-4 sm:py-8  glass sm:w-[65vw] md:w-[34vw] md:h-[32vh] lg:w-[22vw] lg:h-[32vh] w-[80vw] z-0 md:mb-4 rounded-2xl duration-[0.4s] hover:scale-105 px-6 my-2 shadow-lg "
