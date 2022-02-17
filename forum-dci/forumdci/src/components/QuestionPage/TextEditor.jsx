@@ -65,7 +65,7 @@ export default function TextEditor() {
             }}
             className="mt-6 text-center w-full md:w-20  bg-primary text-neutral-content py-2 px-4 rounded-full  "
           >
-            Ask
+            Submit Answer
           </button>
         </div>
       </div>
