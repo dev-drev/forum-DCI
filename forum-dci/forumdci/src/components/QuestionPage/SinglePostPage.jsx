@@ -3,20 +3,23 @@ import TextEditor from "./TextEditor.jsx";
 import ComponentButton from "./ComponentButton";
 import SinglePostPage2 from "./SinglePostPage2";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+
+import { useNavigate, useParams } from "react-router-dom";
 
 function SinglePostPage({ id }) {
   const params = useParams();
+  const navigate = useNavigate();
 
   console.log(params.id);
-
+  const [singlePost, setSinglePost] = useState({});
   const [showAnswerArea, setShowAnswerArea] = useState(false);
-  const [deleteID, setDeleteID] = useState("");
+  const [isLiked, setIsLiked] = useState(false);
+  const [showDeleted, setShowDeleted] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
   const switchMode = () => {
     setShowAnswerArea((showMe) => !showMe);
   };
-
-  const [singlePost, setSinglePost] = useState({});
 
   useEffect(async () => {
     try {
@@ -30,16 +33,22 @@ function SinglePostPage({ id }) {
     }
   }, []);
 
-  // async function deleteQuestion() {
-  //   try {
-  //     const deleteQuestion = axios.delete(
-  //       `http://localhost:500/questions/${id}`
-  //     );
-  //     console.log(deleteQuestion);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
+  useEffect(() => {
+    setIsAuthenticated(localStorage.getItem("isAuthenticated"));
+  }, []);
+
+  async function deleteQuestion() {
+    try {
+      const deleteQuestion = await axios.delete(
+        `http://localhost:5000/questions/${params.id}`
+      );
+      setShowDeleted(true);
+      setTimeout(() => navigate("/"), 3000);
+    } catch (error) {
+      console.log(deleteQuestion);
+      console.log(error);
+    }
+  }
 
   return (
     <div className=" bg-[#3d4451]">
@@ -105,6 +114,9 @@ function SinglePostPage({ id }) {
             <span className="pl-1 text-sm text-white  font-semibold">
               {singlePost.likes}
             </span>
+            <span className="pl-1 text-sm text-white  font-semibold">
+              <input type="checkbox" checked={isLiked} onChange={setIsLiked} />{" "}
+            </span>
           </div>
           <div className=" mr-10 mt-6 text-lg font-bold flex justify-between">
             <p>Answers: {singlePost.answers ? singlePost.answers.length : 0}</p>
@@ -119,13 +131,23 @@ function SinglePostPage({ id }) {
           ></ComponentButton>
         </div> */}
 
-        <div>
-          <SinglePostPage2 />
-          <SinglePostPage2 />
-          <SinglePostPage2 />
-          <SinglePostPage2 />
-        </div>
+        <div></div>
       </div>
+
+      {isAuthenticated ? (
+        <button className="btn m-8 ml-20 bg-primary" onClick={deleteQuestion}>
+          Delete this question
+        </button>
+      ) : (
+        ""
+      )}
+      {showDeleted ? (
+        <p className="mb-8 ml-20 text-red-600">
+          You deleted your question correctly!
+        </p>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

@@ -61,19 +61,31 @@ export default function Login() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(loginData),
+<<<<<<< HEAD
         credentials: 'include'
+=======
+        credentials: "include",
+>>>>>>> 5ed5700c847798d4f145dd65a9d77cad336472b8
       });
       if (res.status === 200) {
         setEnteredLoginUsername("");
         setEnteredLoginPassword("");
         const data = await res.json();
+<<<<<<< HEAD
         console.log('data:',data);
+=======
+        console.log("data:", data);
+>>>>>>> 5ed5700c847798d4f145dd65a9d77cad336472b8
         //set localStorage items
         localStorage.setItem("isAuthenticated", "true");
+        localStorage.setItem("userName", enteredLoginUsername);
         localStorage.setItem("user", JSON.stringify(data));
         //redirect to dashboard
         navigate("/admin");
+<<<<<<< HEAD
         
+=======
+>>>>>>> 5ed5700c847798d4f145dd65a9d77cad336472b8
       } else {
         alert("error");
       }
@@ -117,12 +129,12 @@ export default function Login() {
       }
 
       localStorage.setItem("isAuthenticated", "true");
+      localStorage.setItem("userName", enteredSignupUsername);
       localStorage.setItem("user", JSON.stringify(data));
       // window.location = "/admin";
-      navigate("/admin")
+      navigate("/admin");
     } catch (err) {
       console.log(err);
-      alert("Try again!");
     }
   };
 

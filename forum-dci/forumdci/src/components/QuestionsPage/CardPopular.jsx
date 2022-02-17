@@ -11,10 +11,10 @@ function CardPopular({
   id,
   date,
   tags,
+  userName,
   deleteQuestion,
 }) {
   const [isChecked, setIsChecked] = useState(false);
-  console.log(tags);
   return (
     <div>
       <section className={style}>
@@ -24,7 +24,9 @@ function CardPopular({
           {date ? date.substring(0, 10) : " date"}
           </span>
           <div className=" flex items-center content-center text-secondary">
-            <span className="text-sm italic">drevil dev</span>
+            <span className="text-sm italic">
+              {userName ? userName : "No user"}
+            </span>
             <div className="bg-gray-100 w-5 h-5 ml-2 rounded-full"></div>
           </div>
         </div>
@@ -37,7 +39,7 @@ function CardPopular({
         </div>
 
         {/* ACTIVE */}
-        <p className="text-white hidden leading-relaxed sm:pr-16 text-sm sm:block font-base mt-4 md:mt-2">
+        <p className="text-white hidden leading-tight sm:pr-16 text-sm sm:block font-base mt-4 md:mt-2">
           {question ? question.substring(0, 200) : question}
           <strong className="md:hidden text-secondary">...MORE</strong>
           {id}
@@ -73,18 +75,24 @@ function CardPopular({
               stroke="currentColor"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"
               />
             </svg>
 
             <span className="pl-1 text-sm text-white  font-semibold">
-              {likes}
+              {likes ? likes : "20"}
             </span>
           </div>
-          <div className={`${tagsStyle} `}>{tags}</div>
+          <div>
+            {tags.map((tag, id) => (
+              <p key={id} className={tagsStyle}>
+                {tag}
+              </p>
+            ))}
+          </div>
         </div>
       </section>
     </div>

@@ -55,7 +55,7 @@ const RecentPosts = () => {
       <div className="  flex-wrap justify-between  w-12/12 sm:w-11/12">
         {recentPosts.map((post, id) => {
           return (
-            <Link to={`/question/${post._id}`}>
+            <Link key={id} to={`/question/${post._id}`}>
               <CardPopular
                 likes={post.likes}
                 title={post.title.substring(0, 80)}
@@ -66,6 +66,7 @@ const RecentPosts = () => {
                 tagsStyle="text-zinc-100 rounded-full bg-primary  text-sm py-1 px-4  "
                 titleStyle="text-lg"
                 answers={post.answers}
+                userName={post.userName}
                 language={post.language}
                 date={post.date}
                 glass="glass"

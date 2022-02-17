@@ -6,7 +6,7 @@ const About = () => {
       {" "}
       <div className=" min-h-screen">
         <div className="grid md:grid-cols-3  gap-y-6 justify-center items-center">
-          <div className=" md:col-span-3 md:row-start-1 bg-primary rounded  shadow-xl  p-10 mr-24 lg:col-span-2">
+          <div className=" md:col-span-3 md:row-start-1 bg-primary rounded  shadow-xl  p-10 mr-24 lg:mr-10 lg:col-span-2">
             <h2 className="text-5xl  text-secondary font-bold">
               What is AVAZ?
             </h2>
@@ -29,7 +29,7 @@ const About = () => {
 
           <div className=" md:col-span-3 lg:col-span-1">
             <h2 className="text-5xl text-secondary font-bold">Features</h2>
-            <p>
+            <p className="pt-6 text-zinc-100">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi
               voluptate repellendus minima repellat quis, aliquid at nam magnam
               minus hic, ex et nihil consequuntur obcaecati soluta eius

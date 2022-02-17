@@ -29,7 +29,6 @@ export default function Community() {
   else {
     return (
       <div className="bg-gray-100">
-
         <div className="w-10/12 md:h-auto lg:h-screen m-auto bg-white">
           <div className="flex items-center justify-center  md:justify-between md:mb-24 pt-2">
             <div className="pt-10 flex-col md:ml-20">
@@ -55,8 +54,8 @@ export default function Community() {
           </div>
 
           <div className="grid lg:grid-cols-4 md:grid-cols-2 justify-items-center gap-y-5 mt-16 pb-10 mr-12 ml-10">
-            {data.results.map((result) => (
-              <div className="flex items-center lg:mb-10">
+            {data.results.map((result, id) => (
+              <div key={id} className="flex items-center lg:mb-10">
                 <img
                   className="rounded-full w-26"
                   src={result.picture.medium}
