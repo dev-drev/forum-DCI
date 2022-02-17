@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import SubNavbar from "../QuestionsPage/SubNavbar";
+
 const randomUserUrl = "https://randomuser.me/api/?results=16";
 
 export default function Community() {

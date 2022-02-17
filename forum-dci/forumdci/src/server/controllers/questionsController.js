@@ -149,6 +149,7 @@ module.exports = {
   getQuestions,
   getQuestionById,
   getSingleQuestion,
+  getQuestionByTag,
   deleteQuestion,
   // deleteQuestion,
 };

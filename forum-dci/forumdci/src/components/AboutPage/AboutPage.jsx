@@ -11,7 +11,6 @@ const AboutPage = () => {
       <Navbar />
 
       <About />
-      <Footer/> 
     </div>
   );
 
