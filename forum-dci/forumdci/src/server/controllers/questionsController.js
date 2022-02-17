@@ -8,13 +8,23 @@ const Answer = require("../models/Answer");
 const addAnswer = async (req, res, next) => {
   try {
     console.log("REQBODY", req.body);
-    const answer = await Answer.create({
-      question_id: req.params.id,
-      user_id: req.body.user_id,
+    // const cur_answer = await Answer.create({
+    //   question_id: req.params.id,
+    //   user_id: req.body.user_id,
+    //   desc: req.body.description,
+    // });
+
+    const related_question = await Question.findById(req.params.id);
+    related_question.answer.push({
       desc: req.body.description,
+      user_id: req.body.user_id,
+      username: req.body.username,
     });
-    console.log(answer);
-    res.status(200).send({ message: "Done", answer });
+
+    let result = await related_question.save();
+    console.log(result);
+
+    res.status(200).send({ message: "Done", result });
   } catch (e) {
     next(e);
   }
@@ -34,6 +44,7 @@ async function addQuestion(req, res, next) {
     }
 
     const { title, language, tags, question, likes, userName } = req.body;
+
     // const tagsSplitted = tags;
     const tagsSplitted = tags.split(",").map((e) => e.trim());
     // sending the tags as array do database
@@ -58,7 +69,11 @@ async function addQuestion(req, res, next) {
 
 async function getQuestions(req, res, next) {
   try {
-    const questions = await Question.find().sort();
+    console.log("inside get questions");
+    //console.log(await Answer.find().populate("question_id"));
+    const questions = await Question.find().populate("answer", "desc");
+    // Question.find().populate("answer");
+    console.log("test45", questions);
     res.status(200).send(questions);
   } catch (e) {
     next(e);

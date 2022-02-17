@@ -40,7 +40,7 @@ export default function TextEditor() {
 
   return (
     <>
-      <div className="  w-[80vw] rounded-md  py-10  mx-auto">
+      <div className=" text-gray-800 w-[80vw] rounded-md rounded  py-10  mx-auto">
         <div className="space-y-4">
           <CKEditor
             editor={ClassicEditor}

@@ -5,15 +5,10 @@ import About from "./About";
 import Navbar from "../Navbar";
 
 const AboutPage = () => {
-    return (
-
+  return (
     <div>
-      <Navbar />
-
       <About />
-      <Footer/> 
     </div>
   );
-
 };
 export default AboutPage;

@@ -8,6 +8,12 @@ const QuestionSchema = new mongoose.Schema({
   date: { type: Date },
   userName: { type: String, required: true },
   user_id: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+  answer: [
+    {
+      desc: { type: String, required: true },
+      user_id: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+    },
+  ],
   likes: { type: Number },
 
   // [

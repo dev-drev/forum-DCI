@@ -29,6 +29,7 @@ function PopularPosts(props) {
       url: "http://localhost:5000/questions",
       method: "get",
     });
+    console.log(response);
     setPosts(response.data);
   }, []);
   // console.log(props.match.params.searchQuestion);

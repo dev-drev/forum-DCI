@@ -4,7 +4,7 @@ const About = () => {
   return (
     <div className="bg-blueReact">
       {" "}
-      <div className=" min-h-screen">
+      <div className=" p-4 min-h-screen">
         <div className="grid md:grid-cols-3  gap-y-6 justify-center items-center">
           <div className=" md:col-span-3 md:row-start-1 bg-primary rounded  shadow-xl  p-10 mr-24 lg:mr-10 lg:col-span-2">
             <h2 className="text-5xl  text-secondary font-bold">
@@ -27,9 +27,9 @@ const About = () => {
             </p>
           </div>
 
-          <div className=" md:col-span-3 lg:col-span-1">
+          <div className="mx-[10vw] md:mx-0 pt-6 text-zinc-100 md:col-span-3 lg:col-span-1">
             <h2 className="text-5xl text-secondary font-bold">Features</h2>
-            <p className="pt-6 text-zinc-100">
+            <p className="">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi
               voluptate repellendus minima repellat quis, aliquid at nam magnam
               minus hic, ex et nihil consequuntur obcaecati soluta eius
@@ -43,7 +43,7 @@ const About = () => {
             </p>
           </div>
 
-          <div className="bg-white md:col-span-3 md:col-start-1 lg:col-span-1 lg:col-start-3">
+          <div className="bg-white md:col-span-3 lg:col-span-1 lg:col-start-3">
             <div className="flex flex-row flex-wrap justify-center">
               <img
                 className="m-5 w-16 h-12"
@@ -93,10 +93,10 @@ const About = () => {
             </div>
           </div>
 
-          <div className="flex flex-col w-90 md:col-span-3 md:row-start-4 lg:col-span-2 lg:row-start-3">
-            <div className="bg-white">
+          <div className="pl-6 flex flex-col text-white  w-90 md:col-span-3 md:row-start-4 lg:col-span-2 lg:row-start-2">
+            <div className="">
               <h2 className="text-2xl font-bold">Our Team</h2>
-              <p>
+              <p className=" pr-6">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse
                 excepturi, similique dolorem dignissimos ea non eius iure, vitae
                 iusto ad facere amet soluta accusantium illum eum, deleniti hic

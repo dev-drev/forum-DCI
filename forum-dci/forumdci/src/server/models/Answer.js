@@ -6,6 +6,7 @@ const AnswerSchema = new mongoose.Schema({
     ref: "Question",
     required: true,
   },
+  userName: { type: String },
   user_id: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",

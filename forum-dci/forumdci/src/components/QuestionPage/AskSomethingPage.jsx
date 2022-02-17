@@ -12,6 +12,7 @@ function AskSomethingPage() {
     tags: "",
     question: "",
     userName: userName,
+    user_id: JSON.parse(localStorage.getItem("user")).id,
   });
 
   const handleChange = (event) => {

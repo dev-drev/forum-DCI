@@ -1,6 +1,6 @@
 import React from "react";
 
-function SinglePostPage2(props) {
+function SinglePostPage2({ desc }) {
   return (
     <div>
       <div className="bg-gradient-to-r from-[#505968] to-primary   ">
@@ -18,12 +18,10 @@ function SinglePostPage2(props) {
                 />
               </div>
 
-              <div className="inline-block ml-4">
+              <div className="inline-block mt-8  ml-4">
                 <div id="quote" className="pb-6">
                   <q className="italic text-sm  text-zinc-200" glass="glass">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua.
+                    {desc}
                   </q>
                 </div>
                 <div className="flex flex-col">

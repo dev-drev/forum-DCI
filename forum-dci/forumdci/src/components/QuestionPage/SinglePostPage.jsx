@@ -32,6 +32,7 @@ function SinglePostPage({ id }) {
       console.log(e);
     }
   }, []);
+  console.log("SinglePOST", singlePost);
 
   useEffect(() => {
     setIsAuthenticated(localStorage.getItem("isAuthenticated"));
@@ -119,7 +120,9 @@ function SinglePostPage({ id }) {
             </span>
           </div>
           <div className=" mr-10 mt-6 text-lg font-bold flex justify-between">
-            <p>Answers: {singlePost.answers ? singlePost.answers.length : 0}</p>
+            <p>
+              Answers: {singlePost.answers ? singlePost.answers.length + 1 : 0}
+            </p>
             <p>Follow replies</p>
           </div>
         </div>
@@ -131,7 +134,15 @@ function SinglePostPage({ id }) {
           ></ComponentButton>
         </div> */}
 
-        <div></div>
+        <div>
+          {singlePost.answer
+            ? singlePost.answer.map((answer) => (
+                <div>
+                  <SinglePostPage2 desc={answer.desc} />
+                </div>
+              ))
+            : ""}
+        </div>
       </div>
 
       {isAuthenticated ? (
