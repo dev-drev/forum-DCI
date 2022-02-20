@@ -21,7 +21,6 @@ function CardPopular({
         {/* FIRST BAR - DATE+ICON */}
         <div className="flex items-center justify-between">
           <span className="text-secondary pb-2 text-sm">
-            {}
             {date ? date.substring(0, 10) : " date"}
           </span>
           <div className=" flex items-center content-center text-secondary">
@@ -34,7 +33,7 @@ function CardPopular({
         {/* HEADING */}
         <div className={`${titleCont}`}>
           <h5 className={`${titleStyle} text-zinc-100  font-semibold`}>
-            {title}
+            {title ? title : ""}
             {/* Display an inherited Field in Django 4.0 with ModelAdmin */}
           </h5>
         </div>
@@ -43,7 +42,7 @@ function CardPopular({
         <p className="text-white hidden leading-tight sm:pr-16 text-sm sm:block font-base mt-4 md:mt-2">
           {question ? question.substring(0, 200) : question}
           <strong className="md:hidden text-secondary">...MORE</strong>
-          {id}
+          {id ? id : ""}
         </p>
 
         {/* <button
@@ -88,11 +87,13 @@ function CardPopular({
             </span>
           </div>
           <div>
-            {tags.map((tag, id) => (
-              <p key={id} className={tagsStyle}>
-                {tag}
-              </p>
-            ))}
+            {tags
+              ? tags.map((tag, id) => (
+                  <p key={id} className={tagsStyle}>
+                    {tag ? tag : ""}
+                  </p>
+                ))
+              : ""}
           </div>
         </div>
       </section>

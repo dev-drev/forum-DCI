@@ -68,7 +68,7 @@ function TagsSearch({ questions, setQuestions }) {
           </div>
         </div>
 
-        <div className="lg:ml-11">
+        {/* <div className="lg:ml-11">
           {" "}
           <select
             defaultValue="By newest"
@@ -83,7 +83,7 @@ function TagsSearch({ questions, setQuestions }) {
             <option value="most_popular">Most Popular</option>
             <option value="newest">Newest</option>
           </select>
-        </div>
+        </div> */}
       </div>
     </div>
   );

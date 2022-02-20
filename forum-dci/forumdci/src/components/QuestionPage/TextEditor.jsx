@@ -45,14 +45,6 @@ export default function TextEditor() {
           <CKEditor
             editor={ClassicEditor}
             data={description}
-            onReady={(editor) => {
-              editor.setStyle(
-                "height",
-                "100%",
-                editor.editing.view.document.getRoot()
-              );
-            }}
-            s
             onChange={handleCkeditor}
           />
         </div>
