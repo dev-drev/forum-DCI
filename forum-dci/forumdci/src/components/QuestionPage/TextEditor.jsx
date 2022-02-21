@@ -1,11 +1,14 @@
 import React, { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { useParams } from "react-router-dom";
 
 export default function TextEditor() {
+  const navigate = useNavigate();
   const params = useParams();
   const [description, setDescription] = useState(" ");
+  const [isSent, setIsSent] = useState(false);
 
   const handleCkeditor = (event, editor) => {
     setDescription(editor.getData());
@@ -30,8 +33,11 @@ export default function TextEditor() {
       );
 
       if (res.status === 200) {
-        alert("Your question has been successfully sent to the database!");
         setDescription(" ");
+        setIsSent(true);
+        setTimeout(() => {
+          navigate("/questions");
+        }, 3000);
       }
     } catch (e) {
       alert("Try again!");
@@ -55,11 +61,18 @@ export default function TextEditor() {
               submitAnswer();
               // Only for no here I add an alert t check if the event propagation was disabled
             }}
-            className="mt-6 text-center w-full md:w-20  bg-primary text-neutral-content py-2 px-4 rounded-full  "
+            className="mt-6 btn text-center w-full md:w-32  bg-secondary text-primary py-2 px-4 glass  "
           >
-            Submit Answer
+            Submit
           </button>
         </div>
+        {isSent ? (
+          <p className="text-2xl text-secondary mt-10  leading-tight">
+            Your answer has been successfully submitted!
+          </p>
+        ) : (
+          ""
+        )}
       </div>
     </>
   );

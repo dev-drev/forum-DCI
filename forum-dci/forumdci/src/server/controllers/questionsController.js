@@ -82,6 +82,7 @@ async function getQuestions(req, res, next) {
 
 async function getSingleQuestion(req, res, next) {
   const { searchQuestion } = req.params;
+
   console.log(searchQuestion);
   try {
     var questionsReqExp = new RegExp(searchQuestion, "gi");

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
+
 import TextEditor from "./TextEditor.jsx";
 import ComponentButton from "./ComponentButton";
 import SinglePostPage2 from "./SinglePostPage2";
 import axios from "axios";
 
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 function SinglePostPage({ id }) {
   const params = useParams();
@@ -80,12 +81,14 @@ function SinglePostPage({ id }) {
             {singlePost.tags
               ? singlePost.tags.map((tag, key) => {
                   return (
-                    <li
-                      key={key}
-                      className="mr-4 px-6 py-1 bg-secondary glass rounded-full text-primary  "
-                    >
-                      {tag}
-                    </li>
+                    <Link to={`/tags`} key={key}>
+                      <li
+                        key={key}
+                        className="mr-4 px-6 py-1 bg-secondary glass rounded-full text-primary  "
+                      >
+                        {tag}
+                      </li>
+                    </Link>
                   );
                 })
               : ""}
