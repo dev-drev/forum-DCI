@@ -20,14 +20,13 @@ function Home() {
               alt=""
             />
           </div>
-          <div className=" flex flex-col items-center justify-center  md:w-[37vw] ">
+          <div className=" flex flex-col items-center justify-center w-full  md:w-[37vw] ">
             {" "}
             <h1 className="mb-5 leading-[55px]  text-5xl font-bold ">
               Looking for <br />
               &#60;something/&#62;?
             </h1>{" "}
             <p className="mb-10 px-20 ">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. error.
               There's A Bit Of Software In All Of Us.
             </p>
             <Link to="/questions">

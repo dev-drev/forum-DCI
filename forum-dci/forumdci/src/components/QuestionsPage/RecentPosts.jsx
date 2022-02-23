@@ -30,7 +30,7 @@ const RecentPosts = () => {
       <div className="flex-col mb-6 content-center items-center">
         <div className="flex content-center pb-3 items-center ">
           <h3 className="text-3xl text-white text-shadow font-semibold">
-            RECENT POSTS
+            RECENT QUESTIONS
           </h3>
           <svg
             xmlns="http://www.w3.org/2000/svg"
